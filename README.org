@@ -1,0 +1,7 @@
+* emacs.d
+
+My Emacs config. A lot of inspiration taken from:
+
+- [[https://github.com/purcell/emacs.d][Steve Purcell's emacs.d]]
+- [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
+- and others
