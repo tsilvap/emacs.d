@@ -123,8 +123,6 @@ If REVERSE, then skip subtree unless it has next actions."
 
 	  ("w" "Agenda and work tasks"
 	   ((agenda "" nil)
-	    (tags "INBOX"
-		  ((org-agenda-overriding-header "Inbox")))
 	    (tags "work+review-TODO=\"NEXT\"-TODO=\"DONE\""
 		  ((org-agenda-overriding-header "Reviews")))
 	    (tags-todo "work+TODO=\"NEXT\""
