@@ -15,8 +15,13 @@
 
 (package-initialize)
 
-;; Set manually installed packages, and ensure they are installed.
-(setq package-selected-packages '(bbdb citar color-theme-sanityinc-tomorrow corfu eglot flymake-shellcheck fullframe go-mode jenkinsfile-mode magit marginalia markdown-mode nnhackernews nnreddit ob-go orderless org-roam org-roam-ui paredit pyvenv reformatter vertico yaml-mode sudo-edit))
+;; Get package list from the file packages.el, and ensure they are
+;; installed.
+(setq package-selected-packages
+      (read
+       (with-temp-buffer
+         (insert-file-contents (concat user-emacs-directory "packages.el"))
+         (buffer-string))))
 (package-install-selected-packages)
 
 ;; Add directories with local Lisp code to `load-path'.
