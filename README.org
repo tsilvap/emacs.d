@@ -5,3 +5,10 @@ My Emacs config. A lot of inspiration taken from:
 - [[https://github.com/purcell/emacs.d][Steve Purcell's emacs.d]]
 - [[https://github.com/doomemacs/doomemacs][Doom Emacs]]
 - and others
+
+** Dependencies
+
+The following are dependency programs. Some parts of the config may
+not work if they are not installed:
+
+- [[https://github.com/BurntSushi/ripgrep][ripgrep]]

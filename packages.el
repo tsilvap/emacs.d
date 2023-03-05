@@ -19,6 +19,7 @@ org-roam-ui
 paredit
 pyvenv
 reformatter
+rg
 vertico
 yaml-mode
 sudo-edit)

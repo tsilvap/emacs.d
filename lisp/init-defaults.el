@@ -67,5 +67,9 @@
 ;; Enable Auto Revert globally.
 (global-auto-revert-mode t)
 
+;; Use ripgrep for searching files.
+(require 'rg)
+(global-set-key (kbd "C-c s") #'rg-menu)
+
 (provide 'init-defaults)
 ;;; init-defaults.el ends here
