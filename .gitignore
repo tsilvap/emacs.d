@@ -8,3 +8,5 @@
 /projects
 /transient/
 /lisp/init-private.el
+/tramp
+/.org-id-locations
