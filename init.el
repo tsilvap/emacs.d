@@ -47,3 +47,6 @@
 
 ;;; Gnus
 (setq gnus-init-file (concat user-emacs-directory "lisp/init-gnus.el"))
+
+;; Private init file (not committed to repo).
+(require 'init-private)
