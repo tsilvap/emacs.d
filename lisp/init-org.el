@@ -41,6 +41,11 @@ If REVERSE, then skip subtree unless it has next actions."
    org-catch-invisible-edits 'show-and-error
    org-return-follows-link t)
 
+  ;; GTD: Configure allowed values for effort and energy required.
+  (setq org-global-properties
+        '(("Effort_ALL" . "0:05 0:10 0:15 0:30 0:45 1:00 2:00 3:00 4:00 6:00 8:00")
+          ("Energy_ALL" . "* ** ***")))
+
   ;; Eye candy.
   (setq
    org-auto-align-tags nil
@@ -48,6 +53,10 @@ If REVERSE, then skip subtree unless it has next actions."
    org-hide-emphasis-markers t
    org-startup-indented t
    org-tags-column 0)
+
+  ;; Configure Org Columns mode to be more consistent with GTD.
+  (setq org-columns-default-format
+        "%TODO %45ITEM %TAGS %EFFORT %3ENERGY %3PRIORITY")
 
   ;; Improve org-cite faces in Tomorrow Night theme.
   (when (memq 'sanityinc-tomorrow-night custom-enabled-themes)
