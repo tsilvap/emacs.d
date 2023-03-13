@@ -78,9 +78,9 @@ If REVERSE, then skip subtree unless it has next actions."
 
   ;; Org capture configuration.
   (setq org-default-notes-file (concat org-directory "/agenda/inbox.org")
-	org-capture-templates '(("t" "todo" entry
-				 (file org-default-notes-file)
-				 "* TODO %?\n%U\n")))
+        org-capture-templates '(("i" "Inbox" entry
+                                 (file org-default-notes-file)
+                                 "* %?")))
 
   ;; Define stuck projects to be any projects that don't have a next
   ;; action in their subtree.
