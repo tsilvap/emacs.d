@@ -37,8 +37,10 @@ If REVERSE, then skip subtree unless it has next actions."
   (tsp/skip-subtree-if-stuck t))
 
 (with-eval-after-load 'org
+  ;; Basic configuration.
   (setq
    org-catch-invisible-edits 'show-and-error
+   org-clock-sound "~/Music/ding.wav"
    org-return-follows-link t)
 
   ;; GTD: Configure allowed values for effort and energy required.
