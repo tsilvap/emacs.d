@@ -71,5 +71,13 @@
 (require 'rg)
 (global-set-key (kbd "C-c s") #'rg-menu)
 
+;; Make Xref use ripgrep instead of grep. This will speed up other
+;; packages that use Xref under the hood, e.g. Dired, project.el.
+;;
+;; Still, as of Mar 13 2023, the `project-find-regexp' implementation
+;; isn't very optimized to work with ripgrep, so searching with
+;; `rg-menu' is much faster.
+(setq xref-search-program 'ripgrep)
+
 (provide 'init-defaults)
 ;;; init-defaults.el ends here
