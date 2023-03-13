@@ -3,6 +3,7 @@ citar
 color-theme-sanityinc-tomorrow
 corfu
 eglot
+embark
 flymake-shellcheck
 fullframe
 go-mode

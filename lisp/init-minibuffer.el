@@ -29,5 +29,15 @@
 (marginalia-mode)
 (define-key minibuffer-local-map (kbd "M-A") #'marginalia-cycle)
 
+;;; Embark --- contextual actions at point
+(require 'embark)
+(global-set-key (kbd "C-.") 'embark-act)
+(global-set-key (kbd "C-;") 'embark-dwim)
+(global-set-key (kbd "C-h B") 'embark-bindings)
+
+;; Show the commands bound in a prefix in a `completing-read'
+;; interface.
+(setq prefix-help-command #'embark-prefix-help-command)
+
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
