@@ -10,6 +10,7 @@ jenkinsfile-mode
 magit
 marginalia
 markdown-mode
+nginx-mode
 nnhackernews
 nnreddit
 ob-go
