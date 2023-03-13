@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Use Vertico as the minibuffer completion UI.
+;;; Vertico --- vertical minibuffer completion UI
 (vertico-mode)
 
 ;; Save minibuffer history. This integrates well with Vertico, since
@@ -20,12 +20,12 @@
     (setq read-extended-command-predicate
 	  #'command-completion-default-include-p))
 
-;; Use the Orderless completion style.
+;; Orderless --- orderless completion style
 (require 'orderless)
 (setq completion-styles '(orderless basic)
       completion-category-overrides '((file (styles partial-completion))))
 
-;; Use Marginalia to show helpful annotations in the minibuffer.
+;;; Marginalia --- helpful annotations in the minibuffer
 (marginalia-mode)
 (define-key minibuffer-local-map (kbd "M-A") #'marginalia-cycle)
 
