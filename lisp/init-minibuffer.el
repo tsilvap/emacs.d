@@ -2,7 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-;;; Vertico --- vertical minibuffer completion UI
+;;;; Vertico --- vertical minibuffer completion UI
+
 (vertico-mode)
 
 ;; Save minibuffer history. This integrates well with Vertico, since
@@ -20,16 +21,19 @@
     (setq read-extended-command-predicate
 	  #'command-completion-default-include-p))
 
-;; Orderless --- orderless completion style
+;;;; Orderless --- orderless completion style
+
 (require 'orderless)
 (setq completion-styles '(orderless basic)
       completion-category-overrides '((file (styles partial-completion))))
 
-;;; Marginalia --- helpful annotations in the minibuffer
+;;;; Marginalia --- helpful annotations in the minibuffer
+
 (marginalia-mode)
 (define-key minibuffer-local-map (kbd "M-A") #'marginalia-cycle)
 
-;;; Embark --- contextual actions at point
+;;;; Embark --- contextual actions at point
+
 (require 'embark)
 (global-set-key (kbd "C-.") 'embark-act)
 (global-set-key (kbd "C-;") 'embark-dwim)
