@@ -65,8 +65,9 @@ If REVERSE, then skip subtree unless it has next actions."
     (set-face-attribute 'org-cite nil :inherit 'org-footnote)
     (set-face-attribute 'org-cite-key nil :inherit 'org-footnote :underline t))  
 
-  ;; Enable `habits' module.
+  ;; Enable and configure `habits' module.
   (add-to-list 'org-modules 'org-habit t)
+  (setq org-habit-graph-column 50)
 
   ;; Org refile configuration.
   (setq
