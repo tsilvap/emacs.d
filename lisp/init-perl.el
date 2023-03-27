@@ -18,7 +18,7 @@
   (require 'tsp)
 
   (reformatter-define perltidy :program "perltidy" :args '("-" "--standard-output"))
-  (tsp/create-binding-for-formatter "perltidy" cperl-mode-map))
+  (tsp/create-binding-for-formatter "perltidy" cperl-mode-map)
 
   ;; Remap `cperl-indent-command' to `indent-for-tab-command', which
   ;; respects the value of `tab-always-indent'.
