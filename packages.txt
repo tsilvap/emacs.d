@@ -1,4 +1,4 @@
-(bbdb
+bbdb
 citar
 color-theme-sanityinc-tomorrow
 consult
@@ -26,6 +26,6 @@ pyvenv
 reformatter
 restclient
 rg
+sudo-edit
 vertico
 yaml-mode
-sudo-edit)

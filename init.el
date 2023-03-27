@@ -15,13 +15,15 @@
 
 (package-initialize)
 
-;; Get package list from the file packages.el, and ensure they are
+;; Get package list from the file packages.txt, and ensure they are
 ;; installed.
 (setq package-selected-packages
-      (read
-       (with-temp-buffer
-         (insert-file-contents (concat user-emacs-directory "packages.el"))
-         (buffer-string))))
+      (mapcar #'intern
+              (split-string
+               (with-temp-buffer
+                 (insert-file-contents (concat user-emacs-directory
+                                               "packages.txt"))
+                 (buffer-string)))))
 (package-install-selected-packages)
 
 ;; Add directories with local Lisp code to `load-path'.
