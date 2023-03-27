@@ -168,7 +168,7 @@ If REVERSE, then skip subtree unless it has next actions."
         citar-bibliography org-cite-global-bibliography)
   (define-key org-mode-map (kbd "C-c b") #'org-cite-insert))
 
-;;;; Org Roam
+;;;; Org Roam --- For Zettelkasten notes.
 
 (setq org-roam-directory "~/Dropbox/org/roam/")
 
@@ -205,6 +205,16 @@ If REVERSE, then skip subtree unless it has next actions."
   (setq citar-notes-paths (list (concat org-roam-directory "reference")))
 
   (org-roam-db-autosync-mode))
+
+;;;; Deft --- For general reference notes.
+
+(require 'deft)
+
+(setq deft-directory "~/Dropbox/org/reference/"
+      deft-use-filename-as-title t
+      deft-recursive t)
+
+(global-set-key (kbd "C-x C-g") 'deft)
 
 (provide 'init-org)
 ;;; init-org.el ends here

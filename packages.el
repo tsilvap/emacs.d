@@ -3,6 +3,7 @@ citar
 color-theme-sanityinc-tomorrow
 consult
 corfu
+deft
 eglot
 embark
 embark-consult
