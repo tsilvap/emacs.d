@@ -13,5 +13,10 @@
 ;; Dabbrev can be used globally.
 (global-corfu-mode t)
 
+;; Add a few useful Cape functions to `completion-at-point-functions'.
+(require 'cape)
+(dolist (cape-func '(cape-file cape-dabbrev))
+  (add-to-list 'completion-at-point-functions cape-func t))
+
 (provide 'init-completion)
 ;;; init-completion.el ends here
