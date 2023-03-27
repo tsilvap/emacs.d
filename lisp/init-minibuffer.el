@@ -43,5 +43,23 @@
 ;; interface.
 (setq prefix-help-command #'embark-prefix-help-command)
 
+;;;; Consult --- enhanced search and navigation commands
+
+(require 'consult)
+
+(global-set-key (kbd "C-c m") 'consult-man)
+(global-set-key (kbd "C-c i") 'consult-info)
+
+(global-set-key [remap switch-to-buffer] 'consult-buffer)
+(global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
+(global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
+(global-set-key [remap bookmark-jump] 'consult-bookmark)
+
+(global-set-key (kbd "M-g i") 'consult-imenu)
+(global-set-key (kbd "M-g I") 'consult-imenu-multi)
+
+;; Enable "Recentf mode" to show recent files in `consult-buffer'.
+(recentf-mode t)
+
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here

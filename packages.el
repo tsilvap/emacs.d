@@ -1,9 +1,11 @@
 (bbdb
 citar
 color-theme-sanityinc-tomorrow
+consult
 corfu
 eglot
 embark
+embark-consult
 flymake-shellcheck
 fullframe
 go-mode
