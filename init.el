@@ -44,6 +44,7 @@
 (require 'init-perl)
 (require 'init-sh)
 (require 'init-markdown)
+(require 'init-http)
 
 ;;; Gnus
 (setq gnus-init-file (concat user-emacs-directory "lisp/init-gnus.el"))
