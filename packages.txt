@@ -12,6 +12,7 @@ flymake-shellcheck
 fullframe
 go-mode
 jenkinsfile-mode
+json-mode
 magit
 marginalia
 markdown-mode
