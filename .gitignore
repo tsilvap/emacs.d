@@ -10,3 +10,6 @@
 /lisp/init-private.el
 /tramp
 /.org-id-locations
+/recentf
+/session.*
+/url/
