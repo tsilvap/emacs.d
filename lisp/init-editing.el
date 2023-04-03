@@ -23,5 +23,11 @@
 (require 'sudo-edit)
 (global-set-key (kbd "C-c C-r") 'sudo-edit)
 
+;; Enable ws-butler globally, for cleaning up trailing whitespace
+;; (only in lines we've edited).
+(require 'ws-butler)
+(ws-butler-global-mode)
+(setq ws-butler-keep-whitespace-before-point nil)
+
 (provide 'init-editing)
 ;;; init-editing.el ends here

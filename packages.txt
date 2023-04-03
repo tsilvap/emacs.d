@@ -30,4 +30,5 @@ restclient
 rg
 sudo-edit
 vertico
+ws-butler
 yaml-mode
