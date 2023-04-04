@@ -26,8 +26,11 @@
 ;; Enable ws-butler globally, for cleaning up trailing whitespace
 ;; (only in lines we've edited).
 (require 'ws-butler)
-(ws-butler-global-mode)
 (setq ws-butler-keep-whitespace-before-point nil)
+(ws-butler-global-mode)
+
+(require 'diminish)
+(diminish 'ws-butler-mode)
 
 (provide 'init-editing)
 ;;; init-editing.el ends here

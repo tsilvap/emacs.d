@@ -5,6 +5,7 @@ color-theme-sanityinc-tomorrow
 consult
 corfu
 deft
+diminish
 eglot
 embark
 embark-consult
