@@ -3,10 +3,9 @@
 ;;; Code:
 
 (with-eval-after-load 'go-mode
-  ;; Use goimports as the `gofmt-command'. Mainly for use when gopls is
-  ;; not easily available, for example in Org Babel code block editing
-  ;; buffers.
+  ;;;; Formatting
   (setq gofmt-command "goimports")
+  (define-key go-mode-map (kbd "C-c f") 'gofmt)
 
   ;; Enable Org Babel code block evaluation for Go.
   (require 'ob-go))
