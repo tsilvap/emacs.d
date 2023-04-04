@@ -214,7 +214,7 @@ If REVERSE, then skip subtree unless it has next actions."
       deft-use-filename-as-title t
       deft-recursive t)
 
-(global-set-key (kbd "C-x C-g") 'deft)
+(global-set-key (kbd "C-c r") 'deft)
 
 (provide 'init-org)
 ;;; init-org.el ends here
