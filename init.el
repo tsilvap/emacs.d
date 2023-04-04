@@ -51,5 +51,8 @@
 ;;; Gnus
 (setq gnus-init-file (concat user-emacs-directory "lisp/init-gnus.el"))
 
+;;; Custom defuns, macros, etc.
+(require 'tsp)
+
 ;; Private init file (not committed to repo).
 (require 'init-private)
