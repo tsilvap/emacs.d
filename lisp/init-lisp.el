@@ -24,5 +24,13 @@
               (make-local-variable 'minor-mode-overriding-map-alist)
               (push `(paredit-mode . ,new-map) minor-mode-overriding-map-alist))))
 
+;;;; Common Lisp
+
+(use-package slime
+  :ensure t
+  :pin melpa
+  :init
+  (setq inferior-lisp-program "sbcl"))
+
 (provide 'init-lisp)
 ;;; init-lisp.el ends here
