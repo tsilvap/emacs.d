@@ -2,19 +2,20 @@
 ;;; Commentary:
 ;;; Code:
 
-(defun tsp/create-binding-for-formatter (formatter keymap)
-  "Create binding in KEYMAP to run FORMATTER on region or buffer."
-  (let ((format-region-or-buffer-function (intern (concat formatter "-region-or-buffer")))
-        (format-region-function (intern (concat formatter "-region")))
-        (format-buffer-function (intern (concat formatter "-buffer"))))
-    (defalias format-region-or-buffer-function
+(defun tsp/create-binding-for-reformatter (keymap key reformatter)
+  "Bind KEY in KEYMAP to run REFORMATTER on region or buffer."
+  (let* ((reformatter-name (symbol-name reformatter))
+        (reformat-region-or-buffer-function (intern (concat reformatter-name "-region-or-buffer")))
+        (reformat-region-function (intern (concat reformatter-name "-region")))
+        (reformat-buffer-function (intern (concat reformatter-name "-buffer"))))
+    (defalias reformat-region-or-buffer-function
       `(lambda ()
          (interactive)
          (if (use-region-p)
-             (,format-region-function (region-beginning) (region-end))
-           (,format-buffer-function)))
-      (format "Run %s on region if the region is active, otherwise run it on buffer.\n\nThis is a generated function." formatter))
-    (define-key keymap (kbd "C-c f") format-region-or-buffer-function)))
+             (,reformat-region-function (region-beginning) (region-end))
+           (,reformat-buffer-function)))
+      (format "Run \"%s\" on region if the region is active, otherwise run it on buffer.\n\nThis is a generated function." reformatter-name))
+    (define-key keymap key reformat-region-or-buffer-function)))
 
 (defun tsp/create-adhoc-directory ()
   "Create adhoc directory to place files, scripts, etc."

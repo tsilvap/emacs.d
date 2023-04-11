@@ -8,7 +8,7 @@
   (require 'tsp)
 
   (reformatter-define black :program "black" :args '("-"))
-  (tsp/create-binding-for-formatter "black" python-mode-map))
+  (tsp/create-binding-for-reformatter python-mode-map (kbd "C-c f") 'black))
 
 (provide 'init-python)
 ;;; init-python.el ends here

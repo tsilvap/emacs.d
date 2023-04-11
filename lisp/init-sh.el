@@ -8,7 +8,7 @@
   (require 'tsp)
 
   (reformatter-define shfmt :program "shfmt" :args '("-"))
-  (tsp/create-binding-for-formatter "shfmt" sh-mode-map)
+  (tsp/create-binding-for-reformatter sh-mode-map (kbd "C-c f") 'shfmt)
 
   ;; Syntax checking
   (add-hook 'sh-mode-hook 'flymake-shellcheck-load))

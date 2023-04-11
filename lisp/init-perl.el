@@ -23,7 +23,7 @@
 
   ;; Create binding for running perltidy.
   (reformatter-define perltidy :program "perltidy" :args '("-" "--standard-output"))
-  (tsp/create-binding-for-formatter "perltidy" cperl-mode-map))
+  (tsp/create-binding-for-reformatter cperl-mode-map (kbd "C-c f") 'perltidy))
 
 (provide 'init-perl)
 ;;; init-perl.el ends here
