@@ -79,5 +79,9 @@
 ;; `rg-menu' is much faster.
 (setq xref-search-program 'ripgrep)
 
+;; Make Xref use `completing-read' to show the candidates, instead of
+;; the default pop-up buffer.
+(setq xref-show-definitions-function #'xref-show-definitions-completing-read)
+
 (provide 'init-defaults)
 ;;; init-defaults.el ends here
