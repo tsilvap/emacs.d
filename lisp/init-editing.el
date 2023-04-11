@@ -32,5 +32,12 @@
 (require 'diminish)
 (diminish 'ws-butler-mode)
 
+;; Use dumb-jump for languages that don't have a nice language server
+;; or good editor support for jump-to-definition (e.g. Perl).
+(use-package dumb-jump
+  :ensure t
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+
 (provide 'init-editing)
 ;;; init-editing.el ends here
