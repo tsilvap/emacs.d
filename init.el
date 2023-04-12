@@ -26,6 +26,9 @@
                  (buffer-string)))))
 (package-install-selected-packages)
 
+;; Store customizations managed by Custom in a separate file.
+(setq custom-file (locate-user-emacs-file "custom.el"))
+
 ;; Add directories with local Lisp code to `load-path'.
 (dolist (lisp-dir '("lisp" "vendor-lisp"))
   (let ((default-directory (concat user-emacs-directory lisp-dir "/")))
@@ -57,6 +60,10 @@
 
 ;;; Custom defuns, macros, etc.
 (require 'tsp)
+
+;; Load Custom file, if it exists.
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; Private init file (not committed to repo).
 (require 'init-private)
