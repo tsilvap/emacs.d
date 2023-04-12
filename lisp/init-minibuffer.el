@@ -4,7 +4,10 @@
 
 ;;;; Vertico --- vertical minibuffer completion UI
 
-(vertico-mode)
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
 
 ;; Save minibuffer history. This integrates well with Vertico, since
 ;; it sorts by history position.
@@ -23,43 +26,64 @@
 
 ;;;; Orderless --- orderless completion style
 
-(require 'orderless)
-(setq completion-styles '(orderless basic)
-      completion-category-overrides '((file (styles partial-completion))))
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
 
 ;;;; Marginalia --- helpful annotations in the minibuffer
 
-(marginalia-mode)
-(define-key minibuffer-local-map (kbd "M-A") #'marginalia-cycle)
+(use-package marginalia
+  :ensure t
+  :bind ("M-A" . marginalia-cycle)
+  :init
+  (marginalia-mode))
 
 ;;;; Embark --- contextual actions at point
 
-(require 'embark)
-(global-set-key (kbd "C-.") 'embark-act)
-(global-set-key (kbd "C-;") 'embark-dwim)
-(global-set-key (kbd "C-h B") 'embark-bindings)
-
-;; Show the commands bound in a prefix in a `completing-read'
-;; interface.
-(setq prefix-help-command #'embark-prefix-help-command)
+(use-package embark
+  :ensure t
+  :bind (("C-." . embark-act)
+         ("C-;" . embark-dwim)
+         ("C-h B" . embark-bindings))
+  :init
+  ;; Show the commands bound in a prefix in a `completing-read'
+  ;; interface.
+  (setq prefix-help-command #'embark-prefix-help-command))
 
 ;;;; Consult --- enhanced search and navigation commands
 
-(require 'consult)
+(use-package consult
+  :ensure t
+  :bind (;; C-c bindings in `mode-specific-map'
+         ("C-c m" . consult-man)
+         ("C-c i" . consult-info)
+         ;; C-x bindings in `ctl-x-map'
+         ([remap switch-to-buffer] . consult-buffer)
+         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
+         ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
+         ([remap bookmark-jump] . consult-bookmark)
+         ([remap project-switch-to-buffer] . consult-project-buffer)
+         ;; M-g bindings in `goto-map'
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-imenu-multi))
+  :init
+  ;; Use Consult to select xref locations with preview.
+  (setq xref-show-xrefs-function #'consult-xref)
+  (setq xref-show-definitions-function #'consult-xref))
 
-(global-set-key (kbd "C-c m") 'consult-man)
-(global-set-key (kbd "C-c i") 'consult-info)
-
-(global-set-key [remap switch-to-buffer] 'consult-buffer)
-(global-set-key [remap switch-to-buffer-other-window] 'consult-buffer-other-window)
-(global-set-key [remap switch-to-buffer-other-frame] 'consult-buffer-other-frame)
-(global-set-key [remap bookmark-jump] 'consult-bookmark)
-
-(global-set-key (kbd "M-g i") 'consult-imenu)
-(global-set-key (kbd "M-g I") 'consult-imenu-multi)
+;; Embark-Consult integration.
+(use-package embark-consult
+  :ensure t
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 ;; Enable "Recentf mode" to show recent files in `consult-buffer'.
-(recentf-mode t)
+(use-package recentf
+  :custom
+  (recentf-max-saved-items 1000)
+  :init
+  (recentf-mode t))
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
