@@ -67,7 +67,9 @@
          ([remap project-switch-to-buffer] . consult-project-buffer)
          ;; M-g bindings in `goto-map'
          ("M-g i" . consult-imenu)
-         ("M-g I" . consult-imenu-multi))
+         ("M-g I" . consult-imenu-multi)
+         ;; M-s bindings in `search-map'
+         ("M-s r" . consult-ripgrep))
   :init
   ;; Use Consult to select xref locations with preview.
   (setq xref-show-xrefs-function #'consult-xref)
