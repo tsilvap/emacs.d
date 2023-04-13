@@ -17,6 +17,7 @@
   :config
   (let ((indent-level 4))
     (setq cperl-close-paren-offset (- indent-level)
+          cperl-electric-keywords t
           cperl-indent-level indent-level
           cperl-indent-parens-as-block t
           cperl-invalid-face 'default))
