@@ -3,15 +3,18 @@
 (require 'package)
 (dolist (archive '(("gnu" . "https://elpa.gnu.org/packages/")
 		   ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-		   ("melpa" . "https://melpa.org/packages/")))
+		   ("melpa" . "https://melpa.org/packages/")
+                   ("melpa-stable" . "https://stable.melpa.org/packages/")))
   (add-to-list 'package-archives archive t))
 
 ;; Prefer built-in repos. Don't use, e.g., MELPA, if we don't have to.
-;; Here, the highest number gets priority (what is not mentioned has
-;; priority 0).
+;; Also, prefer MELPA over MELPA Stable. We only use MELPA Stable if
+;; some package is broken or too unstable on MELPA, and we do this by
+;; pinning its archive to "melpa-stable" with `use-package'.
 (setq package-archive-priorities
-      '(("elpa" . 2)
-	("nongnu" . 1)))
+      '(("elpa" . 3)
+	("nongnu" . 2)
+        ("melpa" . 1)))
 
 (package-initialize)
 
