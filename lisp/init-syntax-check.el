@@ -2,6 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Mark expression to remove `elisp-flymake-byte-compile' hook as
+;; safe. We use this to disable byte-compiler warnings in ~/.emacs.d/
+;; with a .dir-locals.el file.
+(add-to-list
+ 'safe-local-eval-forms
+ '(remove-hook 'flymake-diagnostic-functions 'elisp-flymake-byte-compile t))
+
 (dolist (hook '(prog-mode-hook text-mode-hook))
   (add-hook hook 'flymake-mode))
 
