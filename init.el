@@ -15,8 +15,18 @@
 
 (package-initialize)
 
+;; Ensure `use-package' is installed and load it.
+(when (not (package-installed-p 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
+
 ;; Get package list from the file packages.txt, and ensure they are
 ;; installed.
+;;
+;; FIXME: This is legacy. I'm using `use-package' to install and
+;; configure packages now, and slowly migrating the packages in
+;; "packages.txt" until it can be removed.
 (setq package-selected-packages
       (mapcar #'intern
               (split-string
