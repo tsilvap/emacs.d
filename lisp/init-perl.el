@@ -5,15 +5,24 @@
 (require 'reformatter)
 (require 'tsp)
 
-;; Prefer `cperl-mode' over `perl-mode'.
-(if (boundp 'major-mode-remap-alist)
-    (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
-  (defalias 'perl-mode 'cperl-mode))
-
 (use-package cperl-mode
   ;; Remap `cperl-indent-command' to `indent-for-tab-command', which
   ;; respects the value of `tab-always-indent'.
   :bind ([remap cperl-indent-command] . indent-for-tab-command)
+  :init
+  ;; Prefer `cperl-mode' over `perl-mode'.
+  (if (boundp 'major-mode-remap-alist)  ; introduced in Emacs 29
+      (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
+
+    ;; (defalias 'perl-mode 'cperl-mode) is supposedly a pithier way of
+    ;; doing this, but it would sometimes load `perl-mode' anyway. The
+    ;; code below works consistently for me.
+    (mapc
+     (lambda (pair)
+       (if (eq (cdr pair) 'perl-mode)
+           (setcdr pair 'cperl-mode)))
+     (append auto-mode-alist interpreter-mode-alist)))
+
   :config
   (let ((indent-level 4))
     (setq cperl-close-paren-offset (- indent-level)
