@@ -48,10 +48,6 @@
     (add-to-list 'load-path (directory-file-name default-directory))
     (normal-top-level-add-subdirs-to-load-path)))
 
-;; Clone `load-path' to `elisp-flymake-byte-compile-load-path', to fix
-;; require-related warnings by Flymake.
-(setq elisp-flymake-byte-compile-load-path load-path)
-
 (require 'init-ui)
 (require 'init-defaults)
 (require 'init-minibuffer)
