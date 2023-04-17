@@ -5,9 +5,9 @@
 (defun tsp/create-binding-for-reformatter (keymap key reformatter)
   "Bind KEY in KEYMAP to run REFORMATTER on region or buffer."
   (let* ((reformatter-name (symbol-name reformatter))
-        (reformat-region-or-buffer-function (intern (concat reformatter-name "-region-or-buffer")))
-        (reformat-region-function (intern (concat reformatter-name "-region")))
-        (reformat-buffer-function (intern (concat reformatter-name "-buffer"))))
+         (reformat-region-or-buffer-function (intern (concat reformatter-name "-region-or-buffer")))
+         (reformat-region-function (intern (concat reformatter-name "-region")))
+         (reformat-buffer-function (intern (concat reformatter-name "-buffer"))))
     (defalias reformat-region-or-buffer-function
       `(lambda ()
          (interactive)
