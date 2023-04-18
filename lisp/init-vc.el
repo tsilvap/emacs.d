@@ -4,15 +4,14 @@
 
 (require 'fullframe)
 
-;; Follow symlinks to files under VC without asking.
-(setq vc-follow-symlinks t)
+(setup vc
+  ;; Follow symlinks to files under VC without asking.
+  (:option vc-follow-symlinks t))
 
-(use-package magit
-  :bind ("C-c g" . magit-file-dispatch)
-  :config
-  (setq magit-diff-refine-hunk t
-        magit-no-confirm '(trash set-and-push))
-
+(setup magit
+  (:global "C-c g" magit-file-dispatch)
+  (:option magit-diff-refine-hunk t
+           magit-no-confirm '(trash set-and-push))
   ;; Open Magit status buffer in a full frame window.
   (fullframe magit-status magit-mode-bury-buffer))
 

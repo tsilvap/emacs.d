@@ -34,15 +34,14 @@
 
 ;; Use dumb-jump for languages that don't have a nice language server
 ;; or good editor support for jump-to-definition (e.g. Perl).
-(use-package dumb-jump
-  :config
+(setup dumb-jump
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
-(use-package multiple-cursors
-  :bind (("C-S-c C-S-c" . mc/edit-lines)
-         ("C->" . mc/mark-next-like-this)
-         ("C-<" . mc/mark-previous-like-this)
-         ("C-c C-<" . mc/mark-all-like-this)))
+(setup multiple-cursors
+  (:global "C-S-c C-S-c" mc/edit-lines
+           "C->"         mc/mark-next-like-this
+           "C-<"         mc/mark-previous-like-this
+           "C-c C-<"     mc/mark-all-like-this))
 
 (provide 'init-editing)
 ;;; init-editing.el ends here

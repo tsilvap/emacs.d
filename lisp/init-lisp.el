@@ -26,9 +26,8 @@
 
 ;;;; Common Lisp
 
-(use-package slime
-  :init
-  (setq inferior-lisp-program "sbcl"))
+(setup slime
+  (:option inferior-lisp-program "sbcl"))
 
 (provide 'init-lisp)
 ;;; init-lisp.el ends here

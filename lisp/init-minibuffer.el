@@ -4,82 +4,79 @@
 
 ;;;; Vertico --- vertical minibuffer completion UI
 
-(use-package vertico
-  :init
+(setup vertico
+  ;; Do not allow the cursor in the minibuffer prompt.
+  (:with-mode minibuffer-setup
+    (:hook cursor-intangible-mode))
+  (:option minibuffer-prompt-properties
+           '(read-only t face minibuffer-prompt cursor-intangible t))
+
+  ;; Emacs 28: Hide commands in M-x which do not work in the current
+  ;; mode.
+  (if (fboundp 'command-completion-default-include-p)
+      (:option read-extended-command-predicate
+               #'command-completion-default-include-p))
+
+  ;; Save minibuffer history. This integrates well with Vertico, since
+  ;; it sorts by history position.
+  (savehist-mode)
+
   (vertico-mode))
-
-;; Save minibuffer history. This integrates well with Vertico, since
-;; it sorts by history position.
-(savehist-mode)
-
-;; Do not allow the cursor in the minibuffer prompt.
-(setq minibuffer-prompt-properties
-      '(read-only t face minibuffer-prompt cursor-intangible t))
-(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-
-;; Emacs 28: Hide commands in M-x which do not work in the current
-;; mode.
-(if (fboundp 'command-completion-default-include-p)
-    (setq read-extended-command-predicate
-	  #'command-completion-default-include-p))
 
 ;;;; Orderless --- orderless completion style
 
-(use-package orderless
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+(setup orderless
+  (:option completion-styles '(orderless basic)
+           completion-category-overrides '((file (styles basic partial-completion)))))
 
 ;;;; Marginalia --- helpful annotations in the minibuffer
 
-(use-package marginalia
-  :bind ("M-A" . marginalia-cycle)
-  :init
+(setup marginalia
+  (:global "M-A" marginalia-cycle)
+
   (marginalia-mode))
 
 ;;;; Embark --- contextual actions at point
 
-(use-package embark
-  :bind (("C-." . embark-act)
-         ("C-;" . embark-dwim)
-         ("C-h B" . embark-bindings))
-  :init
+(setup embark
+  (:global "C-." embark-act
+           "C-;" embark-dwim
+           "C-h B" embark-bindings)
   ;; Show the commands bound in a prefix in a `completing-read'
   ;; interface.
-  (setq prefix-help-command #'embark-prefix-help-command))
+  (:option prefix-help-command #'embark-prefix-help-command))
 
 ;;;; Consult --- enhanced search and navigation commands
 
-(use-package consult
-  :bind (;; C-c bindings in `mode-specific-map'
-         ("C-c m" . consult-man)
-         ("C-c i" . consult-info)
-         ;; C-x bindings in `ctl-x-map'
-         ([remap switch-to-buffer] . consult-buffer)
-         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
-         ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
-         ([remap bookmark-jump] . consult-bookmark)
-         ([remap project-switch-to-buffer] . consult-project-buffer)
-         ;; M-g bindings in `goto-map'
-         ("M-g i" . consult-imenu)
-         ("M-g I" . consult-imenu-multi)
-         ;; M-s bindings in `search-map'
-         ("M-s r" . consult-ripgrep))
-  :init
+(setup consult
+  (:global
+   ;; C-c bindings in `mode-specific-map'
+   "C-c m" consult-man
+   "C-c i" consult-info
+   ;; C-x bindings in `ctl-x-map'
+   [remap switch-to-buffer] consult-buffer
+   [remap switch-to-buffer-other-window] consult-buffer-other-window
+   [remap switch-to-buffer-other-frame] consult-buffer-other-frame
+   [remap bookmark-jump] consult-bookmark
+   [remap project-switch-to-buffer] consult-project-buffer
+   ;; M-g bindings in `goto-map'
+   "M-g i" consult-imenu
+   "M-g I" consult-imenu-multi
+   ;; M-s bindings in `search-map'
+   "M-s r" consult-ripgrep)
   ;; Use Consult to select xref locations with preview.
-  (setq xref-show-xrefs-function #'consult-xref)
-  (setq xref-show-definitions-function #'consult-xref))
+  (:option xref-show-xrefs-function #'consult-xref
+           xref-show-definitions-function #'consult-xref))
 
 ;; Embark-Consult integration.
-(use-package embark-consult
-  :hook (embark-collect-mode . consult-preview-at-point-mode))
+(setup embark-consult
+  (:with-mode embark-collect
+    (:hook consult-preview-at-point-mode)))
 
 ;; Enable "Recentf mode" to show recent files in `consult-buffer'.
-(use-package recentf
-  :custom
-  (recentf-max-saved-items 1000)
-  :init
-  (recentf-mode t))
+(setup recentf
+  (:option recentf-max-saved-items 1000)
+  (recentf-mode))
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
