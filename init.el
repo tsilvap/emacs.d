@@ -27,6 +27,9 @@
 (require 'init-markdown)
 (require 'init-http)
 
+;;; IRC client
+(require 'init-irc)
+
 ;;; Gnus
 (setq gnus-init-file (concat user-emacs-directory "lisp/init-gnus.el"))
 
