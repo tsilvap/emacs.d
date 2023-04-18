@@ -8,7 +8,6 @@
 (setq vc-follow-symlinks t)
 
 (use-package magit
-  :ensure t
   :bind ("C-c g" . magit-file-dispatch)
   :config
   (setq magit-diff-refine-hunk t

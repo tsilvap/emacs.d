@@ -27,8 +27,6 @@
 ;;;; Common Lisp
 
 (use-package slime
-  :ensure t
-  :pin melpa
   :init
   (setq inferior-lisp-program "sbcl"))
 

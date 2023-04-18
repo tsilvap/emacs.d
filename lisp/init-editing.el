@@ -35,12 +35,10 @@
 ;; Use dumb-jump for languages that don't have a nice language server
 ;; or good editor support for jump-to-definition (e.g. Perl).
 (use-package dumb-jump
-  :ensure t
   :config
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package multiple-cursors
-  :ensure t
   :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)

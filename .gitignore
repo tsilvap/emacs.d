@@ -5,6 +5,7 @@
 /custom.el
 /eln-cache/
 /elpa/
+/elpaca/
 /history
 /lisp/init-private.el
 /org-roam.db

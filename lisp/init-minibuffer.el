@@ -5,7 +5,6 @@
 ;;;; Vertico --- vertical minibuffer completion UI
 
 (use-package vertico
-  :ensure t
   :init
   (vertico-mode))
 
@@ -27,7 +26,6 @@
 ;;;; Orderless --- orderless completion style
 
 (use-package orderless
-  :ensure t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
@@ -35,7 +33,6 @@
 ;;;; Marginalia --- helpful annotations in the minibuffer
 
 (use-package marginalia
-  :ensure t
   :bind ("M-A" . marginalia-cycle)
   :init
   (marginalia-mode))
@@ -43,7 +40,6 @@
 ;;;; Embark --- contextual actions at point
 
 (use-package embark
-  :ensure t
   :bind (("C-." . embark-act)
          ("C-;" . embark-dwim)
          ("C-h B" . embark-bindings))
@@ -55,7 +51,6 @@
 ;;;; Consult --- enhanced search and navigation commands
 
 (use-package consult
-  :ensure t
   :bind (;; C-c bindings in `mode-specific-map'
          ("C-c m" . consult-man)
          ("C-c i" . consult-info)
@@ -77,7 +72,6 @@
 
 ;; Embark-Consult integration.
 (use-package embark-consult
-  :ensure t
   :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 ;; Enable "Recentf mode" to show recent files in `consult-buffer'.
