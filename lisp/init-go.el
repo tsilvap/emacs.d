@@ -2,13 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(with-eval-after-load 'go-mode
-  ;;;; Formatting
-  (setq gofmt-command "goimports")
-  (define-key go-mode-map (kbd "C-c f") 'gofmt)
-
-  ;; Enable Org Babel code block evaluation for Go.
-  (require 'ob-go))
+(setup go-mode
+  (:bind "C-c f" gofmt)
+  (:option gofmt-command "goimports"))
 
 (provide 'init-go)
 ;;; init-go.el ends here

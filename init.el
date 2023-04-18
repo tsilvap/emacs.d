@@ -1,4 +1,10 @@
-;; -*- lexical-binding: t; -*-
+;;; init.el --- Emacs init file                      -*- lexical-binding: t; -*-
+;;; Commentary:
+
+;; The Emacs init file. We use Elpaca for package management and
+;; setup.el for configuring most packages and options.
+
+;;; Code:
 
 ;; Add directories with local Lisp code to `load-path'.
 (dolist (lisp-dir '("lisp" "vendor-lisp"))
@@ -11,6 +17,7 @@
 ;; Store customizations managed by Custom in a separate file.
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
+(require 'init-setup)
 (require 'init-ui)
 (require 'init-defaults)
 (require 'init-minibuffer)
@@ -42,3 +49,6 @@
 
 ;; Private init file (not committed to repo).
 (require 'init-private)
+
+(provide 'init)
+;;; init.el ends here

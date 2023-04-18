@@ -2,16 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
-(with-eval-after-load 'sh-script
-  ;; Formatting
-  (require 'reformatter)
-  (require 'tsp)
+(require 'reformatter)
+(require 'tsp)
 
-  (reformatter-define shfmt :program "shfmt" :args '("-"))
-  (tsp/create-binding-for-reformatter sh-mode-map (kbd "C-c f") 'shfmt)
-
-  ;; Syntax checking
-  (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
+(setup sh-script
+  (:with-mode sh-mode
+    (:hook flymake-shellcheck-load))
+  (:when-loaded
+    (reformatter-define shfmt :program "shfmt" :args '("-"))
+    (tsp/create-binding-for-reformatter sh-mode-map (kbd "C-c f") 'shfmt)))
 
 (provide 'init-sh)
 ;;; init-sh.el ends here

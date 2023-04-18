@@ -2,35 +2,36 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Indent with spaces, not tabs. This can be overridden for certain
-;; modes that prefer tabs, e.g. `go-mode'.
-(setq-default indent-tabs-mode nil)
+(setup emacs
+  ;; Indent with spaces, not tabs. This can be overridden for certain
+  ;; modes that prefer tabs, e.g. `go-mode'.
+  (:option indent-tabs-mode nil)
+
+  ;; Sentences end with a single space.
+  (:option sentence-end-double-space nil)
+
+  ;; Make file executable if it starts with a shebang line.
+  (add-hook 'after-save-hook
+	    #'executable-make-buffer-file-executable-if-script-p))
 
 ;; Enable Auto-Insert mode.
-(auto-insert-mode t)
-
-;; Make file executable if it starts with a shebang line.
-(add-hook 'after-save-hook
-	  #'executable-make-buffer-file-executable-if-script-p)
-
-;; Sentences end with a single space.
-(setq sentence-end-double-space nil)
+(setup autoinsert
+  (auto-insert-mode))
 
 ;; Enable Electric Pair mode globally, for automatic bracket pairing.
-(electric-pair-mode t)
+(setup elec-pair
+  (electric-pair-mode))
 
 ;; Edit files with sudo.
-(require 'sudo-edit)
-(global-set-key (kbd "C-c C-r") 'sudo-edit)
+(setup sudo-edit
+  (:global "C-c C-r" sudo-edit))
 
 ;; Enable ws-butler globally, for cleaning up trailing whitespace
 ;; (only in lines we've edited).
-(require 'ws-butler)
-(setq ws-butler-keep-whitespace-before-point nil)
-(ws-butler-global-mode)
-
-(require 'diminish)
-(diminish 'ws-butler-mode)
+(setup ws-butler
+  (:diminish)
+  (:option ws-butler-keep-whitespace-before-point nil)
+  (ws-butler-global-mode))
 
 ;; Use dumb-jump for languages that don't have a nice language server
 ;; or good editor support for jump-to-definition (e.g. Perl).

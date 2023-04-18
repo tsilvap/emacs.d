@@ -2,10 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'markdown-mode)
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
-(with-eval-after-load 'markdown-mode
-  (setq markdown-command "pandoc"))
+(setup markdown-mode
+  (:with-mode gfm-mode
+    (:file-match "README\\.md\\'"))
+  (:option markdown-command "pandoc"))
 
 (provide 'init-markdown)
 ;;; init-markdown.el ends here
