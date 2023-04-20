@@ -168,6 +168,10 @@ If REVERSE, then skip subtree unless it has next actions."
         citar-bibliography org-cite-global-bibliography)
   (define-key org-mode-map (kbd "C-c b") #'org-cite-insert))
 
+;;;; Org Babel
+
+(require 'ob-go)
+
 ;;;; Org Roam --- For Zettelkasten notes.
 
 (setq org-roam-directory "~/Dropbox/org/roam/")
