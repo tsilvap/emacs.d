@@ -38,6 +38,8 @@
 (setup dumb-jump
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
+;; Multiple cursors. Macros can do everything that this can do, but
+;; often times using multiple cursors is simpler.
 (setup multiple-cursors
   (:global "C-S-c C-S-c" mc/edit-lines
            "C->"         mc/mark-next-like-this
