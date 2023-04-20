@@ -20,6 +20,7 @@
 (require 'init-setup)
 (require 'init-ui)
 (require 'init-defaults)
+(require 'init-buffers)
 (require 'init-minibuffer)
 (require 'init-editing)
 (require 'init-vc)

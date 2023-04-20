@@ -15,6 +15,7 @@
  (flymake-shellcheck)
  (fullframe)
  (go-mode)
+ (ibuffer-vc)
  (jenkinsfile-mode)
  (json-mode)
  (magit)

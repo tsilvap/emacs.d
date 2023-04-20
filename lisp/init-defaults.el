@@ -67,10 +67,6 @@
   (dolist (command '(winner-undo winner-redo))
     (put command 'repeat-map 'winner-repeat-map)))
 
-;; Enable Auto Revert globally.
-(setup autorevert
-  (global-auto-revert-mode))
-
 ;; Use ripgrep for searching files.
 (setup rg
   (:global "C-c s" rg-menu)
