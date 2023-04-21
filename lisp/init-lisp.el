@@ -12,7 +12,7 @@
   ;;
   ;; Here, we restore the C-j binding in Lisp Interaction mode. See:
   ;; https://emacsredux.com/blog/2013/09/25/removing-key-bindings-from-minor-mode-keymaps/
-  (:with-mode list-interaction-mode
+  (:with-mode lisp-interaction-mode
     (:hook (lambda ()
              (let ((old-map (cdr (assoc 'paredit-mode minor-mode-map-alist)))
                    (new-map (make-sparse-keymap)))
