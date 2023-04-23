@@ -3,8 +3,15 @@
 ;;; Code:
 
 (setup go-mode
-  (:bind "C-c f" gofmt)
-  (:option gofmt-command "goimports"))
+  (:bind
+   "C-c f" eglot-format-buffer
+   ;; We use this for fixing the imports since gopls doesn't seem to
+   ;; do that.
+   "C-c l i" goimports)
+  (:when-loaded
+   (:option gofmt-command "goimports")
+   (defalias 'goimports #'gofmt
+     "Format the current buffer using goimports.")))
 
 (provide 'init-go)
 ;;; init-go.el ends here
