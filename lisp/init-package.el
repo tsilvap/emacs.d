@@ -17,21 +17,26 @@
 
 (package-initialize)
 
-(defun tsp/ensure-package (package)
-  "Install PACKAGE, if it is not installed."
-  (unless (package-installed-p package)
-    (package-install package)))
+(defun tsp/ensure-package (package &optional archive)
+  "Install PACKAGE, if it is not installed.
+
+Optionally specify the ARCHIVE to get the package from."
+  (let ((pkg (if archive
+                 (seq-find (lambda (desc)
+                             (string= (package-desc-archive desc) archive))
+                           (cdr (assoc package package-archive-contents)))
+               package)))
+    (unless (package-installed-p package)
+      (package-install pkg))))
 
 ;; Get package list from the file packages.txt, and ensure they are
 ;; installed.
-(let ((packages (mapcar #'intern
-                        (split-string
-                         (with-temp-buffer
-                           (insert-file-contents
-                            (concat user-emacs-directory "packages.txt"))
-                           (buffer-string))))))
+(let ((packages (with-temp-buffer
+		  (insert-file-contents
+		   (concat user-emacs-directory "packages.el"))
+		  (read (current-buffer)))))
   (dolist (pkg packages)
-    (tsp/ensure-package pkg)))
+    (apply #'tsp/ensure-package pkg)))
 
 (provide 'init-package)
 ;;; init-package.el ends here
