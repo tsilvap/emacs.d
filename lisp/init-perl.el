@@ -25,6 +25,7 @@
 
   (let ((indent-level 4))
     (:option cperl-close-paren-offset (- indent-level)
+             cperl-continued-statement-offset indent-level
              cperl-electric-keywords t
              cperl-indent-level indent-level
              cperl-indent-parens-as-block t
