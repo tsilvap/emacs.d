@@ -15,8 +15,11 @@
    "C-c RET"   erc-send-current-line
    "C-c C-RET" erc-send-current-line)
 
-  (:option erc-modules
-           '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications pcomplete readonly ring stamp track)))
+  (:when-loaded
+    (:option erc-modules
+             '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications pcomplete readonly ring stamp track)
+
+             erc-lurker-hide-list '("JOIN" "PART" "QUIT"))))
 
 (provide 'init-irc)
 ;;; init-irc.el ends here
