@@ -17,7 +17,7 @@
  (ibuffer-vc)
  (jenkinsfile-mode)
  (json-mode)
- (magit)
+ (magit "melpa")
  (marginalia)
  (markdown-mode)
  (multiple-cursors)
