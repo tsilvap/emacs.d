@@ -10,8 +10,10 @@
 
 (setup erc
   ;; Make C-c RET (or C-c C-RET) send messages instead of RET.
-  (:rebind "RET" "C-c RET")
-  (:bind "C-c C-RET" erc-send-current-line)
+  (:unbind "RET")
+  (:bind
+   "C-c RET"   erc-send-current-line
+   "C-c C-RET" erc-send-current-line)
 
   (:option erc-modules
            '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications pcomplete readonly ring stamp track)))
