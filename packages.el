@@ -23,8 +23,6 @@
  (markdown-mode)
  (multiple-cursors)
  (nginx-mode)
- (nnhackernews)
- (nnreddit)
  (ob-go)
  (orderless)
  (org-roam)
