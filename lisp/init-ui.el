@@ -24,7 +24,7 @@
     (menu-bar-mode -1))
 
 ;; Display line numbers in prog-mode and conf-mode.
-(dolist (hook '(prog-mode-hook conf-mode-hook))
+(dolist (hook '(conf-mode-hook prog-mode-hook yaml-mode-hook))
   (add-hook hook (lambda () (display-line-numbers-mode t))))
 
 ;; Show column numbers globally.
