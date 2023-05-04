@@ -7,6 +7,7 @@
  (corfu)
  (deft)
  (diminish)
+ (dockerfile-mode)
  (dumb-jump)
  (eglot)
  (embark)
