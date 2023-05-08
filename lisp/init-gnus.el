@@ -20,7 +20,8 @@
              gnus-startup-file "~/Dropbox/.newsrc")
 
     ;; Render HTML emails with gnus-w3m.
-    (:option mm-text-html-renderer 'gnus-w3m)
+    (when (executable-find "w3m")
+      (:option mm-text-html-renderer 'gnus-w3m))
 
     ;; Send email via SMTP.
     (:option message-send-mail-function 'smtpmail-send-it
