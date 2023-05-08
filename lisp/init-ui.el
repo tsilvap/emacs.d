@@ -23,8 +23,8 @@
 (if (eq system-type 'windows-nt)
     (menu-bar-mode -1))
 
-;; Display line numbers in source code/configuration/etc. files.
-(dolist (hook '(conf-mode-hook prog-mode-hook yaml-mode-hook yaml-ts-mode-hook))
+;; Display line numbers in prog-mode and conf-mode.
+(dolist (hook '(conf-mode-hook prog-mode-hook yaml-mode-hook))
   (add-hook hook (lambda () (display-line-numbers-mode t))))
 
 ;; Show column numbers globally.

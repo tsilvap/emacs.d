@@ -33,7 +33,6 @@
 (require 'init-perl)
 (require 'init-sh)
 (require 'init-markdown)
-(require 'init-yaml)
 (require 'init-http)
 
 ;;; IRC client
