@@ -6,11 +6,15 @@
   (:option user-mail-address "thiagodasilva@protonmail.com"
            user-full-name    "Thiago da Silva Pinto")
 
-  ;; Disable startup screen.
-  (:option inhibit-startup-screen t)
+  (:option
+   ;; Disable startup screen.
+   inhibit-startup-screen t
 
-  ;; Disable the bell.
-  (:option ring-bell-function 'ignore)
+   ;; Disable the bell.
+   ring-bell-function 'ignore
+
+   ;; Ask for confirmation before closing Emacs.
+   confirm-kill-emacs 'y-or-n-p)
 
   ;; Make backup files (Emacs does this by default), with some better
   ;; behavior.
