@@ -3,6 +3,8 @@
 ;;; Code:
 
 (setup emacs
+  (:global "M-o" other-window)          ; alias for "C-x o"
+
   (:option user-mail-address "thiagodasilva@protonmail.com"
            user-full-name    "Thiago da Silva Pinto")
 
