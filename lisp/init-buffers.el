@@ -32,7 +32,7 @@
   (global-auto-revert-mode))
 
 (setup ibuffer-vc
-  (:option ibuffer-vc-skip-if-remote nil)
+  (:option ibuffer-vc-skip-if-remote t)
   (:with-mode ibuffer
     (:hook (lambda ()
              (ibuffer-vc-set-filter-groups-by-vc-root)))))
