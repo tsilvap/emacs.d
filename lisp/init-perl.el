@@ -23,15 +23,18 @@
   ;; respects the value of `tab-always-indent'.
   (:bind [remap cperl-indent-command] indent-for-tab-command)
 
-  (let ((indent-level 4))
-    (:option cperl-close-paren-offset (- indent-level)
-             cperl-continued-statement-offset indent-level
-             cperl-electric-keywords t
-             cperl-indent-level indent-level
-             cperl-indent-parens-as-block t
-             cperl-invalid-face 'default))
-
   (:when-loaded
+    (let ((indent-level 4))
+      (:option cperl-close-paren-offset (- indent-level)
+               cperl-continued-statement-offset indent-level
+               cperl-electric-keywords t
+               cperl-indent-level indent-level
+               cperl-indent-parens-as-block t
+               cperl-invalid-face 'default))
+
+    ;; Use PBP indentation style.
+    (:option cperl-file-style "PBP")    ; introduced in Emacs 29
+
     ;; Create binding for running perltidy.
     (reformatter-define perltidy :program "perltidy" :args '("-" "--standard-output"))
     (tsp/create-binding-for-reformatter cperl-mode-map (kbd "C-c f") 'perltidy)))
