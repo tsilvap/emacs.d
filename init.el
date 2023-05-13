@@ -28,6 +28,7 @@
 (require 'init-org)
 (require 'init-completion)
 (require 'init-syntax-check)
+(require 'init-ls)
 (require 'init-lisp)
 (require 'init-go)
 (require 'init-python)
