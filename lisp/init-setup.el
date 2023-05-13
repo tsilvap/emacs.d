@@ -10,6 +10,14 @@
   :documentation "Diminish the current mode."
   :after-loaded t)
 
+(setup-define :load-after
+  (lambda (&rest features)
+    (let ((body `(require ',(setup-get 'feature))))
+      (dolist (feature (nreverse features))
+        (setq body `(with-eval-after-load ',feature ,body)))
+      body))
+  :documentation "Load the current feature after FEATURES.")
+
 (setup-define :documentation-handler
   (lambda (handler)
     `(:bind "C-c c k" ,handler))

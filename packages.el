@@ -20,6 +20,7 @@
  (jenkinsfile-mode)
  (json-mode)
  (magit "melpa")
+ (magit-todos)
  (marginalia)
  (markdown-mode)
  (multiple-cursors)

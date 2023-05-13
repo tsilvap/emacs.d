@@ -15,5 +15,10 @@
   ;; Open Magit status buffer in a full frame window.
   (fullframe magit-status magit-mode-bury-buffer))
 
+(setup magit-todos
+  (:load-after magit)
+  (:when-loaded
+    (magit-todos-mode)))
+
 (provide 'init-vc)
 ;;; init-vc.el ends here
