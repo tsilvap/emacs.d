@@ -16,6 +16,7 @@
  (format-all)
  (fullframe)
  (go-mode)
+ (go-playground)
  (ibuffer-vc)
  (jenkinsfile-mode)
  (json-mode)

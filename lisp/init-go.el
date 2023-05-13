@@ -7,12 +7,16 @@
 
   ;; We use `goimports' for fixing the imports since gopls doesn't
   ;; seem to do that.
-  (:localleader "i" goimports)
+  (:localleader "i" goimports
+                "p" go-playground)
 
   (:when-loaded
     (:option gofmt-command "goimports")
     (defalias 'goimports #'gofmt
       "Format the current buffer using goimports.")))
+
+(setup go-playground
+  (:localleader "r" go-playground-rm))
 
 (provide 'init-go)
 ;;; init-go.el ends here

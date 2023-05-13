@@ -28,7 +28,7 @@ current mode."
 
 (setup-define :localleader
   (lambda (key command)
-    `(:bind (concat "C-c l " ,key) ,command))
+    `(:bind ,(concat "C-c l " key) ,command))
   :documentation "Bind KEY to COMMAND in localleader map."
   :debug '(form sexp)
   :ensure '(kbd func)
