@@ -13,6 +13,7 @@
  (embark)
  (embark-consult)
  (flymake-shellcheck)
+ (format-all)
  (fullframe)
  (go-mode)
  (ibuffer-vc)

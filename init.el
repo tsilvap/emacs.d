@@ -19,6 +19,7 @@
 (require 'init-package)
 (require 'init-setup)
 (require 'init-ui)
+(require 'init-bindings)
 (require 'init-defaults)
 (require 'init-buffers)
 (require 'init-minibuffer)

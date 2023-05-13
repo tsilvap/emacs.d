@@ -34,10 +34,6 @@ If REVERSE, then skip subtree unless it has next actions."
 
 (setup org
   (:option org-directory "~/Dropbox/org")
-  (:global "C-c l" org-store-link
-           "C-c a" org-agenda
-           "C-c c" org-capture
-           "C-c o c" org-cite-insert)
 
   (:when-loaded
     ;; Basic configuration.
@@ -175,12 +171,6 @@ If REVERSE, then skip subtree unless it has next actions."
 
 (setup org-roam
   (:option org-roam-directory "~/Dropbox/org/roam/")
-  (:global "C-c n l" org-roam-buffer-toggle
-           "C-c n f" org-roam-node-find
-           "C-c n g" org-roam-graph
-           "C-c n i" org-roam-node-insert
-           "C-c n c" org-roam-capture
-           "C-c n j" org-roam-dailies-capture-today)
 
   (:when-loaded
     ;; Org Roam capture templates, inspired by Jethro Kuan's setup.
@@ -214,8 +204,7 @@ If REVERSE, then skip subtree unless it has next actions."
 (setup deft
   (:option deft-directory "~/Dropbox/org/reference/"
            deft-use-filename-as-title t
-           deft-recursive t)
-  (:global "C-c n r" deft))
+           deft-recursive t))
 
 (provide 'init-org)
 ;;; init-org.el ends here

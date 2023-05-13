@@ -17,14 +17,14 @@
       (format "Run \"%s\" on region if the region is active, otherwise run it on buffer.\n\nThis is a generated function." reformatter-name))
     (define-key keymap key reformat-region-or-buffer-function)))
 
-(defun tsp/create-adhoc-directory ()
-  "Create adhoc directory to place files, scripts, etc."
+(defun tsp/create-ad-hoc-directory ()
+  "Create ad hoc directory to place files, scripts, etc."
   (interactive)
-  (let ((adhoc-directory-name
+  (let ((ad-hoc-directory-name
          (concat "~/Misc/adhoc/"
                  (format-time-string "%Y-%m-%d-%H%M%S" (current-time)))))
-    (make-directory adhoc-directory-name t)
-    (find-file adhoc-directory-name)))
+    (make-directory ad-hoc-directory-name t)
+    (find-file ad-hoc-directory-name)))
 
 (provide 'tsp)
 ;;; tsp.el ends here
