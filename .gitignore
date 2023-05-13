@@ -1,5 +1,6 @@
 /.mc-lists.el
 /.org-id-locations
+/anaconda-mode/
 /auto-save-list/
 /backups/
 /bookmarks
@@ -8,6 +9,7 @@
 /elpa/
 /history
 /lisp/init-private.el
+/multisession/
 /network-security.data
 /org-roam.db
 /projects
@@ -15,4 +17,5 @@
 /session.*
 /tramp
 /transient/
+/tree-sitter/
 /url/
