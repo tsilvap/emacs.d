@@ -29,14 +29,20 @@ Optionally specify the ARCHIVE to get the package from."
     (unless (package-installed-p package)
       (package-install pkg))))
 
-;; Get package list from the file packages.txt, and ensure they are
-;; installed.
-(let ((packages (with-temp-buffer
-		  (insert-file-contents
-		   (concat user-emacs-directory "packages.el"))
-		  (read (current-buffer)))))
-  (dolist (pkg packages)
-    (apply #'tsp/ensure-package pkg)))
+(defun tsp/install-selected-packages ()
+  "Ensure the user's selected packages they are installed.
+
+The list of selected packages is in the packages.el file in
+`user-emacs-directory'."
+  (interactive)
+  (let ((packages (with-temp-buffer
+		    (insert-file-contents
+		     (concat user-emacs-directory "packages.el"))
+		    (read (current-buffer)))))
+    (dolist (pkg packages)
+      (apply #'tsp/ensure-package pkg))))
+
+(tsp/install-selected-packages)
 
 (provide 'init-package)
 ;;; init-package.el ends here
