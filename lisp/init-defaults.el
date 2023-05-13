@@ -3,7 +3,12 @@
 ;;; Code:
 
 (setup emacs
-  (:global "M-o" other-window)          ; alias for "C-x o"
+  (:global "M-o" other-window
+
+           ;; Less confusing alternatives for `upcase-region' and
+           ;; `downcase-region'.
+           [remap upcase-region] upcase-dwim
+           [remap downcase-region] downcase-dwim)
 
   (:option user-mail-address "thiagodasilva@protonmail.com"
            user-full-name    "Thiago da Silva Pinto")
