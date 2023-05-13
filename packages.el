@@ -19,6 +19,7 @@
  (ibuffer-vc)
  (jenkinsfile-mode)
  (json-mode)
+ (lua-mode)
  (magit "melpa")
  (magit-todos)
  (marginalia)

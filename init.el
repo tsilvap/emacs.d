@@ -30,6 +30,7 @@
 (require 'init-syntax-check)
 (require 'init-ls)
 (require 'init-lisp)
+(require 'init-lua)
 (require 'init-go)
 (require 'init-python)
 (require 'init-perl)
