@@ -48,6 +48,9 @@
 ;;; Custom defuns, macros, etc.
 (require 'tsp)
 
+;; Check for recommended features and programs.
+(require 'doctor-checkup)
+
 ;; Private init file (not committed to repo).
 (require 'init-private)
 
