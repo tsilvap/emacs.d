@@ -30,5 +30,10 @@
 ;; Show column numbers globally.
 (column-number-mode t)
 
+;; Show breadcrumbs in projects.
+(setup breadcrumb
+  (:autoload breadcrumb-mode breadcrumb-local-mode)
+  (breadcrumb-mode))
+
 (provide 'init-ui)
 ;;; init-ui.el ends here

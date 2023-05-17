@@ -1,0 +1,3 @@
+[submodule "vendor-lisp/breadcrumb"]
+	path = vendor-lisp/breadcrumb
+	url = https://github.com/joaotavora/breadcrumb

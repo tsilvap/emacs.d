@@ -4,6 +4,16 @@
 
 (require 'setup)
 
+(setup-define :autoload
+  (lambda (func)
+    (let ((fn (if (memq (car-safe func) '(quote function))
+                  (cadr func)
+                func)))
+      `(unless (fboundp (quote ,fn))
+         (autoload (function ,fn) ,(symbol-name (setup-get 'feature))))))
+  :documentation "Autoload COMMAND if not already bound."
+  :repeatable t)
+
 (setup-define :diminish
   (lambda ()
     `(diminish ',(setup-get 'mode)))
