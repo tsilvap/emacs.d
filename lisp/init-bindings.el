@@ -15,6 +15,9 @@
 
 (setup emacs
   (:global
+   ;; Cycle spacing (the default, M-SPC, is taken by GNOME)
+   "C-c SPC" cycle-spacing
+
 ;;; <leader> c --- code
    ;; Go to definition
    "C-c c d" xref-find-definitions
