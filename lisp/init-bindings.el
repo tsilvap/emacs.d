@@ -41,7 +41,15 @@
    ;; Org capture
    "C-c n n" org-capture
 
-;;;; <leader> n r --- roam
+;;;; <leader> n j --- notes > journal
+   ;; New entry
+   "C-c n j j" org-journal-new-entry
+   ;; New scheduled entry
+   "C-c n j J" org-journal-new-scheduled-entry
+   ;; Search forever
+   "C-c n j s" org-journal-search-forever
+
+;;;; <leader> n r --- notes > roam
    ;; Find node
    "C-c n r f" org-roam-node-find
    ;; Show graph
