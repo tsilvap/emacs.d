@@ -1,4 +1,4 @@
-;;; tsp.el --- Centralized place for my custom defuns, macros, etc.  -*- lexical-binding: t; -*-
+;;; init-files.el --- Configuration related to files  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -11,5 +11,5 @@
     (make-directory ad-hoc-directory-name t)
     (find-file ad-hoc-directory-name)))
 
-(provide 'tsp)
-;;; tsp.el ends here
+(provide 'init-files)
+;;; init-files.el ends here

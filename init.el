@@ -21,6 +21,7 @@
 (require 'init-ui)
 (require 'init-bindings)
 (require 'init-defaults)
+(require 'init-files)
 (require 'init-buffers)
 (require 'init-minibuffer)
 (require 'init-editing)
@@ -44,9 +45,6 @@
 
 ;;; Gnus
 (setq gnus-init-file (concat user-emacs-directory "lisp/init-gnus.el"))
-
-;;; Custom defuns, macros, etc.
-(require 'tsp)
 
 ;; Check for recommended features and programs.
 (require 'doctor-checkup)
