@@ -34,7 +34,6 @@
  (org-roam-ui)
  (paredit)
  (pyvenv)
- (reformatter)
  (restclient)
  (rg)
  (setup)

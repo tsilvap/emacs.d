@@ -2,9 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'reformatter)
-(require 'tsp)
-
 (setup cperl-mode
   ;; Prefer `cperl-mode' over `perl-mode'.
   (if (boundp 'major-mode-remap-alist)  ; introduced in Emacs 29
@@ -33,11 +30,7 @@
                cperl-invalid-face 'default))
 
     ;; Use PBP indentation style.
-    (:option cperl-file-style "PBP")    ; introduced in Emacs 29
-
-    ;; Create binding for running perltidy.
-    (reformatter-define perltidy :program "perltidy" :args '("-" "--standard-output"))
-    (tsp/create-binding-for-reformatter cperl-mode-map (kbd "C-c f") 'perltidy)))
+    (:option cperl-file-style "PBP")))
 
 (provide 'init-perl)
 ;;; init-perl.el ends here
