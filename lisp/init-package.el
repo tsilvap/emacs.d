@@ -17,6 +17,12 @@
 
 (package-initialize)
 
+(defvar tsp/packages-file
+  (concat user-emacs-directory "packages.el")
+  "File that contains the list of selected packages.
+Also contains any additional metadata, such as the package
+archive or repository URL to use for a specific package.")
+
 (defun tsp/ensure-package (package &optional archive)
   "Install PACKAGE, if it is not installed.
 
@@ -29,15 +35,39 @@ Optionally specify the ARCHIVE to get the package from."
     (unless (package-installed-p package)
       (package-install pkg))))
 
-(defun tsp/install-selected-packages ()
-  "Ensure the user's selected packages they are installed.
+(defun tsp/package-install (pkg)
+  "Install the package PKG."
+  (interactive
+   (progn
+     ;; Initialize the package system to get the list of package
+     ;; symbols for completion.
+     (package--archives-initialize)
+     (list (intern (completing-read
+                    "Install package: "
+                    (delq nil
+                          (mapcar (lambda (elt)
+                                    (unless (package-installed-p (car elt))
+                                      (symbol-name (car elt))))
+                                  package-archive-contents))
+                    nil t)))))
+  (let ((packages (with-temp-buffer
+        	    (insert-file-contents tsp/packages-file)
+        	    (read (current-buffer)))))
+    (add-to-list (list pkg) packages)
+    (sort packages (lambda (a b)
+                     (let ((pkg-a (car a))
+                           (pkg-b (car b)))
+                       (string-lessp (symbol-name pkg-a)
+                                     (symbol-name pkg-b)))))
+    (with-temp-file tsp/packages-file
+      (insert ";;; -*- lisp-data -*-\n")
+      (pp packages (current-buffer)))))
 
-The list of selected packages is in the packages.el file in
-`user-emacs-directory'."
+(defun tsp/install-selected-packages ()
+  "Ensure the user's selected packages they are installed."
   (interactive)
   (let ((packages (with-temp-buffer
-		    (insert-file-contents
-		     (concat user-emacs-directory "packages.el"))
+		    (insert-file-contents tsp/packages-file)
 		    (read (current-buffer)))))
     (dolist (pkg packages)
       (apply #'tsp/ensure-package pkg))))
