@@ -20,6 +20,8 @@
   ;; respects the value of `tab-always-indent'.
   (:bind [remap cperl-indent-command] indent-for-tab-command)
 
+  (:documentation-handler cperl-perldoc)
+
   (:when-loaded
     (let ((indent-level 4))
       (:option cperl-close-paren-offset (- indent-level)
