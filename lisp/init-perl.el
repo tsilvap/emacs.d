@@ -4,7 +4,7 @@
 
 (setup cperl-mode
   ;; Prefer `cperl-mode' over `perl-mode'.
-  (if (boundp 'major-mode-remap-alist)  ; introduced in Emacs 29
+  (if (boundp 'major-mode-remap-alist)
       (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
 
     ;; (defalias 'perl-mode 'cperl-mode) is supposedly a pithier way
