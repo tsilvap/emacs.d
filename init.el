@@ -21,6 +21,7 @@
 (require 'init-ui)
 (require 'init-bindings)
 (require 'init-defaults)
+(require 'init-search)
 (require 'init-files)
 (require 'init-buffers)
 (require 'init-minibuffer)
