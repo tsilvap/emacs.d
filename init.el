@@ -30,17 +30,19 @@
 (require 'init-vc)
 (require 'init-sessions)
 (require 'init-syntax-check)
-(require 'init-org)
-(require 'init-ls)
-(require 'init-lisp)
-(require 'init-lua)
+
+;; Language support
 (require 'init-go)
-(require 'init-python)
-(require 'init-perl)
-(require 'init-sh)
-(require 'init-markdown)
-(require 'init-yaml)
 (require 'init-http)
+(require 'init-lisp)
+(require 'init-ls)
+(require 'init-lua)
+(require 'init-markdown)
+(require 'init-org)
+(require 'init-perl)
+(require 'init-python)
+(require 'init-sh)
+(require 'init-yaml)
 
 ;;; IRC client
 (require 'init-irc)
