@@ -210,9 +210,10 @@ If REVERSE, then skip subtree unless it has next actions."
 
 (setup org-journal
   (:option org-journal-dir (concat org-directory "/journal"))
-
   (:when-loaded
-    (:option org-journal-carryover-items "TODO=\"TODO\"|TODO=\"NEXT\"")))
+    (:option org-journal-carryover-items "TODO=\"TODO\"|TODO=\"NEXT\""
+             org-journal-enable-agenda-integration t
+             org-journal-file-format "%Y%m%d.org")))
 
 (provide 'init-org)
 ;;; init-org.el ends here
