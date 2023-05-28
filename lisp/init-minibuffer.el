@@ -2,6 +2,17 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Save minibuffer history. This integrates well with Vertico, since
+;; it sorts by history position.
+(setup savehist
+  (:option history-length 1000)
+  (savehist-mode))
+
+;; Enable "Recentf mode" to show recent files in `consult-buffer'.
+(setup recentf
+  (:option recentf-max-saved-items 1000)
+  (recentf-mode))
+
 ;;;; Vertico --- vertical minibuffer completion UI
 
 (setup vertico
@@ -16,10 +27,6 @@
   (if (fboundp 'command-completion-default-include-p)
       (:option read-extended-command-predicate
                #'command-completion-default-include-p))
-
-  ;; Save minibuffer history. This integrates well with Vertico, since
-  ;; it sorts by history position.
-  (savehist-mode)
 
   (vertico-mode))
 
@@ -72,11 +79,6 @@
 (setup embark-consult
   (:with-mode embark-collect
     (:hook consult-preview-at-point-mode)))
-
-;; Enable "Recentf mode" to show recent files in `consult-buffer'.
-(setup recentf
-  (:option recentf-max-saved-items 1000)
-  (recentf-mode))
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
