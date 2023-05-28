@@ -31,10 +31,16 @@
 (setup-define :documentation-handler
   (lambda (handler)
     `(:bind "C-c c k" ,handler))
-  :documentation "Set HANDLER as the documentation handler in buffers of the
-current mode."
+  :documentation "Set HANDLER as the documentation handler in current mode."
   :debug '(sexp)
   :ensure '(func))
+
+(setup-define :flymake-flycheck-backend
+  (lambda (checker)
+    `(:local-hook flymake-diagnostic-functions
+                  (flymake-flycheck-diagnostic-function-for ',checker)))
+  :documentation "Set the Flycheck CHECKER as a Flymake backend in current mode."
+  :repeatable t)
 
 (setup-define :localleader
   (lambda (key command)

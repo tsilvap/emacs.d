@@ -5,7 +5,15 @@
 (setup markdown-mode
   (:with-mode gfm-mode
     (:file-match "README\\.md\\'"))
-  (:option markdown-command "pandoc"))
+  (:localleader "e" markdown-export
+                "l" markdown-live-preview-mode
+                "o" markdown-open
+                "p" markdown-preview
+                "i c" markdown-insert-code
+                "i C" markdown-insert-gfm-code-block)
+  (:flymake-flycheck-backend markdown-mdl)
+  (:when-loaded
+    (:option markdown-command "pandoc")))
 
 (provide 'init-markdown)
 ;;; init-markdown.el ends here
