@@ -53,7 +53,7 @@ Optionally specify the ARCHIVE to get the package from."
   (let ((packages (with-temp-buffer
         	    (insert-file-contents tsp/packages-file)
         	    (read (current-buffer)))))
-    (add-to-list (list pkg) packages)
+    (add-to-list 'packages (list pkg))
     (sort packages (lambda (a b)
                      (let ((pkg-a (car a))
                            (pkg-b (car b)))
