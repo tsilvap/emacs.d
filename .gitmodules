@@ -1,3 +1,6 @@
 [submodule "vendor-lisp/breadcrumb"]
 	path = vendor-lisp/breadcrumb
 	url = https://github.com/joaotavora/breadcrumb
+[submodule "vendor-lisp/just-mode.el"]
+	path = vendor-lisp/just-mode.el
+	url = https://github.com/leon-barrett/just-mode.el.git

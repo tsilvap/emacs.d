@@ -27,6 +27,7 @@
 (require 'init-minibuffer)
 (require 'init-editing)
 (require 'init-completion)
+(require 'init-prog)
 (require 'init-vc)
 (require 'init-sessions)
 (require 'init-syntax-check)
