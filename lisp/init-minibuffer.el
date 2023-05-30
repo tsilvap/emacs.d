@@ -66,11 +66,15 @@
    [remap switch-to-buffer-other-frame] consult-buffer-other-frame
    [remap bookmark-jump] consult-bookmark
    [remap project-switch-to-buffer] consult-project-buffer
+   [remap project-find-regexp] consult-ripgrep
    ;; M-g bindings in `goto-map'
    "M-g i" consult-imenu
    "M-g I" consult-imenu-multi
    ;; M-s bindings in `search-map'
-   "M-s r" consult-ripgrep)
+   "M-s r" consult-ripgrep
+   ;; Misc
+   [remap yank-pop] consult-yank-pop    ; a better `yank-pop'
+   )
   ;; Use Consult to select xref locations with preview.
   (:option xref-show-xrefs-function #'consult-xref
            xref-show-definitions-function #'consult-xref))

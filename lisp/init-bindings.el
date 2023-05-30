@@ -60,7 +60,23 @@
    ;; Insert node
    "C-c n r i" org-roam-node-insert
    ;; Toggle roam buffer
-   "C-c n r r" org-roam-buffer-toggle))
+   "C-c n r r" org-roam-buffer-toggle
+
+;;; <leader> s --- search
+   ;; Search buffer
+   "C-c s b" consult-line
+   ;; Jump to symbol
+   "C-c s i" consult-imenu
+   ;; Ripgrep
+   "C-c s s" rg-menu
+
+;;; <leader> w --- workspaces/windows
+   ;; Swap window position
+   "C-c w s" window-swap-states
+   ;; Undo window config
+   "C-c w u" winner-undo
+   ;; Redo window config
+   "C-c w U" winner-redo))
 
 (provide 'init-bindings)
 ;;; init-bindings.el ends here
