@@ -9,13 +9,16 @@
 /custom.el
 /eln-cache/
 /elpa/
+/eshell/
 /history
 /lisp/init-private.el
 /multisession/
 /network-security.data
+/org-persist/
 /org-roam.db
 /projects
 /recentf
+/server/
 /session.*
 /tramp
 /transient/
