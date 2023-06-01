@@ -107,6 +107,7 @@ If REVERSE, then skip subtree unless it has next actions."
     (:option
      org-agenda-files '("~/Dropbox/org/agenda/")
      org-agenda-compact-blocks t
+     org-agenda-include-diary t
      org-agenda-start-on-weekday nil
      org-agenda-custom-commands
      '(("p" "Agenda and personal tasks"
