@@ -5,16 +5,7 @@
 (setup cperl-mode
   ;; Prefer `cperl-mode' over `perl-mode'.
   (if (boundp 'major-mode-remap-alist)
-      (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode))
-
-    ;; (defalias 'perl-mode 'cperl-mode) is supposedly a pithier way
-    ;; of doing this, but it would sometimes load `perl-mode' anyway.
-    ;; The code below works consistently for me.
-    (mapc
-     (lambda (pair)
-       (if (eq (cdr pair) 'perl-mode)
-           (setcdr pair 'cperl-mode)))
-     (append auto-mode-alist interpreter-mode-alist)))
+      (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode)))
 
   ;; Remap `cperl-indent-command' to `indent-for-tab-command', which
   ;; respects the value of `tab-always-indent'.
@@ -27,12 +18,10 @@
       (:option cperl-close-paren-offset (- indent-level)
                cperl-continued-statement-offset indent-level
                cperl-electric-keywords t
+               cperl-file-style "PBP"
                cperl-indent-level indent-level
                cperl-indent-parens-as-block t
-               cperl-invalid-face 'default))
-
-    ;; Use PBP indentation style.
-    (:option cperl-file-style "PBP")))
+               cperl-invalid-face 'default))))
 
 (provide 'init-perl)
 ;;; init-perl.el ends here
