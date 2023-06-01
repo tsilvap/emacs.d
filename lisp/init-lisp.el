@@ -23,7 +23,7 @@
 
 ;;;; Common Lisp
 
-(setup slime
+(setup emacs
   (:option inferior-lisp-program "sbcl"))
 
 (provide 'init-lisp)

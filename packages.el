@@ -39,7 +39,7 @@
  (restclient)
  (rg)
  (setup)
- (slime "melpa")
+ (sly)
  (sudo-edit)
  (vertico)
  (ws-butler)
