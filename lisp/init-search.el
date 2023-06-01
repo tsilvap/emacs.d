@@ -14,7 +14,7 @@
 
 ;; Use ripgrep for searching files.
 (setup rg
-  (:option rg-keymap-prefix (kbd "C-c s s"))
+  (:option rg-keymap-prefix (kbd "C-c s r"))
   (rg-enable-default-bindings))
 
 (provide 'init-search)

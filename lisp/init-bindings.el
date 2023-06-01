@@ -63,12 +63,12 @@
    "C-c n r r" org-roam-buffer-toggle
 
 ;;; <leader> s --- search
-   ;; Search buffer
-   "C-c s b" consult-line
    ;; Jump to symbol
    "C-c s i" consult-imenu
    ;; Ripgrep
-   "C-c s s" rg-menu
+   "C-c s r" rg-menu
+   ;; Search buffer
+   "C-c s s" consult-line
 
 ;;; <leader> w --- workspaces/windows
    ;; Swap window position
