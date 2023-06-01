@@ -96,13 +96,6 @@ that is running locally.")
 (setup ibuffer-vc
   (:load-after ibuffer)
   (:when-loaded
-    (:option ibuffer-vc-buffer-file-name-function
-             (lambda (buf)
-               (with-current-buffer buf
-                 (when-let ((file-name (or buffer-file-name
-                                           list-buffers-directory)))
-                   (file-truename file-name)))))
-
     ;; Group remote files for whitelisted hosts.
     (:option ibuffer-vc-skip-if-remote nil
              ibuffer-vc-include-function
