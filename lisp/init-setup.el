@@ -42,6 +42,18 @@
   :documentation "Set the Flycheck CHECKER as a Flymake backend in current mode."
   :repeatable t)
 
+(setup-define :fullframe
+  (lambda (on-commands off-command)
+    `(progn
+       ,@(mapcar (lambda (on-command)
+                   `(fullframe ,on-command ,off-command))
+                 (if (listp on-commands)
+                     on-commands
+                   (list on-commands)))))
+  :documentation "Advise ON-COMMANDS to open their buffers in a full-frame window.
+The previous window configuration is restored after calling
+OFF-COMMMAND.")
+
 (setup-define :localleader
   (lambda (key command)
     `(:bind ,(concat "C-c l " key) ,command))

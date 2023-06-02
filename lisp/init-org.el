@@ -33,6 +33,7 @@ If REVERSE, then skip subtree unless it has next actions."
 ;;;; Org Mode
 
 (setup org
+  (:fullframe org-agenda org-agenda-quit)
   (:option org-directory "~/Dropbox/org")
 
   (:when-loaded
@@ -147,9 +148,6 @@ If REVERSE, then skip subtree unless it has next actions."
          (tags "someday"
 	       ((org-agenda-overriding-header "Someday / Maybe")
 	        (org-tags-match-list-sublevels nil)))))))
-
-    ;; Open Org agenda in a full frame window.
-    (fullframe org-agenda org-agenda-quit)
 
     ;; Org cite configuration, using citar.
     (:option org-cite-global-bibliography '("~/Dropbox/bib/references.bib")
