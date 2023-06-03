@@ -21,6 +21,10 @@
                (make-local-variable 'minor-mode-overriding-map-alist)
                (push `(paredit-mode . ,new-map) minor-mode-overriding-map-alist))))))
 
+(setup paren-face
+  (:face parenthesis ((t (:foreground "dim gray"))))
+  (global-paren-face-mode))
+
 ;;;; Common Lisp
 
 (setup emacs

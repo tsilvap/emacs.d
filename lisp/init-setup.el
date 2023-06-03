@@ -35,6 +35,13 @@
   :debug '(sexp)
   :ensure '(func))
 
+(setup-define :face
+  (lambda (face spec) `(custom-set-faces (quote (,face ,spec))))
+  :documentation "Customize FACE to SPEC."
+  :debug '(setup)
+  :repeatable t
+  :after-loaded t)
+
 (setup-define :flymake-flycheck-backend
   (lambda (checker)
     `(:local-hook flymake-diagnostic-functions
