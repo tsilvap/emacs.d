@@ -30,7 +30,6 @@
 (require 'init-prog)
 (require 'init-vc)
 (require 'init-calendar)
-(require 'init-sessions)
 (require 'init-syntax-check)
 
 ;; Language support
