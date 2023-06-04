@@ -2,17 +2,17 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup emacs
-  ;; Indent with spaces, not tabs. This can be overridden for certain
-  ;; modes that prefer tabs, e.g. `go-mode'.
-  (:option indent-tabs-mode nil)
+(setc
+ ;; Indent with spaces, not tabs. This can be overridden for certain
+ ;; modes that prefer tabs, e.g. `go-mode'.
+ indent-tabs-mode nil
 
-  ;; Sentences end with a single space.
-  (:option sentence-end-double-space nil)
+ ;; Sentences end with a single space.
+ sentence-end-double-space nil)
 
-  ;; Make file executable if it starts with a shebang line.
-  (add-hook 'after-save-hook
-	    #'executable-make-buffer-file-executable-if-script-p))
+;; Make file executable if it starts with a shebang line.
+(add-hook 'after-save-hook
+	  #'executable-make-buffer-file-executable-if-script-p)
 
 ;; Enable Auto-Insert mode.
 (setup autoinsert
@@ -29,7 +29,7 @@
 ;; Enable ws-butler globally, for cleaning up trailing whitespace
 ;; (only in lines we've edited).
 (setup ws-butler
-  (:diminish)
+  (:hide-mode)
   (:option ws-butler-keep-whitespace-before-point nil)
   (ws-butler-global-mode))
 

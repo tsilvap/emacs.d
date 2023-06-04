@@ -2,9 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup emacs
-  ;; Make TAB complete at point (after current line is indented).
-  (:option tab-always-indent 'complete))
+;; Make TAB complete at point (after current line is indented).
+(setc tab-always-indent 'complete)
 
 ;;;; Corfu - Enhance `completion-at-point' by displaying a completion
 ;;;; pop-up.
@@ -36,8 +35,8 @@
            "C-c p r" cape-rfc1345)
 
   ;; Add a few useful Cape functions to Capfs.
-  (dolist (cape-func '(cape-file cape-dabbrev))
-    (add-to-list 'completion-at-point-functions cape-func t)))
+  (:with-hook completion-at-point-functions
+    (:hook cape-file cape-dabbrev)))
 
 (provide 'init-completion)
 ;;; init-completion.el ends here

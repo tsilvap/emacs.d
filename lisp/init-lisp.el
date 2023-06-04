@@ -27,8 +27,7 @@
 
 ;;;; Common Lisp
 
-(setup emacs
-  (:option inferior-lisp-program "sbcl"))
+(setc inferior-lisp-program "sbcl")
 
 (provide 'init-lisp)
 ;;; init-lisp.el ends here

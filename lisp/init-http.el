@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'restclient)
+(setup (:require restclient))
 
 (provide 'init-http)
 ;;; init-http.el ends here

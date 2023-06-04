@@ -1,8 +1,17 @@
 ;;; init-setup.el --- Setup.el configuration         -*- lexical-binding: t; -*-
 ;;; Commentary:
+
+;; A lot of these macros were taken from:
+;; https://www.emacswiki.org/emacs/SetupEl
+
 ;;; Code:
 
 (require 'setup)
+
+(defmacro setc (&rest args)
+  "Customize user options using ARGS like `setq'."
+  (declare (debug setq))
+  `(setup (:option ,@args)))
 
 (setup-define :autoload
   (lambda (func)
@@ -14,10 +23,18 @@
   :documentation "Autoload COMMAND if not already bound."
   :repeatable t)
 
-(setup-define :diminish
-  (lambda ()
-    `(diminish ',(setup-get 'mode)))
-  :documentation "Diminish the current mode."
+(setup-define :hide-mode
+  (lambda (&optional mode)
+    (let* ((mode (or mode (setup-get 'mode)))
+           (mode (if (string-match-p "-mode\\'" (symbol-name mode))
+                     mode
+                   (intern (format "%s-mode" mode)))))
+      `(setq minor-mode-alist
+             (delq (assq ',mode minor-mode-alist)
+                   minor-mode-alist))))
+  :documentation "Hide the mode-line lighter of the current mode.
+Alternatively, MODE can be specified manually, and override the
+current mode."
   :after-loaded t)
 
 (setup-define :load-after

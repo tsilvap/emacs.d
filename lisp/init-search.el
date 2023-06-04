@@ -9,11 +9,11 @@
 ;; isn't very optimized to work with ripgrep, so searching with
 ;; `rg' is much faster.
 (when (executable-find "rg")
-  (setup emacs
-    (:option xref-search-program 'ripgrep)))
+  (setc xref-search-program 'ripgrep))
 
 ;; Use ripgrep for searching files.
 (setup rg
+  (:only-if (executable-find "rg"))
   (:option rg-keymap-prefix (kbd "C-c s r"))
   (rg-enable-default-bindings))
 

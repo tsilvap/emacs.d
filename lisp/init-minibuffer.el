@@ -2,8 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup emacs
-  (:option enable-recursive-minibuffers t))
+(setc enable-recursive-minibuffers t)
 
 ;; Save minibuffer history. This integrates well with Vertico, since
 ;; it sorts by history position.
@@ -43,7 +42,6 @@
 
 (setup marginalia
   (:global "M-A" marginalia-cycle)
-
   (marginalia-mode))
 
 ;;;; Embark --- contextual actions at point
