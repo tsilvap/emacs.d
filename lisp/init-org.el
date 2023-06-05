@@ -163,8 +163,27 @@ If REVERSE, then skip subtree unless it has next actions."
 
 ;;;; Org Babel
 
+;; Lazy load Org Babel libraries (ob-*.el). Taken from:
+;;   https://gist.github.com/hlissner/14b42de71c65945f55a31b393af0391b
 (setup ob
-  (:require ob-go))
+  (defun +org--babel-lazy-load (lang)
+    (cl-check-type lang symbol)
+    (or (require (intern (format "ob-%s" lang)) nil t)
+        (require lang nil t)))
+
+  (defun +org--babel-lazy-load-library-a (info)
+    "Load Babel libraries lazily when Babel blocks are executed."
+    (let* ((lang (nth 0 info))
+           (lang (cond ((symbolp lang) lang)
+                       ((stringp lang) (intern lang)))))
+      (when (and lang
+                 (not (cdr (assq lang org-babel-load-languages)))
+                 (+org--babel-lazy-load lang))
+        (add-to-list 'org-babel-load-languages (cons lang t)))
+      t))
+
+  (advice-add #'org-babel-confirm-evaluate
+              :after-while #'+org--babel-lazy-load-library-a))
 
 ;;;; Org Roam --- For Zettelkasten notes.
 
