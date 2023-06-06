@@ -9,6 +9,7 @@
  (dockerfile-mode)
  (dumb-jump)
  (edit-indirect)
+ (editorconfig)
  (eglot)
  (embark)
  (embark-consult)

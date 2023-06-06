@@ -5,6 +5,10 @@
 (setup bug-reference
   (:hook-into prog-mode text-mode))
 
+(setup editorconfig
+  (:hide-mode)
+  (editorconfig-mode))
+
 (setup just-mode
   (:autoload just-mode)
   (:file-match "/[Jj]ustfile\\'"
