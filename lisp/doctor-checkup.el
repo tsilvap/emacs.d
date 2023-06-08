@@ -20,7 +20,8 @@ which is a lot faster."
 ;;;; Checkups
 
 (unless (version<= +doctor/recommended-version emacs-version)
-  (warn (format "This Emacs version (%s) is below the recommended version (%s). Some optional features may not work or may have suboptimal performance." emacs-version +doctor/recommended-version)))
+  (warn (format "This Emacs version (%s) is below the recommended version (%s). Some optional features may not work or may have suboptimal performance."
+                emacs-version +doctor/recommended-version)))
 
 (unless (+doctor/fast-json-available-p)
   (warn "This Emacs is using older Elisp JSON functions; maybe rebuild with libjansson?"))
@@ -28,6 +29,10 @@ which is a lot faster."
 (unless (and (fboundp 'native-comp-available-p)
              (native-comp-available-p))
   (warn "This Emacs does not support native compilation; maybe rebuild with --with-native-compilation?"))
+
+(unless (and (fboundp 'treesit-available-p)
+             (treesit-available-p))
+  (warn "This Emacs does not support tree-sitter; maybe rebuild with --with-tree-sitter?"))
 
 (unless (executable-find "rg")
   (warn "Ripgrep executable (rg) not found on the system. Consider installing it to speed up directory searches: https://github.com/BurntSushi/ripgrep"))
