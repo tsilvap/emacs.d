@@ -40,6 +40,7 @@
  (rg)
  (setup)
  (sly)
+ (sml-mode)
  (sudo-edit)
  (vertico)
  (ws-butler)

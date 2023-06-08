@@ -43,6 +43,7 @@
 (require 'init-perl)
 (require 'init-python)
 (require 'init-sh)
+(require 'init-sml)
 (require 'init-yaml)
 
 ;;; IRC client
