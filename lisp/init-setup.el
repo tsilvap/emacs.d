@@ -49,13 +49,11 @@ current mode."
   (lambda (handler)
     `(:bind "C-c c k" ,handler))
   :documentation "Set HANDLER as the documentation handler in current mode."
-  :debug '(sexp)
   :ensure '(func))
 
 (setup-define :face
   (lambda (face spec) `(custom-set-faces (quote (,face ,spec))))
   :documentation "Customize FACE to SPEC."
-  :debug '(setup)
   :repeatable t
   :after-loaded t)
 
@@ -82,9 +80,14 @@ OFF-COMMMAND.")
   (lambda (key command)
     `(:bind ,(concat "C-c l " key) ,command))
   :documentation "Bind KEY to COMMAND in localleader map."
-  :debug '(form sexp)
-  :ensure '(kbd func)
   :repeatable t)
+
+(setup-define :replace-major-mode
+  (lambda (mode)
+    (let ((new-mode (setup-get 'mode)))
+      `(add-to-list 'major-mode-remap-alist '(,mode . ,new-mode))))
+  :documentation "Replace the major mode MODE with the current mode."
+  :ensure '(func))
 
 (provide 'init-setup)
 ;;; init-setup.el ends here

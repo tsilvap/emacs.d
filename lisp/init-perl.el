@@ -3,9 +3,7 @@
 ;;; Code:
 
 (setup cperl-mode
-  ;; Prefer `cperl-mode' over `perl-mode'.
-  (if (boundp 'major-mode-remap-alist)
-      (add-to-list 'major-mode-remap-alist '(perl-mode . cperl-mode)))
+  (:replace-major-mode perl-mode)
 
   ;; Remap `cperl-indent-command' to `indent-for-tab-command', which
   ;; respects the value of `tab-always-indent'.
