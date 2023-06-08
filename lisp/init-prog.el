@@ -11,6 +11,11 @@
   (:hide-mode)
   (editorconfig-mode))
 
+;;;; Major modes for common file formats
+
+(setup dockerfile-ts-mode
+  (:file-match "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"))
+
 (setup just-mode
   (:autoload just-mode)
   (:file-match "/[Jj]ustfile\\'"

@@ -6,7 +6,6 @@
  (consult)
  (corfu)
  (deft)
- (dockerfile-mode)
  (dumb-jump)
  (edit-indirect)
  (editorconfig)
