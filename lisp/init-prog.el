@@ -3,7 +3,9 @@
 ;;; Code:
 
 (setup bug-reference
-  (:hook-into prog-mode text-mode))
+  (:hook-into text-mode)
+  (:with-mode bug-reference-prog-mode
+    (:hook-into prog-mode)))
 
 (setup editorconfig
   (:hide-mode)
