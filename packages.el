@@ -22,7 +22,7 @@
  (jenkinsfile-mode)
  (json-mode)
  (lua-mode)
- (magit "melpa")
+ (magit)
  (magit-todos)
  (marginalia)
  (markdown-mode)
