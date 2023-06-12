@@ -20,7 +20,17 @@
                 func)))
       `(unless (fboundp (quote ,fn))
          (autoload (function ,fn) ,(symbol-name (setup-get 'feature))))))
-  :documentation "Autoload COMMAND if not already bound."
+  :documentation "Autoload non-interactive FUNC, if it's not already bound."
+  :repeatable t)
+
+(setup-define :commands
+  (lambda (command)
+    (let ((cmd (if (memq (car-safe command) '(quote function))
+                  (cadr command)
+                 command)))
+      `(unless (fboundp (quote ,cmd))
+         (autoload (function ,cmd) ,(symbol-name (setup-get 'feature)) nil t))))
+  :documentation "Autoload COMMAND, if it's not already bound."
   :repeatable t)
 
 (setup-define :hide-mode

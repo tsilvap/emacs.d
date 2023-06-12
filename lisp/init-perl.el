@@ -21,5 +21,8 @@
                cperl-indent-parens-as-block t
                cperl-invalid-face 'default))))
 
+(setup reply
+  (:commands run-reply))
+
 (provide 'init-perl)
 ;;; init-perl.el ends here

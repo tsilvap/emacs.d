@@ -25,7 +25,7 @@
   (:hook +treesit-remove-sexp-changes))
 
 (setup combobulate
-  (:autoload combobulate-mode)
+  (:commands combobulate-mode)
   (:hook-into yaml-ts-mode))
 
 (provide 'init-treesit)

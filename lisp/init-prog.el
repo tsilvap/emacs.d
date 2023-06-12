@@ -19,7 +19,7 @@
   (:file-match "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"))
 
 (setup just-mode
-  (:autoload just-mode)
+  (:commands just-mode)
   (:file-match "/[Jj]ustfile\\'"
                "\\.[Jj]ust\\(file\\)?\\'"))
 
