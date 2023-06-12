@@ -5,7 +5,9 @@
 (setup bug-reference
   (:hook-into text-mode)
   (:with-mode bug-reference-prog-mode
-    (:hook-into prog-mode)))
+    (:hook-into prog-mode))
+  (:bind-into bug-reference-map
+    "C-c C-o" bug-reference-push-button))
 
 (setup editorconfig
   (:hide-mode)
