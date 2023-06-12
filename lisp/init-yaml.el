@@ -2,10 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Prefer the YAML tree-sitter major mode.
-(add-to-list 'major-mode-remap-alist '(yaml-mode . yaml-ts-mode))
+(setup (:and
+        (+treesit-language-available-p 'yaml)
+        yaml-ts-mode)
+  (:override-major-mode yaml-mode)
 
-(setup yaml-ts-mode
   ;; Set `indent-line-function' to `yaml-indent-line'. Ideally this
   ;; should be set automatically by `yaml-ts-mode'... when this is
   ;; fixed we can remove this block.

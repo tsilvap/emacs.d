@@ -31,6 +31,7 @@
 (require 'init-vc)
 (require 'init-calendar)
 (require 'init-syntax-check)
+(require 'init-treesit)
 
 ;; Language support
 (require 'init-go)

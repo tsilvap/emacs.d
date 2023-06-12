@@ -82,11 +82,11 @@ OFF-COMMMAND.")
   :documentation "Bind KEY to COMMAND in localleader map."
   :repeatable t)
 
-(setup-define :replace-major-mode
+(setup-define :override-major-mode
   (lambda (mode)
     (let ((new-mode (setup-get 'mode)))
       `(add-to-list 'major-mode-remap-alist '(,mode . ,new-mode))))
-  :documentation "Replace the major mode MODE with the current mode."
+  :documentation "Override the major mode MODE with the current mode."
   :ensure '(func))
 
 (provide 'init-setup)
