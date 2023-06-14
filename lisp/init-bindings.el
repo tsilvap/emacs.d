@@ -70,7 +70,13 @@
    ;; Search buffer
    "C-c s s" consult-line
 
-;;; <leader> w --- workspaces/windows
+;;; <leader> v --- versioning
+   ;; Remote URL to current location
+   "C-c v y" git-link
+   ;; Repository homepage URL
+   "C-c v Y" git-link-homepage
+
+;;; <Leader> w --- workspaces/windows
    ;; Swap window position
    "C-c w s" window-swap-states
    ;; Undo window config

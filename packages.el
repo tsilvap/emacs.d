@@ -16,6 +16,7 @@
  (flymake-shellcheck)
  (format-all)
  (fullframe)
+ (git-link)
  (go-mode)
  (go-playground)
  (ibuffer-vc)
