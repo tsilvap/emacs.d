@@ -17,14 +17,18 @@
   (dolist (face '(default fixed-pitch))
     (set-face-attribute face nil :font font)))
 
-;; Hide scroll bar and tool bar.
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(if (eq system-type 'windows-nt)
-    (menu-bar-mode -1))
+(setup emacs
+  ;; Hide scroll bar and tool bar.
+  (:option scroll-bar-mode nil
+           tool-bar-mode nil)
 
-;; Show column numbers globally.
-(column-number-mode t)
+  ;; Menu bar looks ugly on Windows, since it doesn't inherit the dark
+  ;; mode, so disable it there by default.
+  (if (eq system-type 'windows-nt)
+      (:option menu-bar-mode nil))
+
+  ;; Show column numbers globally.
+  (:option column-number-mode t))
 
 ;; Display line numbers in source and configuration files.
 (setup display-line-numbers
