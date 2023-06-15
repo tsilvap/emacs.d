@@ -14,75 +14,79 @@
 ;;; Code:
 
 (setup emacs
-  (:global
-   ;; Cycle spacing (the default, M-SPC, is taken by GNOME)
-   "C-c SPC" cycle-spacing
+  (:gkey
+   ;; The default binding, M-SPC, is taken by GNOME.
+   "C-c SPC" ("Cycle spacing" . cycle-spacing))
 
-;;; <leader> c --- code
-   ;; Go to definition
-   "C-c c d" xref-find-definitions
-   ;; Format buffer/region
-   "C-c c f" format-all-buffer
-   ;; Go to documentation
-   "C-c c k" '()
-   ;; Organize imports (LSP)
-   "C-c c i" eglot-code-action-organize-imports
-   ;; Rename (LSP)
-   "C-c c r" eglot-rename
+  ;; <leader> c --- code
+  (which-key-add-key-based-replacements
+    "C-c c" "code-prefix")
+  (:gkey
+   "C-c c d" ("Go to definition" . xref-find-definitions)
+   "C-c c f" ("Format buffer/region" . format-all-buffer)
+   "C-c c k" ("Go to documentation" . nil)
+   "C-c c i" ("Organize imports (LSP)" . eglot-code-action-organize-imports)
+   "C-c c r" ("Rename (LSP)" . eglot-rename))
 
-;;; <leader> f --- file
-   ;; Create ad hoc directory
-   "C-c f d" tsp/create-ad-hoc-directory
+  ;; <leader> f --- file
+  (which-key-add-key-based-replacements
+    "C-c f" "file-prefix")
+  (:gkey
+   "C-c f d" ("Create ad hoc directory" . tsp/create-ad-hoc-directory))
 
-;;; <leader> n --- notes
-   ;; Org agenda
-   "C-c n a" org-agenda
-   ;; Open deft
-   "C-c n d" deft
-   ;; Org store link
-   "C-c n l" org-store-link
-   ;; Org capture
-   "C-c n n" org-capture
+  ;; <leader> n --- notes
+  (which-key-add-key-based-replacements
+    "C-c n" "notes-prefix")
+  (:gkey
+   "C-c n a" ("Org agenda" . org-agenda)
+   "C-c n d" ("Open deft" . deft)
+   "C-c n l" ("Org store link" . org-store-link)
+   "C-c n n" ("Org capture" . org-capture))
 
-;;;; <leader> n j --- notes > journal
-   ;; New entry
-   "C-c n j j" org-journal-new-entry
-   ;; New scheduled entry
-   "C-c n j J" org-journal-new-scheduled-entry
-   ;; Search forever
-   "C-c n j s" org-journal-search-forever
+  ;; <leader> n j --- notes > journal
+  (which-key-add-key-based-replacements
+    "C-c n j" "notes-journal-prefix")
+  (:gkey
+   "C-c n j j" ("New entry" . org-journal-new-entry)
+   "C-c n j J" ("New scheduled entry" . org-journal-new-scheduled-entry)
+   "C-c n j s" ("Search forever" . org-journal-search-forever))
 
-;;;; <leader> n r --- notes > roam
-   ;; Find node
-   "C-c n r f" org-roam-node-find
-   ;; Show graph
-   "C-c n r g" org-roam-graph
-   ;; Insert node
-   "C-c n r i" org-roam-node-insert
-   ;; Toggle roam buffer
-   "C-c n r r" org-roam-buffer-toggle
+  ;; <leader> n r --- notes > roam
+  (which-key-add-key-based-replacements
+    "C-c n r" "notes-roam-prefix")
+  (:gkey
+   "C-c n r f" ("Find node" . org-roam-node-find)
+   "C-c n r g" ("Show graph" . org-roam-graph)
+   "C-c n r i" ("Insert node" . org-roam-node-insert)
+   "C-c n r r" ("Toggle roam buffer" . org-roam-buffer-toggle))
 
-;;; <leader> s --- search
-   ;; Jump to symbol
-   "C-c s i" consult-imenu
-   ;; Ripgrep
-   "C-c s r" rg-menu
-   ;; Search buffer
-   "C-c s s" consult-line
+  ;; <leader> s --- search
+  (which-key-add-key-based-replacements
+    "C-c s" "search-prefix")
+  (:gkey
+   "C-c s i" ("Jump to symbol" . consult-imenu)
+   "C-c s r" ("Ripgrep" . rg-menu)
+   "C-c s s" ("Search buffer" . consult-line)
+   "C-c s S" ("Search and replace (regexp)" . query-replace-regexp))
 
-;;; <leader> v --- versioning
-   ;; Remote URL to current location
-   "C-c v y" git-link
-   ;; Repository homepage URL
-   "C-c v Y" git-link-homepage
+  ;; <leader> v --- versioning
+  (which-key-add-key-based-replacements
+    "C-c v" "versioning-prefix")
+  (:gkey
+   "C-c v y" ("Remote URL to current location" . git-link)
+   "C-c v Y" ("Repository homepage URL" . git-link-homepage))
 
-;;; <Leader> w --- workspaces/windows
-   ;; Swap window position
-   "C-c w s" window-swap-states
-   ;; Undo window config
-   "C-c w u" winner-undo
-   ;; Redo window config
-   "C-c w U" winner-redo))
+  ;; <Leader> w --- workspaces/windows
+  (which-key-add-key-based-replacements
+    "C-c w" "windows-prefix")
+  (:gkey
+   "C-c w s" ("Swap window position" . window-swap-states)
+   "C-c w u" ("Undo window config" . winner-undo)
+   "C-c w U" ("Redo window config" . winner-redo)))
+
+(setup which-key
+  (:hide-mode)
+  (which-key-mode))
 
 (provide 'init-bindings)
 ;;; init-bindings.el ends here
