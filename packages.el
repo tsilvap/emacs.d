@@ -14,7 +14,8 @@
  (embark-consult)
  (flymake-flycheck)
  (flymake-shellcheck)
- (format-all)
+ (format-all :host github :repo "lassik/emacs-format-all-the-code"
+             :fork (:repo "tsilvap/emacs-format-all-the-code"))
  (fullframe)
  (git-link)
  (go-mode)

@@ -23,7 +23,7 @@
     "C-c c" "code-prefix")
   (:gkey
    "C-c c d" ("Go to definition" . xref-find-definitions)
-   "C-c c f" ("Format buffer/region" . format-all-buffer)
+   "C-c c f" ("Format buffer/region" . format-all-region-or-buffer)
    "C-c c k" ("Go to documentation" . nil)
    "C-c c i" ("Organize imports (LSP)" . eglot-code-action-organize-imports)
    "C-c c r" ("Rename (LSP)" . eglot-rename))
