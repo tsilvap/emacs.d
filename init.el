@@ -9,6 +9,8 @@
 
 ;; Store customizations managed by Custom in a separate file.
 (setq custom-file (locate-user-emacs-file "custom.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; Add directories with local Lisp code to `load-path'.
 (dolist (lisp-dir '("lisp" "vendor-lisp"))
@@ -58,10 +60,6 @@
 
 ;; Private init file (not committed to repo).
 (require 'init-private)
-
-;; Load Custom file, if it exists.
-(when (file-exists-p custom-file)
-  (load custom-file))
 
 (provide 'init)
 ;;; init.el ends here
