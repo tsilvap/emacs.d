@@ -1,41 +1,29 @@
 ;;; init-package.el --- Package management configuration  -*- lexical-binding: t; -*-
 ;;; Commentary:
+
+;; I haven't decided on which package manager to use, so I've defined
+;; an interface to be able to test the ones that look interesting
+;; until I find the one that works for my use-cases.
+
 ;;; Code:
 
-(require 'package)
+(defcustom +pkg-manager 'straight
+  "The package manager to be used in this config."
+  :type '(choice (const :tag "package.el" package)
+                 (const :tag "straight.el" straight))
+  :tag "Package manager")
 
-(dolist (archive '(("gnu" . "https://elpa.gnu.org/packages/")
-		   ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-		   ("melpa" . "https://melpa.org/packages/")))
-  (add-to-list 'package-archives archive t))
-
-;; Prefer the built-in repos (higher number is higher priority here).
-(setq package-archive-priorities
-      '(("elpa" . 3)
-	("nongnu" . 2)
-        ("melpa" . 1)))
-
-(package-initialize)
-
-(defvar tsp/packages-file
+(defvar +pkg-recipes-file
   (concat user-emacs-directory "packages.el")
   "File that contains the list of selected packages.
-Also contains any additional metadata, such as the package
-archive or repository URL to use for a specific package.")
+May contain additional metadata, or \"recipes\", on how to get
+the package, that is, which VC repository URL, or package
+archive, and similar information.")
 
-(defun tsp/ensure-package (package &optional archive)
-  "Install PACKAGE, if it is not installed.
+(cl-defgeneric +pkg-ensure-package (package)
+  "Install PACKAGE, if it is not installed.")
 
-Optionally specify the ARCHIVE to get the package from."
-  (let ((pkg (if archive
-                 (seq-find (lambda (desc)
-                             (string= (package-desc-archive desc) archive))
-                           (cdr (assoc package package-archive-contents)))
-               package)))
-    (unless (package-installed-p package)
-      (package-install pkg))))
-
-(defun tsp/package-install (pkg)
+(defun +pkg-install (pkg)
   "Install the package PKG."
   (interactive
    (progn
@@ -51,7 +39,7 @@ Optionally specify the ARCHIVE to get the package from."
                                   package-archive-contents))
                     nil t)))))
   (let ((packages (with-temp-buffer
-        	    (insert-file-contents tsp/packages-file)
+        	    (insert-file-contents +pkg-recipes-file)
         	    (read (current-buffer)))))
     (add-to-list 'packages (list pkg))
     (sort packages (lambda (a b)
@@ -59,20 +47,29 @@ Optionally specify the ARCHIVE to get the package from."
                            (pkg-b (car b)))
                        (string-lessp (symbol-name pkg-a)
                                      (symbol-name pkg-b)))))
-    (with-temp-file tsp/packages-file
+    (with-temp-file +pkg-recipes-file
       (insert ";;; -*- lisp-data -*-\n")
       (pp packages (current-buffer)))))
 
-(defun tsp/install-selected-packages ()
+(defun +pkg-install-selected-packages ()
   "Ensure the user's selected packages they are installed."
   (interactive)
   (let ((packages (with-temp-buffer
-		    (insert-file-contents tsp/packages-file)
+		    (insert-file-contents +pkg-recipes-file)
 		    (read (current-buffer)))))
     (dolist (pkg packages)
-      (apply #'tsp/ensure-package pkg))))
+      (funcall #'+pkg-ensure-package pkg))))
 
-(tsp/install-selected-packages)
+(let ((setup-file-dir
+       (expand-file-name "lisp/+pkg/" user-emacs-directory)))
+  (cond ((eq +pkg-manager 'package)
+         (load (file-name-concat setup-file-dir "package.el") nil t))
+        ((eq +pkg-manager 'straight)
+         (load (file-name-concat setup-file-dir "straight.el") nil t))
+        (t
+         (error "Unsupported package manager: `%s'" +pkg-manager))))
+
+(+pkg-install-selected-packages)
 
 (provide 'init-package)
 ;;; init-package.el ends here

@@ -10,3 +10,6 @@
 [submodule "vendor-lisp/emacs-reply"]
 	path = vendor-lisp/emacs-reply
 	url = https://github.com/syohex/emacs-reply.git
+[submodule "vendor-lisp/straight.el"]
+	path = vendor-lisp/straight.el
+	url = https://github.com/radian-software/straight.el.git
