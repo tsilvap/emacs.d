@@ -24,7 +24,10 @@
    confirm-kill-emacs 'y-or-n-p)
 
   ;; Make UTF-8 the default coding system.
-  (set-language-environment "UTF-8"))
+  (set-language-environment "UTF-8")
+
+  ;; Enable `set-goal-column' command.
+  (put 'set-goal-column 'disabled nil))
 
 (setup tramp
   (:when-loaded
