@@ -33,7 +33,12 @@
    version-control t
    kept-new-versions 5
    kept-old-versions 5
-   delete-old-versions t))
+   delete-old-versions t)
+
+  ;; Disable lockfiles. They're not that useful in a single-user
+  ;; system, and they cause some minor issues with programs that don't
+  ;; expect to see a lockfile.
+  (:option create-lockfiles nil))
 
 (provide 'init-files)
 ;;; init-files.el ends here
