@@ -45,6 +45,7 @@
  (sml-mode)
  (sudo-edit)
  (vertico)
+ (web-mode)
  (which-key)
  (ws-butler)
  (yaml-mode))
