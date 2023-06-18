@@ -12,6 +12,7 @@
  (eglot)
  (embark)
  (embark-consult)
+ (expand-region)
  (flymake-flycheck)
  (flymake-shellcheck)
  (format-all :host github :repo "lassik/emacs-format-all-the-code"

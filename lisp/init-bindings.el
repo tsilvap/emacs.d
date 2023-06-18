@@ -15,6 +15,8 @@
 
 (setup emacs
   (:gkey
+   "C-=" ("Expand region" . er/expand-region)
+
    ;; The default binding, M-SPC, is taken by GNOME.
    "C-c SPC" ("Cycle spacing" . cycle-spacing))
 
