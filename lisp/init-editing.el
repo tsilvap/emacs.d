@@ -14,6 +14,10 @@
 (add-hook 'after-save-hook
 	  #'executable-make-buffer-file-executable-if-script-p)
 
+;; Typed text replaces the selection if the selection is active,
+;; pressing delete or backspace deletes the selection.
+(add-hook 'after-init-hook #'delete-selection-mode)
+
 ;; Enable Auto-Insert mode.
 (setup autoinsert
   (auto-insert-mode))
