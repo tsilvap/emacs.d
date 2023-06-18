@@ -3,24 +3,21 @@
 ;;; Code:
 
 (setup emacs
-  (:global "M-o" other-window
+  (:global
+   "M-o" other-window
 
-           ;; Less confusing alternatives for `upcase-region' and
-           ;; `downcase-region'.
-           [remap upcase-region] upcase-dwim
-           [remap downcase-region] downcase-dwim)
-
-  (:option user-mail-address "thiagodasilva@protonmail.com"
-           user-full-name    "Thiago da Silva Pinto")
+   ;; Less confusing alternatives for `upcase-region' and
+   ;; `downcase-region'.
+   [remap upcase-region] upcase-dwim
+   [remap downcase-region] downcase-dwim)
 
   (:option
-   ;; Disable startup screen.
+   ;; Basic user information.
+   user-full-name "<your-full-name>"
+   user-mail-address "<your-mail-address>"
+
    inhibit-startup-screen t
-
-   ;; Disable the bell.
    ring-bell-function 'ignore
-
-   ;; Ask for confirmation before closing Emacs.
    confirm-kill-emacs 'y-or-n-p)
 
   ;; Make UTF-8 the default coding system.
