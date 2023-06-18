@@ -18,7 +18,8 @@
 
    inhibit-startup-screen t
    ring-bell-function 'ignore
-   confirm-kill-emacs 'y-or-n-p)
+   confirm-kill-emacs 'y-or-n-p
+   help-window-select t)
 
   ;; Make UTF-8 the default coding system.
   (set-language-environment "UTF-8")
