@@ -62,6 +62,13 @@
    "C-c n r i" ("Insert node" . org-roam-node-insert)
    "C-c n r r" ("Toggle roam buffer" . org-roam-buffer-toggle))
 
+  ;; <leader> o --- open
+  (which-key-add-key-based-replacements
+    "C-c o" "open-prefix")
+  (:gkey
+   "C-c o e" ("Open eshell" . eshell)
+   "C-c o t" ("Open shell" . shell))
+
   ;; <leader> s --- search
   (which-key-add-key-based-replacements
     "C-c s" "search-prefix")
