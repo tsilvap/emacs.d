@@ -26,7 +26,6 @@
  (json-mode)
  (lua-mode)
  (magit)
- (magit-todos)
  (marginalia)
  (markdown-mode)
  (multiple-cursors)

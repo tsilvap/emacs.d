@@ -14,10 +14,5 @@
     (:option magit-diff-refine-hunk t
              magit-no-confirm '(trash set-and-push))))
 
-(setup magit-todos
-  (:load-after magit)
-  (:when-loaded
-    (magit-todos-mode)))
-
 (provide 'init-vc)
 ;;; init-vc.el ends here
