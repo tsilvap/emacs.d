@@ -83,7 +83,7 @@
     "C-c v" "versioning-prefix")
   (:gkey
    "C-c v y" ("Remote URL to current location" . git-link)
-   "C-c v Y" ("Repository homepage URL" . git-link-homepage))
+   "C-c v Y" ("Remote URL to current commit" . git-link-commit))
 
   ;; <Leader> w --- workspaces/windows
   (which-key-add-key-based-replacements
