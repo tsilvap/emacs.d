@@ -18,6 +18,7 @@
  (format-all :host github :repo "lassik/emacs-format-all-the-code"
              :fork (:repo "tsilvap/emacs-format-all-the-code"))
  (fullframe)
+ (git-gutter-fringe)
  (git-link)
  (go-mode)
  (go-playground)
