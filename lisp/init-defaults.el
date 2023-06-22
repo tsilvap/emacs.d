@@ -16,6 +16,9 @@
    user-full-name "<your-full-name>"
    user-mail-address "<your-mail-address>"
 
+   ;; Use encrypted authorization source file.
+   auth-sources '("~/.authinfo.gpg")
+
    inhibit-startup-screen t
    ring-bell-function 'ignore
    confirm-kill-emacs 'y-or-n-p
