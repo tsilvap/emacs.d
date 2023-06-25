@@ -9,6 +9,7 @@
  (dumb-jump)
  (edit-indirect)
  (editorconfig)
+ (ef-themes)
  (eglot)
  (embark)
  (embark-consult)

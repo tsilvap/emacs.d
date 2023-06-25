@@ -7,8 +7,8 @@
 ;;; Code:
 
 ;; Set theme.
-(setup color-theme-sanityinc-tomorrow
-  (load-theme 'sanityinc-tomorrow-night t))
+(setup ef-themes
+  (load-theme 'ef-night t))
 
 ;; Customize faces.
 (let ((font (if (eq system-type 'windows-nt)
