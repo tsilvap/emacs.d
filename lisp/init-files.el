@@ -2,12 +2,14 @@
 ;;; Commentary:
 ;;; Code:
 
-(defun tsp/create-ad-hoc-directory ()
-  "Create ad hoc directory to place files, scripts, etc."
-  (interactive)
+(defun tsp/create-ad-hoc-directory (prefix)
+  "Create ad hoc directory to place files, scripts, etc.
+PREFIX is added to the end of the directory name, if provided."
+  (interactive "MPrefix: ")
   (let ((ad-hoc-directory-name
          (concat "~/Misc/adhoc/"
-                 (format-time-string "%Y-%m-%d-%H%M%S" (current-time)))))
+                 (format-time-string "%Y-%m-%d-%H%M%S" (current-time))
+                 (when prefix (concat "-" prefix)))))
     (make-directory ad-hoc-directory-name t)
     (find-file ad-hoc-directory-name)))
 
