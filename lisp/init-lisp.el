@@ -29,5 +29,25 @@
 
 (setc inferior-lisp-program "sbcl")
 
+(setup lisp-mode
+  (:localleader "c" ("Open CL Cookbook" . +cl-browse-cookbook))
+  (:option inferior-lisp-program "sbcl"))
+
+(defvar +cl--cookbook-pages-alist
+  (with-temp-buffer
+    (insert-file-contents (locate-user-emacs-file
+                           "lisp/+cl/cookbook-pages-alist.el"))
+    (read (current-buffer))))
+
+(defun +cl-browse-cookbook (page)
+  "Open PAGE from Common Lisp Cookbook using a configurable method."
+  (interactive
+   (list (completing-read "Common Lisp Cookbook page: "
+                          +cl--cookbook-pages-alist nil t)))
+  (let ((page-filename (alist-get page
+                                  +cl--cookbook-pages-alist nil nil #'string=)))
+    (browse-url (format "https://lispcookbook.github.io/cl-cookbook/%s"
+                        page-filename))))
+
 (provide 'init-lisp)
 ;;; init-lisp.el ends here

@@ -20,6 +20,10 @@
    ;; The default binding, M-SPC, is taken by GNOME.
    "C-c SPC" ("Cycle spacing" . cycle-spacing))
 
+  ;; <leader> l --- <localleader>
+  (which-key-add-key-based-replacements
+    "C-c l" "<localleader>")
+
   ;; <leader> c --- code
   (which-key-add-key-based-replacements
     "C-c c" "code-prefix")

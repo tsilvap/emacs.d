@@ -54,6 +54,13 @@ Alternatively, MODE can be specified manually, and override the
 current mode."
   :after-loaded t)
 
+(setup-define :key
+  (lambda (key command)
+    `(keymap-set ,(setup-get 'map) ,key ',command))
+  :documentation "Bind KEY to COMMAND in current map."
+  :after-loaded t
+  :repeatable t)
+
 (setup-define :load-after
   (lambda (&rest features)
     (let ((body `(require ',(setup-get 'feature))))
@@ -95,7 +102,7 @@ OFF-COMMMAND.")
 
 (setup-define :localleader
   (lambda (key command)
-    `(:bind ,(concat "C-c l " key) ,command))
+    `(:key ,(concat "C-c l " key) ,command))
   :documentation "Bind KEY to COMMAND in localleader map."
   :repeatable t)
 
