@@ -1,8 +1,10 @@
 ;;; -*- lisp-data -*-
 ((bbdb)
+ (breadcrumb :host github :repo "joaotavora/breadcrumb")
  (cape)
  (citar)
  (color-theme-sanityinc-tomorrow)
+ (combobulate :host github :repo "mickeynp/combobulate")
  (consult)
  (corfu)
  (deft)
@@ -26,6 +28,7 @@
  (ibuffer-vc)
  (jenkinsfile-mode)
  (json-mode)
+ (just-mode)
  (lua-mode)
  (magit)
  (marginalia)
