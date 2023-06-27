@@ -46,7 +46,6 @@
  (restclient)
  (rg)
  (setup)
- (sly)
  (sml-mode)
  (sudo-edit)
  (vertico)

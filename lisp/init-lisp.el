@@ -27,11 +27,12 @@
 
 ;;;; Common Lisp
 
-(setc inferior-lisp-program "sbcl")
-
 (setup lisp-mode
   (:localleader "c" ("Open CL Cookbook" . +cl-browse-cookbook))
   (:option inferior-lisp-program "sbcl"))
+
+(setup sly
+  (:require sly-autoloads))
 
 (defvar +cl--cookbook-pages-alist
   (with-temp-buffer

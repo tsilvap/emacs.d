@@ -4,3 +4,6 @@
 [submodule "vendor-lisp/straight.el"]
 	path = vendor-lisp/straight.el
 	url = https://github.com/radian-software/straight.el.git
+[submodule "vendor-lisp/sly"]
+	path = vendor-lisp/sly
+	url = https://github.com/joaotavora/sly.git
