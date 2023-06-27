@@ -13,4 +13,7 @@
                                    &optional no-clone no-build cause)
   (straight-use-package melpa-style-recipe no-clone no-build cause))
 
+(setq straight-recipe-repositories
+      '(gnu-elpa-mirror nongnu-elpa org-elpa melpa el-get emacsmirror-mirror))
+
 ;;; straight.el ends here
