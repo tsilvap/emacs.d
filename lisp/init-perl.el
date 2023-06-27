@@ -5,11 +5,18 @@
 (setup cperl-mode
   (:override-major-mode perl-mode)
 
+  (:documentation-handler cperl-perldoc)
+  (:face cperl-array-face ((t (:inherit font-lock-variable-name-face
+                               :foreground "#57aff6"
+                               :weight bold)))
+         cperl-hash-face ((t (:inherit font-lock-variable-name-face
+                              :foreground "#ff656a"
+                              :slant italic
+                              :weight bold))))
+
   ;; Remap `cperl-indent-command' to `indent-for-tab-command', which
   ;; respects the value of `tab-always-indent'.
   (:bind [remap cperl-indent-command] indent-for-tab-command)
-
-  (:documentation-handler cperl-perldoc)
 
   (:when-loaded
     (let ((indent-level 4))

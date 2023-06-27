@@ -8,7 +8,7 @@
 
 ;; Set theme.
 (setup ef-themes
-  (load-theme 'ef-night t))
+  (load-theme 'ef-elea-dark t))
 
 ;; Customize faces.
 (let ((font (if (eq system-type 'windows-nt)
