@@ -4,6 +4,7 @@
  (cape)
  (citar)
  (color-theme-sanityinc-tomorrow)
+ (color-theme-sanityinc-solarized)
  (combobulate :host github :repo "mickeynp/combobulate")
  (consult)
  (corfu)
