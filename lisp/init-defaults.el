@@ -36,11 +36,11 @@
     ;; TRAMP's remote path.
     (add-to-list 'tramp-remote-path 'tramp-own-remote-path)))
 
-;; Enable Repeat mode to enable repeatable commands.
+;; Enable repeatable commands.
 (setup repeat
   (repeat-mode))
 
-;; Enable Winner Mode to undo and redo changes to window layout.
+;; Undo and redo changes to window layout.
 (setup winner
   (winner-mode)
 
