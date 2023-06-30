@@ -59,5 +59,13 @@
   (dolist (command '(winner-undo winner-redo))
     (put command 'repeat-map 'winner-repeat-map)))
 
+;; A modern spell checker for Emacs.
+(setup jinx
+  (:hide-mode)
+  (:hook-into text-mode)
+  (:global [remap ispell-word] jinx-correct)
+  (:when-loaded
+    (:option jinx-languages "en_US pt_BR")))
+
 (provide 'init-defaults)
 ;;; init-defaults.el ends here

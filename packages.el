@@ -28,6 +28,7 @@
  (go-playground)
  (ibuffer-vc)
  (jenkinsfile-mode)
+ (jinx)
  (json-mode)
  (just-mode)
  (lua-mode)
