@@ -2,21 +2,27 @@
 ;;; Commentary:
 ;;; Code:
 
-(setc
- ;; Indent with spaces, not tabs. This can be overridden for certain
- ;; modes that prefer tabs, e.g. `go-mode'.
- indent-tabs-mode nil
+(setup emacs
+  ;; Enable automatic line breaking in text modes.
+  (:with-mode auto-fill-mode
+    (:hook-into text-mode))
 
- ;; Sentences end with a single space.
- sentence-end-double-space nil)
+  ;; Typed text replaces the selection if the selection is active,
+  ;; pressing delete or backspace deletes the selection.
+  (:with-mode delete-selection-mode
+    (:hook-into after-init-hook))
 
-;; Make file executable if it starts with a shebang line.
-(add-hook 'after-save-hook
-	  #'executable-make-buffer-file-executable-if-script-p)
+  ;; Make file executable if it starts with a shebang line.
+  (:with-function executable-make-buffer-file-executable-if-script-p
+    (:hook-into after-save-hook))
 
-;; Typed text replaces the selection if the selection is active,
-;; pressing delete or backspace deletes the selection.
-(add-hook 'after-init-hook #'delete-selection-mode)
+  (:option
+   ;; Indent with spaces, not tabs. This can be overridden for certain
+   ;; modes that prefer tabs, e.g. `go-mode'.
+   indent-tabs-mode nil
+
+   ;; Sentences end with a single space.
+   sentence-end-double-space nil))
 
 ;; Enable Auto-Insert mode.
 (setup autoinsert
