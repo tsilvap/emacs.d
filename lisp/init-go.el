@@ -2,11 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup (:and
-        (+treesit-language-available-p 'go)
-        go-ts-mode)
-  (:override-major-mode go-mode)
-
+(setup go-mode
   ;; We use `goimports' for fixing the imports since gopls doesn't
   ;; seem to do that.
   (:localleader "i" goimports
