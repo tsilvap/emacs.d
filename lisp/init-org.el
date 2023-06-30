@@ -8,6 +8,8 @@
 
 ;;;; Defuns
 
+(require 'init-defaults)
+
 (defun tsp/org-roam-files ()
   "Return the list of Org Roam files.
 For use as a target for Org refile."
@@ -34,8 +36,12 @@ If REVERSE, then skip subtree unless it has next actions."
 
 (setup org
   (:fullframe org-agenda org-agenda-quit)
-  (:option org-directory "~/Dropbox/org")
-
+  (:after-init 0
+    (:option org-directory (concat +user-sync-directory "org")
+             org-agenda-files
+             (list (concat org-directory "/agenda/"))
+             org-cite-global-bibliography
+             (list (concat +user-sync-directory "bib/references.bib"))))
   (:when-loaded
     ;; Basic configuration.
     (:option org-catch-invisible-edits 'show-and-error
@@ -106,7 +112,6 @@ If REVERSE, then skip subtree unless it has next actions."
 
     ;; Org agenda configuration.
     (:option
-     org-agenda-files '("~/Dropbox/org/agenda/")
      org-agenda-compact-blocks t
      org-agenda-include-diary t
      org-agenda-start-on-weekday nil
@@ -150,8 +155,7 @@ If REVERSE, then skip subtree unless it has next actions."
 	        (org-tags-match-list-sublevels nil)))))))
 
     ;; Org cite configuration, using citar.
-    (:option org-cite-global-bibliography '("~/Dropbox/bib/references.bib")
-             org-cite-activate-processor 'citar
+    (:option org-cite-activate-processor 'citar
              org-cite-follow-processor 'citar
              org-cite-insert-processor 'citar
              citar-bibliography org-cite-global-bibliography)
@@ -188,7 +192,8 @@ If REVERSE, then skip subtree unless it has next actions."
 ;;;; Org Roam --- For Zettelkasten notes.
 
 (setup org-roam
-  (:option org-roam-directory "~/Dropbox/org/roam/")
+  (:after-init 10
+    (:option org-roam-directory (concat org-directory "/roam/")))
 
   (:when-loaded
     ;; Org Roam capture templates, inspired by Jethro Kuan's setup.
@@ -220,14 +225,16 @@ If REVERSE, then skip subtree unless it has next actions."
 ;;;; Deft --- For general reference notes.
 
 (setup deft
-  (:option deft-directory "~/Dropbox/org/reference/"
-           deft-use-filename-as-title t
+  (:after-init 10
+    (:option deft-directory (concat org-directory "/reference/")))
+  (:option deft-use-filename-as-title t
            deft-recursive t))
 
 ;;;; org-journal --- Journaling in Emacs.
 
 (setup org-journal
-  (:option org-journal-dir (concat org-directory "/journal"))
+  (:after-init 10
+    (:option org-journal-dir (concat org-directory "/journal")))
   (:when-loaded
     (:option org-journal-carryover-items "TODO=\"TODO\"|TODO=\"NEXT\""
              org-journal-enable-agenda-integration t

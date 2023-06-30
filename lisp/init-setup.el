@@ -13,6 +13,15 @@
   (declare (debug setq))
   `(setup (:option ,@args)))
 
+(setup-define :after-init
+  (lambda (depth &rest body)
+    `(add-hook 'after-init-hook
+               (lambda ()
+                 ,(macroexp-progn body))
+               ,depth))
+  :documentation "Evaluate BODY after initializing Emacs (see `after-init-hook')."
+  :indent 1)
+
 (setup-define :autoload
   (lambda (func)
     (let ((fn (if (memq (car-safe func) '(quote function))

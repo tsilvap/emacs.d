@@ -7,12 +7,12 @@
 
 ;;; Code:
 
-;; Store customizations managed by Custom in a separate file.
+;;;; Store customizations managed by Custom in a separate file.
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;; Add directories with local Lisp code to `load-path'.
+;;;; Add directories with local Lisp code to `load-path'.
 (dolist (lisp-dir '("lisp" "vendor-lisp"))
   (let ((default-directory (concat user-emacs-directory lisp-dir "/")))
     (add-to-list 'load-path (directory-file-name default-directory))
@@ -34,6 +34,8 @@
 (require 'init-calendar)
 (require 'init-syntax-check)
 (require 'init-treesit)
+(require 'init-irc)
+(require 'init-gnus)
 
 ;; Language support
 (require 'init-go)
@@ -49,17 +51,11 @@
 (require 'init-sml)
 (require 'init-yaml)
 
-;;; IRC client
-(require 'init-irc)
-
-;;; Gnus
-(setq gnus-init-file (concat user-emacs-directory "lisp/init-gnus.el"))
-
-;; Check for recommended features and programs.
-(require 'doctor-checkup)
-
 ;; Private init file (not committed to repo).
 (require 'init-private)
+
+;;;; Check for recommended features and programs
+(require 'doctor-checkup)
 
 (provide 'init)
 ;;; init.el ends here

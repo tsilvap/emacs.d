@@ -7,7 +7,16 @@
 
 ;;; Code:
 
+(require 'init-defaults)
+(require 'init-org)
+
 (setup gnus
+  ;; Sync Gnus directory and startup files (per the documentation,
+  ;; `gnus-directory' must be set before Gnus is loaded).
+  (:after-init 0
+    (:option gnus-directory (concat +user-sync-directory "News/")
+             gnus-startup-file (concat +user-sync-directory ".newsrc")))
+
   (:when-loaded
     (:option gnus-select-method '(nnimap "personal-mail"
                                          (nnimap-address "127.0.0.1")
@@ -15,9 +24,6 @@
                                          (nnimap-stream plain))
              gnus-secondary-select-methods '((nntp "news.gmane.io")))
 
-    ;; Sync Gnus directory and startup files.
-    (:option gnus-directory "~/Dropbox/News"
-             gnus-startup-file "~/Dropbox/.newsrc")
 
     ;; Render HTML emails with gnus-w3m.
     (when (executable-find "w3m")
