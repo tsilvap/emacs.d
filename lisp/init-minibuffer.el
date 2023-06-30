@@ -67,7 +67,6 @@
    [remap switch-to-buffer-other-frame] consult-buffer-other-frame
    [remap bookmark-jump] consult-bookmark
    [remap project-switch-to-buffer] consult-project-buffer
-   [remap project-find-regexp] consult-ripgrep
    ;; M-g bindings in `goto-map'
    "M-g i" consult-imenu
    "M-g I" consult-imenu-multi
