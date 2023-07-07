@@ -2,6 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
+(setup project
+  ;; Load magit-extras, which contains a hook that adds Magit to
+  ;; `project-switch-commands'. That way, "Magit" always shows up when
+  ;; running `project-switch-project'.
+  (:also-load magit-extras))
+
 (setup bug-reference
   (:hook-into text-mode)
   (:with-mode bug-reference-prog-mode
