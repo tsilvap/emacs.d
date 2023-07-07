@@ -7,6 +7,7 @@
   (:option vc-follow-symlinks t))
 
 (setup magit
+  (:also-load forge)
   (:global "C-c g" magit-file-dispatch)
   (:fullframe (magit-status magit-project-status)
               magit-mode-bury-buffer)
