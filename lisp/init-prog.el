@@ -51,6 +51,9 @@
                "\\.mustache\\'"
                "\\.djhtml\\'")
   (:hook
+   (lambda ()
+     (electric-pair-local-mode -1))
+
    ;; HACK: needed to make setting web-mode engine in .dir-locals.el
    ;; work correctly.
    ;;
