@@ -86,8 +86,10 @@
   (which-key-add-key-based-replacements
     "C-c v" "versioning-prefix")
   (:gkey
-   "C-c v y" ("Remote URL to current location" . git-link)
-   "C-c v Y" ("Remote URL to current commit" . git-link-commit))
+   "C-c v b" ("Magit blame" . magit-blame-addition)
+   "C-c v B" ("Magit blame (menu)" . magit-blame)
+   "C-c v y" ("URL to current location" . git-link)
+   "C-c v Y" ("URL to current commit" . git-link-commit))
 
   ;; <Leader> w --- workspaces/windows
   (which-key-add-key-based-replacements
