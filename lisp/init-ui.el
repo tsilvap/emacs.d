@@ -13,9 +13,9 @@
 ;; Customize faces.
 (let ((font (if (eq system-type 'windows-nt)
 		"JetBrains Mono NL 10"
-	      "JetBrains Mono NL 13")))
+	      "Input Mono Narrow 13")))
   (dolist (face '(default fixed-pitch))
-    (set-face-attribute face nil :font font)))
+    (set-face-attribute face nil :font font :weight 'regular)))
 
 (setup emacs
   ;; Hide scroll bar and tool bar.
