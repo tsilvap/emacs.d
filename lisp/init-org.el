@@ -36,6 +36,7 @@ If REVERSE, then skip subtree unless it has next actions."
 
 (setup org
   (:fullframe org-agenda org-agenda-quit)
+  (:bind "C-M-<return>" org-insert-subheading)
   (:after-init 0
     (:option org-directory (concat +user-sync-directory "org")
              org-agenda-files
