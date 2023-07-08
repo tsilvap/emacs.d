@@ -21,8 +21,8 @@
    ;; modes that prefer tabs, e.g. `go-mode'.
    indent-tabs-mode nil
 
-   ;; Sentences end with a single space.
-   sentence-end-double-space nil))
+   ;; Sentences end with two spaces.
+   sentence-end-double-space t))
 
 ;; Enable Auto-Insert mode.
 (setup autoinsert
