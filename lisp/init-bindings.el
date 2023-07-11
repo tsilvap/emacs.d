@@ -38,7 +38,9 @@
   (which-key-add-key-based-replacements
     "C-c f" "file-prefix")
   (:gkey
-   "C-c f d" ("Create ad hoc directory" . tsp/create-ad-hoc-directory))
+   "C-c f d" ("Create ad hoc directory" . tsp/create-ad-hoc-directory)
+   "C-c f r" ("Rename this file" . rename-visited-file)
+   "C-c f m" ("Rename/move this file" . rename-visited-file))
 
   ;; <leader> n --- notes
   (which-key-add-key-based-replacements
