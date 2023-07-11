@@ -84,6 +84,12 @@
    "C-c s s" ("Search buffer" . consult-line)
    "C-c s S" ("Search and replace (regexp)" . query-replace-regexp))
 
+  ;; <leader> t --- toggle
+  (which-key-add-key-based-replacements
+    "C-c t" "toggle-prefix")
+  (:gkey
+   "C-c t f" ("Flymake" . flymake-mode))
+
   ;; <leader> v --- versioning
   (which-key-add-key-based-replacements
     "C-c v" "versioning-prefix")
