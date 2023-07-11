@@ -37,8 +37,5 @@ which is a lot faster."
 (unless (executable-find "rg")
   (warn "Ripgrep executable (rg) not found on the system. Consider installing it to speed up directory searches: https://github.com/BurntSushi/ripgrep"))
 
-(unless (executable-find "mdl")
-  (warn "Markdownlint executable (mdl) not found on the system. Consider installing it if you want Markdown linting: https://github.com/markdownlint/markdownlint"))
-
 (provide 'doctor-checkup)
 ;;; doctor-checkup.el ends here
