@@ -13,9 +13,8 @@
 (setup gnus
   ;; Sync Gnus directory and startup files (per the documentation,
   ;; `gnus-directory' must be set before Gnus is loaded).
-  (:after-init 0
-    (:option gnus-directory (concat +user-sync-directory "News/")
-             gnus-startup-file (concat +user-sync-directory ".newsrc")))
+  (:option gnus-directory (concat tsp/sync-directory "News/")
+           gnus-startup-file (concat tsp/sync-directory ".newsrc"))
 
   (:when-loaded
     (:option gnus-select-method '(nnimap "personal-mail"

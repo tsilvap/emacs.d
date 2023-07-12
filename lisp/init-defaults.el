@@ -2,17 +2,17 @@
 ;;; Commentary:
 ;;; Code:
 
-(defcustom +user-sync-directory "~/Sync/"
-  "Directory whose contents are synchronized between the user's machines.
+(defconst tsp/sync-directory "~/Dropbox/"
+  "Directory whose contents are synchronized between my machines.
 The files in this directory are not committed to the emacs.d
 repository, but are nonetheless expected to be available in all
-machines in which the user uses this config.
+machines in which I use this config.
 
 This can be, for example, a Nextcloud or a Syncthing directory,
 or it can be a directory that is version controlled and kept in
 sync between machines.
 
-Note that this should end with a directory separator.")
+This variable should end with a directory separator.")
 
 (setup emacs
   (:global
