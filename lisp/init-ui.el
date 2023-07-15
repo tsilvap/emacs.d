@@ -34,9 +34,5 @@
 (setup display-line-numbers
   (:hook-into conf-mode prog-mode yaml-mode yaml-ts-mode))
 
-;; Show breadcrumbs in projects.
-(setup (:require breadcrumb)
-  (breadcrumb-mode))
-
 (provide 'init-ui)
 ;;; init-ui.el ends here

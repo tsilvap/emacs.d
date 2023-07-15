@@ -1,6 +1,5 @@
 ;;; -*- lisp-data -*-
 ((bbdb)
- (breadcrumb :host github :repo "joaotavora/breadcrumb")
  (cape)
  (citar)
  (color-theme-sanityinc-tomorrow)
