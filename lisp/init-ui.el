@@ -18,14 +18,14 @@
     (set-face-attribute face nil :font font :weight 'regular)))
 
 (setup emacs
-  ;; Hide scroll bar and tool bar.
-  (:option scroll-bar-mode nil
+  ;; Hide menu bar, scroll bar and tool bar.
+  ;;
+  ;; Sometimes, I'll toggle the menu bar manually when using a mode
+  ;; I'm not familiar with.  But I prefer to have it off by default to
+  ;; save space.
+  (:option menu-bar-mode nil
+           scroll-bar-mode nil
            tool-bar-mode nil)
-
-  ;; Menu bar looks ugly on Windows, since it doesn't inherit the dark
-  ;; mode, so disable it there by default.
-  (if (eq system-type 'windows-nt)
-      (:option menu-bar-mode nil))
 
   ;; Show column numbers globally.
   (:option column-number-mode t))
