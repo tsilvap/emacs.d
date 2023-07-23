@@ -18,8 +18,7 @@
  (flymake-flycheck)
  (flymake-shellcheck)
  (forge)
- (format-all :host github :repo "lassik/emacs-format-all-the-code"
-             :fork (:repo "tsilvap/emacs-format-all-the-code" :branch "develop"))
+ (format-all)
  (fullframe)
  (git-gutter-fringe)
  (git-link)
