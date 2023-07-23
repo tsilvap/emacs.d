@@ -43,6 +43,7 @@
  (org-roam-ui)
  (paredit)
  (paren-face)
+ (pinboard)
  (pyvenv)
  (restclient)
  (rg)
