@@ -51,7 +51,7 @@
     (:option org-capture-templates
              `(("i" "Inbox" entry
                 (file ,(concat org-directory "/agenda/inbox.org"))
-                "* %?")))))
+                "* %?\n%U")))))
 
 (setup org-agenda
   (:fullframe org-agenda org-agenda-quit)
