@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;; Here we define a lot of useful bindings with the "leader key"
-;; ("C-c") prefix. The "C-c l" prefix is called "local leader"
+;; ("C-c") prefix.  The "C-c l" prefix is called "local leader"
 ;; throughout this config, and is supposed to be a keymap containing
 ;; bindings that are specific/local to each major mode, whereas the
 ;; rest of the "C-c" bindings are supposed to be more general and work
@@ -88,7 +88,8 @@
   (which-key-add-key-based-replacements
     "C-c t" "toggle-prefix")
   (:gkey
-   "C-c t f" ("Flymake" . flymake-mode))
+   "C-c t f" ("Flymake" . flymake-mode)
+   "C-c t m" ("Menu bar" . menu-bar-mode))
 
   ;; <leader> v --- versioning
   (which-key-add-key-based-replacements
