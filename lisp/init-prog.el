@@ -24,7 +24,8 @@
 ;;;;; Dockerfile
 
 (setup dockerfile-ts-mode
-  (:file-match "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"))
+  (:file-match "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"
+               "\\(?:Containerfile\\(?:\\..*\\)?\\|\\.[Cc]ontainerfile\\)\\'"))
 
 ;;;;; justfile
 
