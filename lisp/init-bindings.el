@@ -89,7 +89,8 @@
     "C-c t" "toggle-prefix")
   (:gkey
    "C-c t f" ("Flymake" . flymake-mode)
-   "C-c t m" ("Menu bar" . menu-bar-mode))
+   "C-c t m" ("Menu bar" . menu-bar-mode)
+   "C-c t p" ("Electric Pair" . electric-pair-local-mode))
 
   ;; <leader> v --- versioning
   (which-key-add-key-based-replacements
