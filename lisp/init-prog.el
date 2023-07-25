@@ -27,6 +27,11 @@
   (:file-match "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"
                "\\(?:Containerfile\\(?:\\..*\\)?\\|\\.[Cc]ontainerfile\\)\\'"))
 
+;;;;; JSON
+
+(setup json-ts-mode
+  (:file-match "\\.json\\'"))
+
 ;;;;; justfile
 
 ;; See: https://just.systems/man/en/
