@@ -14,6 +14,7 @@
  (eglot)
  (embark)
  (embark-consult)
+ (emmet-mode)
  (expand-region)
  (flymake-flycheck)
  (flymake-shellcheck)

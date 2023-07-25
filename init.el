@@ -49,6 +49,7 @@
 (require 'init-python)
 (require 'init-sh)
 (require 'init-sml)
+(require 'init-web)
 (require 'init-yaml)
 
 ;; Private init file (not committed to repo).

@@ -35,42 +35,6 @@
   (:file-match "/[Jj]ustfile\\'"
                "\\.[Jj]ust\\(file\\)?\\'"))
 
-;;;;; web-mode.el: web template files
-
-;; Used to edit HTML with embed parts (CSS/JavaScript) or template
-;; blocks (like Go's `html/template', Django templates, Ruby's ERB).
-;;
-;; If needed, you can customize `web-mode-engines-alist' per-project
-;; in a .dir-locals.el file.
-(setup web-mode
-  (:file-match "\\.html?\\'"
-               "\\.phtml\\'"
-               "\\.tpl\\.php\\'"
-               "\\.[agj]sp\\'"
-               "\\.as[cp]x\\'"
-               "\\.erb\\'"
-               "\\.mustache\\'"
-               "\\.djhtml\\'")
-  (:hook
-   (lambda ()
-     (electric-pair-local-mode -1))
-
-   ;; HACK: needed to make setting web-mode engine in .dir-locals.el
-   ;; work correctly.
-   ;;
-   ;; Based on:
-   ;;   https://emacs.stackexchange.com/a/59709
-   ;;   https://www.emacswiki.org/emacs/LocalVariables#h5o-2
-   (lambda ()
-     (add-hook 'hack-local-variables-hook
-               (lambda ()
-                 (web-mode-guess-engine-and-content-type)
-                 (web-mode-buffer-fontify))
-               nil t)))
-  (:when-loaded
-    (:option web-mode-markup-indent-offset 2
-             web-mode-css-indent-offset 2
-             web-mode-code-indent-offset 2)))
 
 (provide 'init-prog)
 ;;; init-prog.el ends here
