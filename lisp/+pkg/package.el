@@ -6,20 +6,30 @@
 
 (dolist (archive '(("gnu" . "https://elpa.gnu.org/packages/")
 		   ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-		   ("melpa" . "https://melpa.org/packages/")))
+		   ("melpa" . "https://melpa.org/packages/")
+                   ("melpa-stable" . "https://stable.melpa.org/packages/")))
   (add-to-list 'package-archives archive t))
 
 ;; Prefer the built-in repos (higher number is higher priority here).
+;; We prefer MELPA over MELPA Stable; we only use the latter in
+;; specific cases.
 (setq package-archive-priorities
-      '(("elpa" . 3)
-	("nongnu" . 2)
-        ("melpa" . 1)))
+      '(("elpa" . 100)
+	("nongnu" . 10)
+        ("melpa" . 2)
+        ("melpa-stable" . 1)))
 
 (package-initialize)
 
 (cl-defmethod +pkg-ensure-package (package-recipe)
+  "Install a package, if not already installed.
+PACKAGE-RECIPE specifies the instructions to install the package:
+the only required information is the package name, but it can
+also specify a package archive, or whether to install from
+source, and so on."
   (let* ((package (car package-recipe))
-         (archive (cadr package-recipe))
+         (props (cadr package-recipe))
+         (archive (plist-get props :archive))
          (pkg (if archive
                   (seq-find (lambda (desc)
                               (string= (package-desc-archive desc) archive))

@@ -7,7 +7,7 @@
 
 ;;; Code:
 
-(defcustom +pkg-manager 'straight
+(defcustom +pkg-manager 'package
   "The package manager to be used in this config."
   :type '(choice (const :tag "package.el" package)
                  (const :tag "straight.el" straight))
