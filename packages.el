@@ -1,7 +1,9 @@
 ;;; -*- lisp-data -*-
 ((bbdb)
  (cape)
+ (cider)
  (citar)
+ (clojure-mode)
  (color-theme-sanityinc-tomorrow)
  (color-theme-sanityinc-solarized)
  (consult)

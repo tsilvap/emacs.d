@@ -38,6 +38,7 @@
 (require 'init-gnus)
 
 ;; Language support
+(require 'init-clojure)
 (require 'init-go)
 (require 'init-http)
 (require 'init-lisp)
