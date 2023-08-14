@@ -21,6 +21,8 @@
              org-catch-invisible-edits 'show-and-error
              org-clock-sound "~/Music/ding.wav"
              org-ellipsis "↴"
+             org-format-latex-options (plist-put org-format-latex-options
+                                                 :scale 1.7)
              org-hide-emphasis-markers t
              org-return-follows-link t
              org-startup-indented t
