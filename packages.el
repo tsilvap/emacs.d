@@ -24,6 +24,7 @@
  (forge)
  (format-all)
  (fullframe)
+ (geiser-guile)
  (git-gutter-fringe)
  (git-link)
  (go-mode)
