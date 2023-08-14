@@ -1,5 +1,6 @@
 ;;; -*- lisp-data -*-
-((bbdb)
+((apheleia)
+ (bbdb)
  (cape)
  (cider)
  (citar)

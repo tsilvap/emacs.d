@@ -3,10 +3,11 @@
 ;;; Code:
 
 (setup go-mode
-  ;; We use `goimports' for fixing the imports since gopls doesn't
-  ;; seem to do that.
-  (:localleader "i" goimports
-                "p" go-playground))
+  (:localleader "p" go-playground)
+  (:hook apheleia-mode
+         eglot-ensure)
+  (:local-set apheleia-formatter 'goimports
+              tab-width 4))
 
 (setup go-playground
   (:localleader "r" go-playground-rm))
