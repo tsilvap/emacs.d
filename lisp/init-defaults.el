@@ -45,6 +45,8 @@ This variable should end with a directory separator.")
 
 (setup tramp
   (:when-loaded
+    (:option tramp-default-remote-shell "/bin/bash")
+
     ;; Add the path assigned to the remote user by the remote host to
     ;; TRAMP's remote path.
     (add-to-list 'tramp-remote-path 'tramp-own-remote-path)))
