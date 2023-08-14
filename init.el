@@ -42,6 +42,7 @@
 (require 'init-clojure)
 (require 'init-go)
 (require 'init-http)
+(require 'init-javascript)
 (require 'init-lisp)
 (require 'init-ls)
 (require 'init-lua)
