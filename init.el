@@ -34,6 +34,7 @@
 (require 'init-calendar)
 (require 'init-syntax-check)
 (require 'init-treesit)
+(require 'init-eshell)
 (require 'init-irc)
 (require 'init-gnus)
 
