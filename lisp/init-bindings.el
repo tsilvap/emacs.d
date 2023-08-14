@@ -73,6 +73,7 @@
     "C-c o" "open-prefix")
   (:gkey
    "C-c o e" ("Open eshell" . eshell)
+   "C-c o o" ("Open eshell" . eshell)
    "C-c o t" ("Open shell" . shell))
 
   ;; <leader> s --- search
