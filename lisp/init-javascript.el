@@ -22,8 +22,8 @@
 
 ;;; Code:
 
-(setup typescript-ts-mode
-  (:file-match "\\.ts\\'"))
+(setup (:with-mode (typescript-ts-mode tsx-ts-mode)
+         (:hook apheleia-mode eglot-ensure)))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
