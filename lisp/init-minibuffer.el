@@ -67,9 +67,6 @@
    [remap switch-to-buffer-other-frame] consult-buffer-other-frame
    [remap bookmark-jump] consult-bookmark
    [remap project-switch-to-buffer] consult-project-buffer
-   ;; M-g bindings in `goto-map'
-   "M-g i" consult-imenu
-   "M-g I" consult-imenu-multi
    ;; M-s bindings in `search-map'
    "M-s r" consult-ripgrep
    ;; Misc
@@ -77,7 +74,32 @@
    )
   ;; Use Consult to select xref locations with preview.
   (:option xref-show-xrefs-function #'consult-xref
-           xref-show-definitions-function #'consult-xref))
+           xref-show-definitions-function #'consult-xref)
+
+  (:when-loaded
+    ;; Borrowed from:
+    ;; https://github.com/minad/consult/wiki#do-not-preview-exwm-windows-or-tramp-buffers
+    ;; (Retrieved 2023-08-17.)
+    (defun consult-buffer-state-no-tramp ()
+      "Buffer state function that doesn't preview TRAMP buffers."
+      (let ((orig-state (consult--buffer-state))
+            (filter
+             (lambda (action cand)
+               (if (and cand
+                        (or (eq action 'return)
+                            (let ((buffer (get-buffer cand)))
+                              (and buffer (not (file-remote-p
+                                                (buffer-local-value
+                                                 'default-directory
+                                                 buffer)))))))
+                   cand
+                 nil))))
+        (lambda (action cand)
+          (funcall orig-state action (funcall filter action cand)))))
+
+    (:option consult--source-buffer
+             (plist-put consult--source-buffer
+                        :state #'consult-buffer-state-no-tramp))))
 
 ;; Embark-Consult integration.
 (setup embark-consult
