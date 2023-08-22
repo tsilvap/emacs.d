@@ -21,8 +21,27 @@
    ;; modes that prefer tabs, e.g. `go-mode'.
    indent-tabs-mode nil
 
-   ;; Sentences end with two spaces.
-   sentence-end-double-space t))
+   ;; Use single space after sentences.
+   ;;
+   ;; It's standard typographic practice. Double spacing is acceptable
+   ;; in monospaced fonts, though even there single spacing is more
+   ;; common nowadays. Using double spacing only when using monospaced
+   ;; fonts is also inconvenient: you'd use double spacing in code
+   ;; comments, plain-text email, etc. but would have to switch to
+   ;; single spacing everywhere else where proportional fonts are
+   ;; used, thus making it harder to develop muscle memory.
+   ;;
+   ;; Another argument is that double spacing unambiguously determines
+   ;; the end of sentence (so sentence-selection commands work
+   ;; correctly), but that is not so. Consider:
+   ;;
+   ;;   Bob said, "I get three apples.  You get two apples.  Ok?"
+   ;;
+   ;; The first sentence is not `Bob said, "I get three apples.',
+   ;; though that's what Emacs would detect. If the goal is to
+   ;; accurately determine the end of sentences, we must use more
+   ;; sophisticated heuristics; a naïve search for `. ' won't do.
+   sentence-end-double-space nil))
 
 ;; Enable Auto-Insert mode.
 (setup autoinsert

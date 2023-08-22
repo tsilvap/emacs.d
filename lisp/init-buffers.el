@@ -1,4 +1,4 @@
-;;; init-buffers.el --- Configuration related to buffers.  -*- lexical-binding: t; -*-
+;;; init-buffers.el --- Configuration related to buffers  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

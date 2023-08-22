@@ -21,7 +21,7 @@
   ;; Hide menu bar, scroll bar and tool bar.
   ;;
   ;; Sometimes, I'll toggle the menu bar manually when using a mode
-  ;; I'm not familiar with.  But I prefer to have it off by default to
+  ;; I'm not familiar with. But I prefer to have it off by default to
   ;; save space.
   (:option menu-bar-mode nil
            scroll-bar-mode nil
