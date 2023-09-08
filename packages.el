@@ -28,6 +28,7 @@
  (git-link)
  (go-mode)
  (go-playground)
+ (graphviz-dot-mode)
  (ibuffer-vc)
  (jenkinsfile-mode)
  (json-mode)
