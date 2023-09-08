@@ -20,7 +20,6 @@
  (emmet-mode)
  (expand-region)
  (flymake-flycheck)
- (flymake-shellcheck)
  (forge)
  (format-all)
  (fullframe)
