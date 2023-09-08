@@ -99,6 +99,7 @@
   (:gkey
    "C-c v b" ("Magit blame" . magit-blame-addition)
    "C-c v B" ("Magit blame (menu)" . magit-blame)
+   "C-c v t" ("Git time machine" . git-timemachine-toggle)
    "C-c v y" ("URL to current location" . git-link)
    "C-c v Y" ("URL to current commit" . git-link-commit))
 

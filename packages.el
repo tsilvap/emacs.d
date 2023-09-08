@@ -26,6 +26,7 @@
  (geiser-guile)
  (git-gutter-fringe)
  (git-link)
+ (git-timemachine)
  (go-mode)
  (go-playground)
  (graphviz-dot-mode)
