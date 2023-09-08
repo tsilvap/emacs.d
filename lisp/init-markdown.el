@@ -11,9 +11,14 @@
                 "p" markdown-preview
                 "i c" markdown-insert-code
                 "i C" markdown-insert-gfm-code-block)
-  (:flymake-flycheck-backend markdown-mdl)
+  (:hook flymake-markdownlint-setup)
   (:when-loaded
     (:option markdown-command "pandoc")))
+
+(setup flycheck-vale
+  (flycheck-vale-setup)
+  (:with-mode markdown-mode
+    (:flymake-flycheck-backend vale)))
 
 (provide 'init-markdown)
 ;;; init-markdown.el ends here
