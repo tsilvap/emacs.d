@@ -128,7 +128,10 @@
   ;; Lazy load Org Babel libraries (ob-*.el). Taken from:
   ;;   https://gist.github.com/hlissner/14b42de71c65945f55a31b393af0391b
   (advice-add #'org-babel-confirm-evaluate
-              :after-while #'+org--babel-lazy-load-library-a))
+              :after-while #'+org--babel-lazy-load-library-a)
+
+  (:when-loaded
+    (:option org-confirm-babel-evaluate nil)))
 
 (defun +org--babel-lazy-load (lang)
   (cl-check-type lang symbol)
