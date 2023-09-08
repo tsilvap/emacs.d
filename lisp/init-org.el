@@ -48,6 +48,10 @@
   (:when-loaded
     (:option org-habit-graph-column 50)))
 
+(setup org-timer
+  (:when-loaded
+    (:option org-timer-default-timer "25:00")))
+
 (setup org-capture
   (:when-loaded
     (:option org-capture-templates
