@@ -31,7 +31,11 @@ This variable should end with a directory separator.")
    ;; Use encrypted authorization source file.
    auth-sources '("~/.authinfo.gpg")
 
+   ;; For the scratch message, see: http://paulgraham.com/todo.html
    inhibit-startup-screen t
+   initial-scratch-message
+   ";; Don't ignore your dreams; don't work too much;\n;; say what you think; cultivate friendships;\n;; be happy.\n\n"
+
    ring-bell-function 'ignore
    confirm-kill-emacs 'y-or-n-p
    help-window-select t)
