@@ -80,7 +80,11 @@
   (which-key-add-key-based-replacements
     "C-c s" "search-prefix")
   (:gkey
+   "C-c s g" ("Search in files (regexp)" . consult-ripgrep)
    "C-c s i" ("Jump to symbol" . consult-imenu)
+   "C-c s m" ("Jump to mark" . consult-mark)
+   "C-c s M" ("Jump to global mark" . consult-global-mark)
+   "C-c s o" ("Jump to outline heading" . consult-outline)
    "C-c s r" ("Ripgrep" . rg-menu)
    "C-c s s" ("Search buffer" . consult-line)
    "C-c s S" ("Search and replace (regexp)" . query-replace-regexp))
