@@ -54,11 +54,11 @@ archive, and similar information.")
 (defun +pkg-install-selected-packages ()
   "Ensure the user's selected packages they are installed."
   (interactive)
-  (let ((packages (with-temp-buffer
-		    (insert-file-contents +pkg-recipes-file)
-		    (read (current-buffer)))))
-    (dolist (pkg packages)
-      (funcall #'+pkg-ensure-package pkg))))
+  (let ((recipes (with-temp-buffer
+		   (insert-file-contents +pkg-recipes-file)
+		   (read (current-buffer)))))
+    (dolist (pkg-recipe recipes)
+      (apply #'+pkg-ensure-package pkg-recipe))))
 
 (let ((setup-file-dir
        (expand-file-name "lisp/+pkg/" user-emacs-directory)))

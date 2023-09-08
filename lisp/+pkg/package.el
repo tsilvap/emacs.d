@@ -21,21 +21,13 @@
 
 (package-initialize)
 
-(cl-defmethod +pkg-ensure-package (package-recipe)
-  "Install a package, if not already installed.
-PACKAGE-RECIPE specifies the instructions to install the package:
-the only required information is the package name, but it can
-also specify a package archive, or whether to install from
-source, and so on."
-  (let* ((package (car package-recipe))
-         (props (cadr package-recipe))
-         (archive (plist-get props :archive))
-         (pkg (if archive
-                  (seq-find (lambda (desc)
-                              (string= (package-desc-archive desc) archive))
-                            (cdr (assoc package package-archive-contents)))
-                package)))
-    (unless (package-installed-p package)
-      (package-install pkg))))
+(cl-defmethod +pkg-ensure-package (package &key vc)
+  "Install PACKAGE, if not already installed.
+If VC is not nil, install package with `package-vc', otherwise
+install it using `package'."
+  (unless (package-installed-p package)
+    (if vc
+	(package-vc-install package)
+      (package-install package))))
 
 ;;; package.el ends here
