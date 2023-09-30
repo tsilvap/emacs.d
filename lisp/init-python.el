@@ -2,5 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
+(setup python-mode
+  (:hook apheleia-mode eglot-ensure yas-minor-mode))
+
 (provide 'init-python)
 ;;; init-python.el ends here
