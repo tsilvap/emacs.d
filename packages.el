@@ -60,4 +60,6 @@
  (web-mode)
  (which-key)
  (ws-butler)
- (yaml-mode))
+ (yaml-mode)
+ (yasnippet)
+ (yasnippet-snippets))

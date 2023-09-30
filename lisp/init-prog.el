@@ -19,6 +19,11 @@
   (:hide-mode)
   (editorconfig-mode))
 
+(setup yasnippet
+  (:with-map yas-minor-mode-map
+    (:unbind "TAB")     ; TAB is already bound to `complete-symbol'
+    (:bind "C-j" yas-expand)))
+
 ;;;; Major modes for common file formats
 
 ;;;;; Dockerfile
