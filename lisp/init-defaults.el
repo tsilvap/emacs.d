@@ -2,6 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
+(defun ansi-color-apply-on-buffer ()
+  (interactive)
+  (ansi-color-apply-on-region (point-min) (point-max)))
+
 (defconst tsp/sync-directory "~/Dropbox/"
   "Directory whose contents are synchronized between my machines.
 The files in this directory are not committed to the emacs.d
