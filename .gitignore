@@ -11,9 +11,9 @@
 /eln-cache/
 /elpa/
 /eshell/
+/etc/
 /forge-database.sqlite
 /history
-/lisp/init-private.el
 /multisession/
 /network-security.data
 /org-persist/
@@ -27,4 +27,4 @@
 /transient/
 /tree-sitter/
 /url/
-/etc/
+init-private.el
