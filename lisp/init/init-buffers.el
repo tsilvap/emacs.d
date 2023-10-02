@@ -2,23 +2,21 @@
 ;;; Commentary:
 ;;; Code:
 
-(defvar tsp--alnum
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-  "String containing all the ASCII alphanumeric characters.")
+(require 'cl-lib)
 
 (defun tsp/switch-to-new-buffer ()
   "Display a new empty buffer and switch to it."
   (interactive)
-  (let ((buffer-name (format "tmp.%s"
-                             (mapconcat
-                              (lambda (x) (tsp--random-alnum))
-                              "xxxxxxxxxx" ""))))
-    (switch-to-buffer buffer-name)))
-
-(defun tsp--random-alnum ()
-  "Return a random alphanumeric character."
-  (let ((i (% (abs (random)) (length tsp--alnum))))
-    (substring tsp--alnum i (1+ i))))
+  (cl-flet
+      ((random-alnum-string (len)
+         (let* ((alnum "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+                (alnum-length (length alnum)))
+           (apply #'string
+                  (cl-loop repeat len
+                           collect (aref alnum (random alnum-length)))))))
+    (let ((buffer-name (format "tmp.%s"
+                               (random-alnum-string 10))))
+      (switch-to-buffer buffer-name))))
 
 (setup emacs
   (:global "C-c b" tsp/switch-to-new-buffer))
