@@ -7,6 +7,8 @@
         yaml-ts-mode)
   (:override-major-mode yaml-mode)
 
+  (:hook (lambda () (auto-fill-mode -1)))
+
   ;; Set `indent-line-function' to `yaml-indent-line'. Ideally this
   ;; should be set automatically by `yaml-ts-mode'... when this is
   ;; fixed we can remove this block.
