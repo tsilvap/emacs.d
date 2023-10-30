@@ -18,6 +18,10 @@ sync between machines.
 
 This variable should end with a directory separator.")
 
+(defun +os-wsl2p ()
+  "Return non-nil if Emacs is running under WSL2."
+  (string-match "microsoft-standard-WSL2" operating-system-release))
+
 (setup emacs
   (:global
    "M-o" other-window
@@ -49,7 +53,10 @@ This variable should end with a directory separator.")
 
   ;; Enable some useful commands.
   (put 'erase-buffer 'disabled nil)
-  (put 'set-goal-column 'disabled nil))
+  (put 'set-goal-column 'disabled nil)
+
+  (when (+os-wsl2p)
+    (exec-path-from-shell-initialize)))
 
 (setup tramp
   (:when-loaded

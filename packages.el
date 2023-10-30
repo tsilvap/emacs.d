@@ -18,6 +18,7 @@
  (embark)
  (embark-consult)
  (emmet-mode)
+ (exec-path-from-shell)
  (expand-region)
  (flycheck-vale)
  (flymake-flycheck)
