@@ -55,6 +55,7 @@
  (rg)
  (setup)
  (sml-mode)
+ (sqlformat)
  (sudo-edit)
  (vertico)
  (web-mode)
