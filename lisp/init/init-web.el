@@ -37,7 +37,8 @@
                "\\.as[cp]x\\'"
                "\\.erb\\'"
                "\\.mustache\\'"
-               "\\.djhtml\\'")
+               "\\.djhtml\\'"
+               "\\.j2\\'")
   (:hook
    (lambda ()
      (electric-pair-local-mode -1))
