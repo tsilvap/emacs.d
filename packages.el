@@ -23,6 +23,7 @@
  (flycheck-vale)
  (flymake-flycheck)
  (flymake-markdownlint)
+ (flymake-yamllint)
  (forge)
  (format-all)
  (fullframe)
