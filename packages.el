@@ -38,6 +38,7 @@
  (jenkinsfile-mode)
  (json-mode)
  (just-mode)
+ (know-your-http-well)
  (lua-mode)
  (magit)
  (marginalia)
