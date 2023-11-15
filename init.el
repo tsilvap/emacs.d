@@ -53,6 +53,7 @@
 (require 'init-python)
 (require 'init-sh)
 (require 'init-sml)
+(require 'init-sql)
 (require 'init-web)
 (require 'init-yaml)
 
