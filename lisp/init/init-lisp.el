@@ -34,6 +34,10 @@
 (setup sly
   (:require sly-autoloads))
 
+(setup sly-mrepl
+  (:bind "RET" default-indent-new-line
+         "C-j" sly-mrepl-return))
+
 (defvar +cl--cookbook-pages-alist
   (with-temp-buffer
     (insert-file-contents (locate-user-emacs-file
