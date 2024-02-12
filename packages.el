@@ -57,6 +57,8 @@
  (restclient)
  (rg)
  (setup)
+ (sly)
+ (sly-asdf)
  (sml-mode)
  (sqlformat)
  (sudo-edit)
