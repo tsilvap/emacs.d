@@ -28,7 +28,7 @@
 ;;;; Common Lisp
 
 (setup lisp-mode
-  (:localleader "c" ("Open CL Cookbook" . +cl-browse-cookbook))
+  (:localleader "o c" ("Open CL Cookbook" . +cl-browse-cookbook))
   (:option inferior-lisp-program "sbcl"))
 
 (setup sly
