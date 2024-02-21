@@ -13,6 +13,18 @@ PREFIX is added to the end of the directory name, if provided."
     (make-directory ad-hoc-directory-name t)
     (find-file ad-hoc-directory-name)))
 
+;;; Based on `project-find-file's implementation.
+(defun tsp/find-file-in-emacs-config ()
+  "Search for a file in `user-emacs-directory'."
+  (interactive)
+  (let* ((pr (project-current t user-emacs-directory))
+         (root (project-root pr))
+         (dirs (list root)))
+    (project-find-file-in
+     (or (thing-at-point 'filename)
+         (and buffer-file-name (file-relative-name buffer-file-name root)))
+     dirs pr)))
+
 (setup emacs
   ;; Make backup files (Emacs does this by default), with some better
   ;; behavior.

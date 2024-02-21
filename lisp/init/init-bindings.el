@@ -40,7 +40,8 @@
   (:gkey
    "C-c f d" ("Create ad hoc directory" . tsp/create-ad-hoc-directory)
    "C-c f r" ("Rename this file" . rename-visited-file)
-   "C-c f m" ("Rename/move this file" . rename-visited-file))
+   "C-c f m" ("Rename/move this file" . rename-visited-file)
+   "C-c f p" ("Find file in personal config" . tsp/find-file-in-emacs-config))
 
   ;; <leader> n --- notes
   (which-key-add-key-based-replacements
