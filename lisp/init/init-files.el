@@ -54,5 +54,9 @@ PREFIX is added to the end of the directory name, if provided."
   ;; expect to see a lockfile.
   (:option create-lockfiles nil))
 
+(setup treemacs
+  (:global "<f9>" treemacs
+           "<C-f9>" treemacs-find-file))
+
 (provide 'init-files)
 ;;; init-files.el ends here

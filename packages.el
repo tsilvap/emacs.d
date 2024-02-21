@@ -62,6 +62,7 @@
  (sml-mode)
  (sqlformat)
  (sudo-edit)
+ (treemacs)
  (vertico)
  (web-mode)
  (which-key)
