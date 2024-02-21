@@ -8,6 +8,7 @@
   ;; Remap `cperl-indent-command' to `indent-for-tab-command', which
   ;; respects the value of `tab-always-indent'.
   (:bind [remap cperl-indent-command] indent-for-tab-command)
+  (:documentation-handler cperl-perldoc)
 
   (:localleader "o" flymake-perlcritic-browse-policy)
   (:face cperl-array-face ((t (:inherit font-lock-variable-name-face :foreground "#57aff6" :weight bold)))
