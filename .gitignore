@@ -1,6 +1,7 @@
 /.cache/
 /.emacs.desktop
 /.emacs.desktop.lock
+/.lsp-session-v1
 /.mc-lists.el
 /.org-id-locations
 /anaconda-mode/
@@ -13,6 +14,7 @@
 /elpa/
 /eshell/
 /etc/
+/forge-database-*.sqlite
 /forge-database.sqlite
 /history
 /multisession/
@@ -27,5 +29,6 @@
 /tramp
 /transient/
 /tree-sitter/
+/tutorial/
 /url/
 init-private.el
