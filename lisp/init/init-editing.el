@@ -3,9 +3,9 @@
 ;;; Code:
 
 (setup emacs
-  ;; Enable automatic line breaking in text modes.
-  (:with-mode auto-fill-mode
-    (:hook-into text-mode))
+  ;; Enable visual-fill-column-mode in text modes.
+  (:with-mode text-mode
+    (:hook visual-line-mode visual-fill-column-mode))
 
   ;; Typed text replaces the selection if the selection is active,
   ;; pressing delete or backspace deletes the selection.

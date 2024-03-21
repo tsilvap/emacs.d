@@ -64,6 +64,7 @@
  (sudo-edit)
  (treemacs)
  (vertico)
+ (visual-fill-column)
  (web-mode)
  (which-key)
  (ws-butler)
