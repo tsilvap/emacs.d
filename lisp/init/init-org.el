@@ -19,7 +19,7 @@
     ;; Basic configuration.
     (:option org-auto-align-tags nil
              org-catch-invisible-edits 'show-and-error
-             org-clock-sound "~/Music/ding.wav"
+             org-clock-sound "~/music/ding.wav"
              org-ellipsis "↴"
              org-format-latex-options (plist-put org-format-latex-options
                                                  :scale 1.7)

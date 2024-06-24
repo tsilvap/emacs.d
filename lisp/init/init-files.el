@@ -7,7 +7,7 @@
 PREFIX is added to the end of the directory name, if provided."
   (interactive "MPrefix: ")
   (let ((ad-hoc-directory-name
-         (concat "~/Misc/adhoc/"
+         (concat "~/misc/adhoc/"
                  (format-time-string "%Y-%m-%d-%H%M%S" (current-time))
                  (when prefix (concat "-" prefix)))))
     (make-directory ad-hoc-directory-name t)
