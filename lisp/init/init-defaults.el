@@ -22,6 +22,11 @@ This variable should end with a directory separator.")
   "Return non-nil if Emacs is running under WSL2."
   (string-match "microsoft-standard-WSL2" operating-system-release))
 
+;; exec-path-from-shell -- Load environment variables from the user's
+;; shell.
+(when (display-graphic-p)
+  (exec-path-from-shell-initialize))
+
 (setup emacs
   (:global
    "M-o" other-window
