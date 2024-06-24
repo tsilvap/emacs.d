@@ -217,15 +217,5 @@ If REVERSE, then skip subtree unless it has next actions."
   (:option deft-use-filename-as-title t
            deft-recursive t))
 
-;;;; org-journal --- Journaling in Emacs.
-
-(setup org-journal
-  (:after-init 10
-    (:option org-journal-dir (concat org-directory "/journal")))
-  (:when-loaded
-    (:option org-journal-carryover-items "TODO=\"TODO\"|TODO=\"NEXT\""
-             org-journal-enable-agenda-integration t
-             org-journal-file-format "%Y%m%d.org")))
-
 (provide 'init-org)
 ;;; init-org.el ends here

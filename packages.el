@@ -48,7 +48,6 @@
  (nginx-mode)
  (ob-go)
  (orderless)
- (org-journal)
  (org-roam)
  (org-roam-ui)
  (paredit)

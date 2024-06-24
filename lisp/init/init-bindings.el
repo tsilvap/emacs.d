@@ -52,14 +52,6 @@
    "C-c n l" ("Org store link" . org-store-link)
    "C-c n n" ("Org capture" . org-capture))
 
-  ;; <leader> n j --- notes > journal
-  (which-key-add-key-based-replacements
-    "C-c n j" "notes-journal-prefix")
-  (:gkey
-   "C-c n j j" ("New entry" . org-journal-new-entry)
-   "C-c n j J" ("New scheduled entry" . org-journal-new-scheduled-entry)
-   "C-c n j s" ("Search forever" . org-journal-search-forever))
-
   ;; <leader> n r --- notes > roam
   (which-key-add-key-based-replacements
     "C-c n r" "notes-roam-prefix")
