@@ -191,6 +191,10 @@ If REVERSE, then skip subtree unless it has next actions."
         :target (file+head "main/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
         :immediate-finish t
         :unnarrowed t)
+       ("p" "projects" plain "%?"
+        :target (file+head "projects/${title}.org" "#+title: ${title}\n")
+        :immediate-finish t
+        :unnarrowed t)
        ("r" "reference" plain "%?"
         :target (file+head "reference/${title}.org" "#+title: ${title}\n")
         :immediate-finish t
