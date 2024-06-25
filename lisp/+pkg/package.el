@@ -25,7 +25,8 @@
   "Install PACKAGE, if not already installed.
 If VC is not nil, install package with `package-vc', otherwise
 install it using `package'."
-  (unless (package-installed-p package)
+  (when (or (not (package-installed-p package))
+            (package-built-in-p package))
     (if vc
 	(package-vc-install package)
       (package-install package))))
