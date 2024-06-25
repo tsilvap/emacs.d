@@ -65,6 +65,7 @@
   (which-key-add-key-based-replacements
     "C-c o" "open-prefix")
   (:gkey
+   "C-c o d" ("Open shortdoc" . shortdoc-display-group)
    "C-c o e" ("Open eshell" . eshell)
    "C-c o o" ("Open eshell" . eshell)
    "C-c o t" ("Open shell" . shell))
