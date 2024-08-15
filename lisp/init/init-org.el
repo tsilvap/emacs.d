@@ -188,15 +188,19 @@ If REVERSE, then skip subtree unless it has next actions."
     (:option
      org-roam-capture-templates
      '(("m" "main" plain "%?"
-        :target (file+head "main/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+        :target (file+head "main/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %t\n")
         :immediate-finish t
         :unnarrowed t)
        ("p" "projects" plain "%?"
-        :target (file+head "projects/${title}.org" "#+title: ${title}\n")
+        :target (file+head "projects/${slug}.org" "#+title: ${title}\n#+date: %t\n")
         :immediate-finish t
         :unnarrowed t)
        ("r" "reference" plain "%?"
-        :target (file+head "reference/${title}.org" "#+title: ${title}\n")
+        :target (file+head "reference/${slug}.org" "#+title: ${title}\n#+date: %t\n")
+        :immediate-finish t
+        :unnarrowed t)
+       ("t" "troubleshoot" plain "%?"
+        :target (file+head "troubleshoot/${slug}.org" "#+title: ${title}\n#+date: %t\n")
         :immediate-finish t
         :unnarrowed t)))
 
