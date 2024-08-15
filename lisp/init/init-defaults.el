@@ -96,6 +96,7 @@ This variable should end with a directory separator.")
 
 ;;; envrc
 (setup envrc
+  (:hide-mode)
   (:with-hook after-init-hook
     (:hook envrc-global-mode)))
 
