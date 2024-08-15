@@ -94,5 +94,10 @@ This variable should end with a directory separator.")
   (dolist (command '(winner-undo winner-redo))
     (put command 'repeat-map 'winner-repeat-map)))
 
+;;; envrc
+(setup envrc
+  (:with-hook after-init-hook
+    (:hook envrc-global-mode)))
+
 (provide 'init-defaults)
 ;;; init-defaults.el ends here

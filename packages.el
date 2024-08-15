@@ -18,6 +18,7 @@
  (embark)
  (embark-consult)
  (emmet-mode)
+ (envrc)
  (ess)
  (exec-path-from-shell)
  (expand-region)
