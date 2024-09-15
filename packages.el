@@ -1,5 +1,6 @@
 ;;; -*- lisp-data -*-
-((apheleia)
+((ahk-mode)
+ (apheleia)
  (bbdb)
  (cape)
  (cider)
