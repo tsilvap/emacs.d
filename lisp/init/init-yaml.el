@@ -13,6 +13,8 @@
   (:hook #'flymake-yamllint-setup
          (lambda () (auto-fill-mode -1)))
 
+  (:file-match "\\.bu\\'")  ; Butane files (Fedora CoreOS config transpiler)
+
   ;; Set `indent-line-function' to `yaml-indent-line'. Ideally this
   ;; should be set automatically by `yaml-ts-mode'... when this is
   ;; fixed we can remove this block.
