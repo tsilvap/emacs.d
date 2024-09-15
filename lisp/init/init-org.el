@@ -62,7 +62,8 @@
 (setup org-agenda
   (:fullframe org-agenda org-agenda-quit)
   (:when-loaded
-    (:option org-agenda-files (list (concat org-directory "/agenda/"))
+    (:option org-agenda-files (list (concat org-directory "/agenda/")
+                                    (concat org-roam-directory "/projects/"))
              org-agenda-compact-blocks t
              org-agenda-include-diary t
              org-agenda-start-on-weekday nil
@@ -80,10 +81,10 @@
 	       ((org-agenda-overriding-header "Inbox")))
          (tags-todo "personal+TODO=\"NEXT\""
                     ((org-agenda-overriding-header "Next Actions")))
-         (tags-todo "personal+TODO=\"PROJECT\""
+         (tags-todo "-someday+TODO=\"PROJECT\""
                     ((org-agenda-overriding-header "Projects")
                      (org-agenda-skip-function '+org--skip-subtree-if-stuck)))
-         (tags-todo "personal+TODO=\"PROJECT\""
+         (tags-todo "-someday+TODO=\"PROJECT\""
                     ((org-agenda-overriding-header "Stuck Projects")
                      (org-agenda-skip-function '+org--skip-subtree-unless-stuck)))
          (tags-todo "personal+TODO=\"WAITING\""
