@@ -38,7 +38,8 @@
                "\\.erb\\'"
                "\\.mustache\\'"
                "\\.djhtml\\'"
-               "\\.j2\\'")
+               "\\.j2\\'"
+               "\\.tmpl\\'")
   (:hook
    (lambda ()
      (electric-pair-local-mode -1))
