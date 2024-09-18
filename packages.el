@@ -24,6 +24,7 @@
  (exec-path-from-shell)
  (expand-region)
  (flycheck-vale)
+ (flymake-eslint)
  (flymake-flycheck)
  (flymake-markdownlint)
  (flymake-yamllint)

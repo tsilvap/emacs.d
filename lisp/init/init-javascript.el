@@ -29,5 +29,15 @@
   (:with-mode (typescript-ts-mode tsx-ts-mode)
     (:hook apheleia-mode eglot-ensure)))
 
+(setup flymake-eslint
+  ;; https://github.com/orzechowskid/flymake-eslint/issues/23#issuecomment-1675481378
+  (:with-mode (eglot-managed-mode)
+    (:hook (lambda ()
+             (when (derived-mode-p 'typescript-ts-mode 'web-mode 'js-mode)
+               (flymake-eslint-enable)))))
+
+  (:option flymake-eslint-defer-binary-check t
+           flymake-eslint-prefer-json-diagnostics t))
+
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
