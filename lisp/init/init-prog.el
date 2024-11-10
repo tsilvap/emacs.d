@@ -2,49 +2,56 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup project
+(use-package project
+  :defer t
   ;; Load magit-extras, which contains a hook that adds Magit to
   ;; `project-switch-commands'. That way, "Magit" always shows up when
   ;; running `project-switch-project'.
-  (:also-load magit-extras))
+  :config
+  (require 'magit-extras nil t))
 
-(setup bug-reference
-  (:hook-into text-mode)
-  (:with-mode bug-reference-prog-mode
-    (:hook-into prog-mode))
-  (:with-map bug-reference-map
-    (:bind "C-c C-o" bug-reference-push-button)))
+(use-package bug-reference
+  :hook ((text-mode . bug-reference-mode)
+         (prog-mode . bug-reference-prog-mode))
+  :bind (:map bug-reference-map
+              ("C-c C-o" . bug-reference-push-button)))
 
-(setup editorconfig
-  (:hide-mode)
+(use-package eglot
+  :hook ((typescript-ts-mode python-mode go-mode) . eglot-ensure)
+  :init
+  (setq-default eglot-workspace-configuration
+                '(:yaml (:keyOrdering nil))))
+
+(use-package yasnippet
+  :hook ((typescript-ts-mode python-mode go-mode) . yas-minor-mode)
+  :config
+  (define-key yas-minor-mode-map "TAB" nil) ; TAB is already bound to `complete-symbol'
+  (define-key yas-minor-mode-map "C-j" #'yas-expand))
+
+(use-package editorconfig
+  :diminish editorconfig-mode
+  :config
   (editorconfig-mode))
 
-(setup yasnippet
-  (:with-map yas-minor-mode-map
-    (:unbind "TAB")     ; TAB is already bound to `complete-symbol'
-    (:bind "C-j" yas-expand)))
+;;; Major modes for common file formats
 
-;;;; Major modes for common file formats
+;;;; Dockerfile
 
-;;;;; Dockerfile
+(use-package dockerfile-ts-mode
+  :mode ("\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"
+         "\\(?:Containerfile\\(?:\\..*\\)?\\|\\.[Cc]ontainerfile\\)\\'"))
 
-(setup dockerfile-ts-mode
-  (:file-match "\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"
-               "\\(?:Containerfile\\(?:\\..*\\)?\\|\\.[Cc]ontainerfile\\)\\'"))
+;;;; JSON
 
-;;;;; JSON
+(use-package json-ts-mode
+  :mode "\\.json\\'")
 
-(setup json-ts-mode
-  (:file-match "\\.json\\'"))
-
-;;;;; justfile
+;;;; justfile
 
 ;; See: https://just.systems/man/en/
-(setup just-mode
-  (:commands just-mode)
-  (:file-match "/[Jj]ustfile\\'"
-               "\\.[Jj]ust\\(file\\)?\\'"))
-
+(use-package just-mode
+  :mode ("/[Jj]ustfile\\'"
+         "\\.[Jj]ust\\(file\\)?\\'"))
 
 (provide 'init-prog)
 ;;; init-prog.el ends here

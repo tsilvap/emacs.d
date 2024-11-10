@@ -25,38 +25,36 @@ PREFIX is added to the end of the directory name, if provided."
          (and buffer-file-name (file-relative-name buffer-file-name root)))
      dirs pr)))
 
-(setup emacs
-  ;; Make backup files (Emacs does this by default), with some better
-  ;; behavior.
-  (:option
-   make-backup-files t
+;; Make backup files (Emacs does this by default), with some better
+;; behavior.
+(setopt
+ make-backup-files t
 
-   ;; Create backups by copying, to avoid changing the owner/group of
-   ;; the file, and to avoid making soft/hard links point to the
-   ;; backup file.
-   backup-by-copying t
+ ;; Create backups by copying, to avoid changing the owner/group of
+ ;; the file, and to avoid making soft/hard links point to the backup
+ ;; file.
+ backup-by-copying t
 
-   ;; Keep all backup files in a single directory, rather than
-   ;; littering the filesystem. Put Tramp backup files in that
-   ;; directory too.
-   backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
-   tramp-backup-directory-alist backup-directory-alist
+ ;; Keep all backup files in a single directory, rather than littering
+ ;; the filesystem. Put Tramp backup files in that directory too.
+ backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
+ tramp-backup-directory-alist backup-directory-alist
 
-   ;; Make numbered backup files, and delete excess backup files
-   ;; silenty.
-   version-control t
-   kept-new-versions 5
-   kept-old-versions 5
-   delete-old-versions t)
+ ;; Make numbered backup files, and delete excess backup files
+ ;; silenty.
+ version-control t
+ kept-new-versions 5
+ kept-old-versions 5
+ delete-old-versions t)
 
-  ;; Disable lockfiles. They're not that useful in a single-user
-  ;; system, and they cause some minor issues with programs that don't
-  ;; expect to see a lockfile.
-  (:option create-lockfiles nil))
+;; Disable lockfiles. They're not that useful in a single-user system,
+;; and they cause some minor issues with programs that don't expect to
+;; see a lockfile.
+(setopt create-lockfiles nil)
 
-(setup treemacs
-  (:global "<f9>" treemacs
-           "<C-f9>" treemacs-find-file))
+(use-package treemacs
+  :bind (("<f9>" . treemacs)
+         ("<C-f9>" . treemacs-find-file)))
 
 (provide 'init-files)
 ;;; init-files.el ends here

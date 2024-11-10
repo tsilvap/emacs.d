@@ -2,15 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup sml-mode
-  (:localleader
-   "'" run-sml                          ; run SML
-   "e b" sml-prog-proc-send-buffer      ; run buffer
-   "e f" sml-send-function              ; run paragraph
-   "e r" sml-prog-proc-send-region      ; run region
-   )
-  (:when-loaded
-    (:option sml-program-name "sml")))
+(use-package sml-mode
+  :bind (:map sml-mode-map
+              ("C-c l '" . run-sml)                     ; run SML
+              ("C-c l e b" . sml-prog-proc-send-buffer) ; run buffer
+              ("C-c l e f" . sml-send-function)         ; run paragraph
+              ("C-c l e r" . sml-prog-proc-send-region) ; run region
+              )
+  :custom
+  (sml-program-name "sml"))
 
 (provide 'init-sml)
 ;;; init-sml.el ends here

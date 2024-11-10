@@ -2,10 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup flymake
-  (:bind "M-n" flymake-goto-next-error
-         "M-p" flymake-goto-prev-error)
-  (:hook-into prog-mode text-mode))
+(use-package flymake
+  :hook (prog-mode text-mode)
+  :bind (("M-n" . flymake-goto-next-error)
+         ("M-p" . flymake-goto-prev-error)))
 
 ;; Mark expression to remove `elisp-flymake-byte-compile' hook as
 ;; safe. We use this to disable byte-compiler warnings in ~/.emacs.d/

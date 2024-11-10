@@ -2,9 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup (:require restclient))
+(use-package restclient
+  :defer t)
 
-(setup know-your-http-well)
+(use-package know-your-http-well)
 
 (provide 'init-http)
 ;;; init-http.el ends here

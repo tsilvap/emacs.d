@@ -2,41 +2,48 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup paredit
-  (:with-function enable-paredit-mode
-    ;; NOTE: `emacs-lisp-mode' inherits from `lisp-data-mode'.
-    (:hook-into lisp-data-mode-hook scheme-mode-hook))
-
+(use-package paredit
+  ;; NOTE: `emacs-lisp-mode' inherits from `lisp-data-mode'.
+  :hook ((lisp-data-mode scheme-mode) . enable-paredit-mode)
+  :config
   ;; By default, C-j runs `print-eval-last-sexp' in Lisp Interaction
   ;; mode, but Paredit overrides this binding to run `paredit-C-j'.
   ;;
   ;; Here, we restore the C-j binding in Lisp Interaction mode. See:
   ;; https://emacsredux.com/blog/2013/09/25/removing-key-bindings-from-minor-mode-keymaps/
-  (:with-mode lisp-interaction-mode
-    (:hook (lambda ()
-             (let ((old-map (cdr (assoc 'paredit-mode minor-mode-map-alist)))
-                   (new-map (make-sparse-keymap)))
-               (set-keymap-parent new-map old-map)
-               (define-key new-map (kbd "C-j") nil)
-               (make-local-variable 'minor-mode-overriding-map-alist)
-               (push `(paredit-mode . ,new-map) minor-mode-overriding-map-alist))))))
+  (add-hook 'lisp-interaction-mode-hook
+            (lambda ()
+              (let ((old-map (cdr (assoc 'paredit-mode minor-mode-map-alist)))
+                    (new-map (make-sparse-keymap)))
+                (set-keymap-parent new-map old-map)
+                (define-key new-map (kbd "C-j") nil)
+                (make-local-variable 'minor-mode-overriding-map-alist)
+                (push `(paredit-mode . ,new-map) minor-mode-overriding-map-alist)))))
 
-(setup paren-face
-  (:face parenthesis ((t (:inherit shadow))))
+(use-package paren-face
+  :init
+  (custom-set-faces '(parenthesis ((t (:inherit shadow)))))
+  :config
   (global-paren-face-mode))
 
 ;;;; Common Lisp
 
-(setup lisp-mode
-  (:localleader "o c" ("Open CL Cookbook" . +cl-browse-cookbook))
-  (:option inferior-lisp-program "sbcl"))
+(use-package lisp-mode
+  :bind (:map lisp-mode-map
+              ("C-c l o c" . tsp/sh-shellcheck-browse-description))
+  :custom
+  (inferior-lisp-program "sbcl"))
 
-(setup sly
-  (:require sly-autoloads))
+(use-package sly
+  :defer t
+  :config
+  (require 'sly-autoloads nil t))
 
-(setup sly-mrepl
-  (:bind "RET" default-indent-new-line
-         "C-j" sly-mrepl-return))
+(use-package sly-mrepl
+  :defer t
+  :bind (:map sly-mrepl-mode-map
+              ("RET" . default-indent-new-line)
+              ("C-j" . sly-mrepl-return)))
 
 (defvar +cl--cookbook-pages-alist
   (with-temp-buffer

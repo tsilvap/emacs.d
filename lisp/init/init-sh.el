@@ -2,11 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup sh-script
-  (:with-mode sh-mode
-    (:file-match "\\.bashrc\\'")
-    (:localleader "o" tsp/sh-shellcheck-browse-description)))
-
 (defun tsp/sh-shellcheck-browse-description (code)
   "Open the description page of a Shellcheck diagnostic.
 CODE is the code of the diagnostic, for example, \"SC1118\"."
@@ -25,6 +20,11 @@ CODE is the code of the diagnostic, for example, \"SC1118\"."
                                (when msgs-at-point
                                  (car msgs-at-point))))))))
   (browse-url (format "https://www.shellcheck.net/wiki/%s" code)))
+
+(use-package sh-script
+  :mode ("\\.bashrc\\'" . sh-mode)
+  :bind (:map sh-mode-map
+              ("C-c l o" . tsp/sh-shellcheck-browse-description)))
 
 (provide 'init-sh)
 ;;; init-sh.el ends here

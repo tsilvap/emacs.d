@@ -27,56 +27,57 @@ This variable should end with a directory separator.")
 (when (display-graphic-p)
   (exec-path-from-shell-initialize))
 
-(setup emacs
-  (:global
-   "M-o" other-window
+;; An easier alias for `other-window'.
+(keymap-global-set "M-o" #'other-window)
 
-   ;; Less confusing alternatives for `upcase-region' and
-   ;; `downcase-region'.
-   [remap upcase-region] upcase-dwim
-   [remap downcase-region] downcase-dwim)
+;; Less confusing alternatives for `upcase-region' and
+;; `downcase-region'.
+(keymap-global-set "<remap> <upcase-region>" #'upcase-dwim)
+(keymap-global-set "<remap> <downcase-region>" #'downcase-dwim)
 
-  (:option
-   ;; Basic user information.
-   user-full-name "<your-full-name>"
-   user-mail-address "<your-mail-address>"
+(setopt
+ ;; Basic user information.
+ user-full-name "<your-full-name>"
+ user-mail-address "<your-mail-address>"
 
-   ;; Use encrypted authorization source file.
-   auth-sources '("~/.authinfo.gpg")
+ ;; Use encrypted authorization source file.
+ auth-sources '("~/.authinfo.gpg")
 
-   ;; For the scratch message, see: http://paulgraham.com/todo.html
-   inhibit-startup-screen t
-   initial-scratch-message
-   ";; Don't ignore your dreams; don't work too much;\n;; say what you think; cultivate friendships;\n;; be happy.\n\n"
+ ;; For the scratch message, see: http://paulgraham.com/todo.html
+ inhibit-startup-screen t
+ initial-scratch-message
+ ";; Don't ignore your dreams; don't work too much;\n;; say what you think; cultivate friendships;\n;; be happy.\n\n"
 
-   ring-bell-function 'ignore
-   confirm-kill-emacs 'y-or-n-p
-   help-window-select t)
+ ring-bell-function 'ignore
+ confirm-kill-emacs 'y-or-n-p
+ help-window-select t)
 
-  ;; Make UTF-8 the default coding system.
-  (set-language-environment "UTF-8")
+;; Make UTF-8 the default coding system.
+(set-language-environment "UTF-8")
 
-  ;; Enable some useful commands.
-  (put 'erase-buffer 'disabled nil)
-  (put 'set-goal-column 'disabled nil)
+;; Enable some useful commands.
+(put 'erase-buffer 'disabled nil)
+(put 'set-goal-column 'disabled nil)
 
-  (when (+os-wsl2p)
-    (exec-path-from-shell-initialize)))
+(when (+os-wsl2p)
+  (exec-path-from-shell-initialize))
 
-(setup tramp
-  (:when-loaded
-    (:option tramp-default-remote-shell "/bin/bash")
+(use-package tramp
+  :config
+  (setq tramp-default-remote-shell "/bin/bash")
 
-    ;; Add the path assigned to the remote user by the remote host to
-    ;; TRAMP's remote path.
-    (add-to-list 'tramp-remote-path 'tramp-own-remote-path)))
+  ;; Add the path assigned to the remote user by the remote host to
+  ;; TRAMP's remote path.
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 ;; Enable repeatable commands.
-(setup repeat
+(use-package repeat
+  :config
   (repeat-mode))
 
 ;; Undo and redo changes to window layout.
-(setup winner
+(use-package winner
+  :config
   (winner-mode)
 
   ;; Create repeating map for Winner Mode.
@@ -95,10 +96,9 @@ This variable should end with a directory separator.")
     (put command 'repeat-map 'winner-repeat-map)))
 
 ;;; envrc
-(setup envrc
-  (:hide-mode)
-  (:with-hook after-init-hook
-    (:hook envrc-global-mode)))
+(use-package envrc
+  :diminish envrc-mode
+  :hook (after-init . envrc-global-mode))
 
 (provide 'init-defaults)
 ;;; init-defaults.el ends here

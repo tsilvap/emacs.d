@@ -22,8 +22,10 @@
 
 ;;; Code:
 
-(setup clojure-mode
-  (:hook enable-paredit-mode))
+(use-package clojure-mode
+  :defer t
+  :config
+  (add-hook 'clojure-mode #'enable-paredit-mode))
 
 (provide 'init-clojure)
 ;;; init-clojure.el ends here

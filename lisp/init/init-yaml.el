@@ -2,33 +2,33 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup (:and
-        (+treesit-language-available-p 'yaml)
-        yaml-ts-mode)
-  (:override-major-mode yaml-mode)
+;; (setup (:and
+;;         (+treesit-language-available-p 'yaml)
+;;         yaml-ts-mode)
+;;   (:override-major-mode yaml-mode)
 
-  (:hook (lambda ()
-           (visual-line-mode -1)
-           (visual-fill-column-mode -1)))
-  (:hook #'flymake-yamllint-setup
-         (lambda () (auto-fill-mode -1)))
+;;   (:hook (lambda ()
+;;            (visual-line-mode -1)
+;;            (visual-fill-column-mode -1)))
+;;   (:hook #'flymake-yamllint-setup
+;;          (lambda () (auto-fill-mode -1)))
 
-  (:file-match "\\.bu\\'")  ; Butane files (Fedora CoreOS config transpiler)
+;;   (:file-match "\\.bu\\'")  ; Butane files (Fedora CoreOS config transpiler)
 
-  ;; Set `indent-line-function' to `yaml-indent-line'. Ideally this
-  ;; should be set automatically by `yaml-ts-mode'... when this is
-  ;; fixed we can remove this block.
-  (:also-load yaml-mode)
-  (:hook (lambda ()
-           (setq-local indent-line-function #'yaml-indent-line))))
+;;   ;; Set `indent-line-function' to `yaml-indent-line'. Ideally this
+;;   ;; should be set automatically by `yaml-ts-mode'... when this is
+;;   ;; fixed we can remove this block.
+;;   (:also-load yaml-mode)
+;;   (:hook (lambda ()
+;;            (setq-local indent-line-function #'yaml-indent-line))))
 
 ;;; Ansible
 
-(setup ansible
-  (:with-map ansible-key-map
-    (:documentation-handler tsp/ansible-browse-documentation))
-  (:with-hook ansible-hook
-    (:hook #'ansible-remove-font-lock)))
+(use-package ansible
+  :bind (:map ansible-key-map
+              ("C-c c k" . tsp/ansible-browse-documentation))
+  :config
+  (add-hook 'ansible-hook #'ansible-remove-font-lock))
 
 (defun +ansible-bounds-of-rule-at-point ()
   "Return a cons cell containing the start and end of the Ansible rule at point."

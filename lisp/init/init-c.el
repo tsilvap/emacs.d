@@ -22,12 +22,13 @@
 
 ;;; Code:
 
-(setup c-ts-mode
-  (:hook indent-tabs-mode)
-  (:when-loaded
-    (:option c-ts-mode-indent-offset 4
-             c-ts-mode-indent-style 'k&r
-             tab-width 4)))
+(use-package c-ts-mode
+  :custom
+  (c-ts-mode-indent-offset 4)
+  (c-ts-mode-indent-style 'k&r)
+  (tab-width 4)
+  :config
+  (add-hook 'c-ts-mode-hook #'indent-tabs-mode))
 
 (provide 'init-c)
 ;;; init-c.el ends here

@@ -1,10 +1,6 @@
 ;;; init.el --- Emacs init file                      -*- lexical-binding: t; -*-
 ;;; Commentary:
 
-;; We use setup.el[1] for configuring most packages and options.
-;;
-;; [1]: https://www.emacswiki.org/emacs/SetupEl
-
 ;;; Code:
 
 ;;;; Store customizations managed by Custom in a separate file.
@@ -19,7 +15,6 @@
     (normal-top-level-add-subdirs-to-load-path)))
 
 (require 'init-package)
-(require 'init-setup)
 (require 'init-ui)
 (require 'init-bindings)
 (require 'init-defaults)
@@ -45,7 +40,6 @@
 (require 'init-http)
 (require 'init-javascript)
 (require 'init-lisp)
-(require 'init-ls)
 (require 'init-lua)
 (require 'init-markdown)
 (require 'init-org)

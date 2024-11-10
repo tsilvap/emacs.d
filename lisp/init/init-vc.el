@@ -2,18 +2,20 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup vc
+(use-package vc
+  :custom
   ;; Follow symlinks to files under VC without asking.
-  (:option vc-follow-symlinks t))
+  (vc-follow-symlinks t))
 
-(setup magit
-  (:also-load forge)
-  (:global "C-c g" magit-file-dispatch)
-  (:fullframe (magit-status magit-project-status)
-              magit-mode-bury-buffer)
-  (:when-loaded
-    (:option magit-diff-refine-hunk t
-             magit-no-confirm '(trash set-and-push))))
+(use-package magit
+  :defer t
+  :bind ("C-c g" . magit-file-dispatch)
+  :custom
+  (magit-diff-refine-hunk t)
+  (magit-no-confirm '(trash set-and-push))
+  :config
+  (fullframe magit-status magit-mode-bury-buffer)
+  (fullframe magit-project-status magit-mode-bury-buffer))
 
 (provide 'init-vc)
 ;;; init-vc.el ends here

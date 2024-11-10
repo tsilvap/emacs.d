@@ -22,22 +22,25 @@
 
 ;;; Code:
 
-(setup typescript-ts-mode
-  (:file-match "\\.ts\\'")
-  (:with-mode tsx-ts-mode
-    (:file-match "\\.tsx\\'"))
-  (:with-mode (typescript-ts-mode tsx-ts-mode)
-    (:hook apheleia-mode eglot-ensure)))
+;;; TODO: Rewrite this using use-package, and using Doom Emacs's
+;;; config for TypeScript/React/etc. as a reference.
 
-(setup flymake-eslint
-  ;; https://github.com/orzechowskid/flymake-eslint/issues/23#issuecomment-1675481378
-  (:with-mode (eglot-managed-mode)
-    (:hook (lambda ()
-             (when (derived-mode-p 'typescript-ts-mode 'web-mode 'js-mode)
-               (flymake-eslint-enable)))))
+;; (setup typescript-ts-mode
+;;   (:file-match "\\.ts\\'")
+;;   (:with-mode tsx-ts-mode
+;;     (:file-match "\\.tsx\\'"))
+;;   (:with-mode (typescript-ts-mode tsx-ts-mode)
+;;     (:hook apheleia-mode eglot-ensure)))
 
-  (:option flymake-eslint-defer-binary-check t
-           flymake-eslint-prefer-json-diagnostics t))
+;; (setup flymake-eslint
+;;   ;; https://github.com/orzechowskid/flymake-eslint/issues/23#issuecomment-1675481378
+;;   (:with-mode (eglot-managed-mode)
+;;     (:hook (lambda ()
+;;              (when (derived-mode-p 'typescript-ts-mode 'web-mode 'js-mode)
+;;                (flymake-eslint-enable)))))
+
+;;   (:option flymake-eslint-defer-binary-check t
+;;            flymake-eslint-prefer-json-diagnostics t))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

@@ -2,8 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup lua-mode
-  (:documentation-handler lua-search-documentation))
+(use-package lua-mode
+  :bind (:map lua-mode-map
+              ("C-c c k" . lua-search-documentation)))
 
 (provide 'init-lua)
 ;;; init-lua.el ends here

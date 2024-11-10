@@ -8,18 +8,15 @@
 
 ;;; Code:
 
-(setup erc
-  ;; Make C-c RET (or C-c C-RET) send messages instead of RET.
-  (:unbind "RET")
-  (:bind
-   "C-c RET"   erc-send-current-line
-   "C-c C-RET" erc-send-current-line)
-
-  (:when-loaded
-    (:option erc-modules
-             '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications pcomplete readonly ring stamp track)
-
-             erc-lurker-hide-list '("JOIN" "PART" "QUIT"))))
+(use-package erc
+  :bind (:map erc-mode-map
+              ;; Make C-c RET (or C-c C-RET) send messages instead of RET.
+              ("RET" . nil)
+              ("C-c RET" . erc-send-current-line)
+              ("C-c C-RET" . erc-send-current-line))
+  :custom
+  (erc-modules '(autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications pcomplete readonly ring stamp track))
+  (erc-lurker-hide-list '("JOIN" "PART" "QUIT")))
 
 (provide 'init-irc)
 ;;; init-irc.el ends here

@@ -21,8 +21,7 @@
              (eq transpose-sexps-function #'treesit-transpose-sexps))
     (setq transpose-sexps-function #'transpose-sexps-default-function)))
 
-(setup prog-mode
-  (:hook +treesit-remove-sexp-changes))
+(add-hook 'prog-mode-hook #'+treesit-remove-sexp-changes)
 
 ;;; Taken from the README of: https://github.com/mickeynp/combobulate
 (defun +treesit-setup-install-grammars ()
@@ -46,11 +45,10 @@
     (unless (+treesit-language-available-p (car grammar))
       (treesit-install-language-grammar (car grammar)))))
 
-(setup combobulate
-  (:commands combobulate-mode)
-  (:hook-into yaml-ts-mode)
-  (:when-loaded
-    (+treesit-setup-install-grammars)))
+(use-package combobulate
+  :hook (json-ts-mode yaml-ts-mode)
+  :config
+  (+treesit-setup-install-grammars))
 
 (provide 'init-treesit)
 ;;; init-treesit.el ends here

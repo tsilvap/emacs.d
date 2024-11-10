@@ -2,16 +2,19 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup go-mode
-  (:bind "C-c c k" godoc-at-point)
-  (:hook apheleia-mode
-         eglot-ensure)
-  (:local-set apheleia-formatter 'goimports
-              tab-width 4)
-  (:when-loaded
-    (:option godoc-at-point-function 'godoc-gogetdoc
-             godoc-reuse-buffer t
-             godoc-use-completing-read t)))
+(use-package go-mode
+  :bind (:map go-mode-map
+              ("C-c c k" . godoc-at-point))
+  :custom
+  (godoc-at-point-function 'godoc-gogetdoc)
+  (godoc-reuse-buffer t)
+  (godoc-use-completing-read t)
+  :config
+  (add-hook 'go-mode-hook #'apheleia-mode)
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (setq-local apheleia-formatter 'goimports
+                          tab-width 4))))
 
 (provide 'init-go)
 ;;; init-go.el ends here

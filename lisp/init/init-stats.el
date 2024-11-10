@@ -2,7 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(setup ess)
+(use-package ess
+  :defer t)
 
 (provide 'init-stats)
 ;;; init-stats.el ends here

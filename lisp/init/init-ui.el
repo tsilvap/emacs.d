@@ -7,7 +7,8 @@
 ;;; Code:
 
 ;; Set theme.
-(setup ef-themes
+(use-package ef-themes
+  :config
   (load-theme 'ef-elea-dark t))
 
 ;; Customize faces.
@@ -17,22 +18,24 @@
   (dolist (face '(default fixed-pitch))
     (set-face-attribute face nil :font font :weight 'regular)))
 
-(setup emacs
-  ;; Hide menu bar, scroll bar and tool bar.
-  ;;
-  ;; Sometimes, I'll toggle the menu bar manually when using a mode
-  ;; I'm not familiar with. But I prefer to have it off by default to
-  ;; save space.
-  (:option menu-bar-mode nil
-           scroll-bar-mode nil
-           tool-bar-mode nil)
+;; Hide menu bar, scroll bar and tool bar.
+;;
+;; Sometimes, I'll toggle the menu bar manually when using a mode I'm
+;; not familiar with. But I prefer to have it off by default to save
+;; space.
+(setopt menu-bar-mode nil
+        scroll-bar-mode nil
+        tool-bar-mode nil)
 
-  ;; Show column numbers globally.
-  (:option column-number-mode t))
+;; Show column numbers globally.
+(setopt column-number-mode t)
 
 ;; Display line numbers in source and configuration files.
-(setup display-line-numbers
-  (:hook-into conf-mode prog-mode yaml-mode yaml-ts-mode))
+(dolist (hook '(conf-mode-hook
+                prog-mode-hook
+                yaml-mode-hook
+                yaml-ts-mode-hook))
+  (add-hook hook #'display-line-numbers-mode))
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
