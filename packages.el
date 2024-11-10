@@ -36,7 +36,6 @@
  (git-link)
  (git-timemachine)
  (go-mode)
- (go-playground)
  (graphviz-dot-mode)
  (ibuffer-vc)
  (jenkinsfile-mode)
